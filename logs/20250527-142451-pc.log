@@ -1,0 +1,1519 @@
+Limited to 100 frames.
+Client: Connecting to server segment...
+Client: Connected to server segment
+Client: Starting video encoding
+Client: Waiting for server to acknowledge dimensions
+Client: Dimensions acknowledged by server
+Processing frame 0, Client: YUV plane sizes - Y: 2073600 bytes, U: 518400 bytes, V: 518400 bytes, Total: 3110400 bytes
+Client: Packing YUV planes into single buffer
+Client: All YUV planes packed. Starting single DMA transfer (3110400 bytes)
+Client: YUV frame DMA transfer complete
+Client: YUV frame ready signal sent
+Client: Waiting for YUV frame acknowledgment
+Client: YUV frame acknowledgment received from server
+Client: YUV frame transferred successfully, freeing original image buffers
+Client: Waiting for server to process and return encoded data
+Client: Received encoded data from server
+Client: Encoded data size: 6658564 bytes
+Client: Frame is a keyframe
+Client: Sending acknowledgment of encoded data receipt
+Client: Writing encoded frame to output file
+Done!
+Processing frame 1, Client: YUV plane sizes - Y: 2073600 bytes, U: 518400 bytes, V: 518400 bytes, Total: 3110400 bytes
+Client: Packing YUV planes into single buffer
+Client: All YUV planes packed. Starting single DMA transfer (3110400 bytes)
+Client: YUV frame DMA transfer complete
+Client: YUV frame ready signal sent
+Client: Waiting for YUV frame acknowledgment
+Client: YUV frame acknowledgment received from server
+Client: YUV frame transferred successfully, freeing original image buffers
+Client: Waiting for server to process and return encoded data
+Client: Received encoded data from server
+Client: Encoded data size: 6658564 bytes
+Client: Frame is not a keyframe
+Client: Sending acknowledgment of encoded data receipt
+Client: Writing encoded frame to output file
+Done!
+Processing frame 2, Client: YUV plane sizes - Y: 2073600 bytes, U: 518400 bytes, V: 518400 bytes, Total: 3110400 bytes
+Client: Packing YUV planes into single buffer
+Client: All YUV planes packed. Starting single DMA transfer (3110400 bytes)
+Client: YUV frame DMA transfer complete
+Client: YUV frame ready signal sent
+Client: Waiting for YUV frame acknowledgment
+Client: YUV frame acknowledgment received from server
+Client: YUV frame transferred successfully, freeing original image buffers
+Client: Waiting for server to process and return encoded data
+Client: Received encoded data from server
+Client: Encoded data size: 6658564 bytes
+Client: Frame is not a keyframe
+Client: Sending acknowledgment of encoded data receipt
+Client: Writing encoded frame to output file
+Done!
+Processing frame 3, Client: YUV plane sizes - Y: 2073600 bytes, U: 518400 bytes, V: 518400 bytes, Total: 3110400 bytes
+Client: Packing YUV planes into single buffer
+Client: All YUV planes packed. Starting single DMA transfer (3110400 bytes)
+Client: YUV frame DMA transfer complete
+Client: YUV frame ready signal sent
+Client: Waiting for YUV frame acknowledgment
+Client: YUV frame acknowledgment received from server
+Client: YUV frame transferred successfully, freeing original image buffers
+Client: Waiting for server to process and return encoded data
+Client: Received encoded data from server
+Client: Encoded data size: 6658564 bytes
+Client: Frame is not a keyframe
+Client: Sending acknowledgment of encoded data receipt
+Client: Writing encoded frame to output file
+Done!
+Processing frame 4, Client: YUV plane sizes - Y: 2073600 bytes, U: 518400 bytes, V: 518400 bytes, Total: 3110400 bytes
+Client: Packing YUV planes into single buffer
+Client: All YUV planes packed. Starting single DMA transfer (3110400 bytes)
+Client: YUV frame DMA transfer complete
+Client: YUV frame ready signal sent
+Client: Waiting for YUV frame acknowledgment
+Client: YUV frame acknowledgment received from server
+Client: YUV frame transferred successfully, freeing original image buffers
+Client: Waiting for server to process and return encoded data
+Client: Received encoded data from server
+Client: Encoded data size: 6658564 bytes
+Client: Frame is not a keyframe
+Client: Sending acknowledgment of encoded data receipt
+Client: Writing encoded frame to output file
+Done!
+Processing frame 5, Client: YUV plane sizes - Y: 2073600 bytes, U: 518400 bytes, V: 518400 bytes, Total: 3110400 bytes
+Client: Packing YUV planes into single buffer
+Client: All YUV planes packed. Starting single DMA transfer (3110400 bytes)
+Client: YUV frame DMA transfer complete
+Client: YUV frame ready signal sent
+Client: Waiting for YUV frame acknowledgment
+Client: YUV frame acknowledgment received from server
+Client: YUV frame transferred successfully, freeing original image buffers
+Client: Waiting for server to process and return encoded data
+Client: Received encoded data from server
+Client: Encoded data size: 6658564 bytes
+Client: Frame is not a keyframe
+Client: Sending acknowledgment of encoded data receipt
+Client: Writing encoded frame to output file
+Done!
+Processing frame 6, Client: YUV plane sizes - Y: 2073600 bytes, U: 518400 bytes, V: 518400 bytes, Total: 3110400 bytes
+Client: Packing YUV planes into single buffer
+Client: All YUV planes packed. Starting single DMA transfer (3110400 bytes)
+Client: YUV frame DMA transfer complete
+Client: YUV frame ready signal sent
+Client: Waiting for YUV frame acknowledgment
+Client: YUV frame acknowledgment received from server
+Client: YUV frame transferred successfully, freeing original image buffers
+Client: Waiting for server to process and return encoded data
+Client: Received encoded data from server
+Client: Encoded data size: 6658564 bytes
+Client: Frame is not a keyframe
+Client: Sending acknowledgment of encoded data receipt
+Client: Writing encoded frame to output file
+Done!
+Processing frame 7, Client: YUV plane sizes - Y: 2073600 bytes, U: 518400 bytes, V: 518400 bytes, Total: 3110400 bytes
+Client: Packing YUV planes into single buffer
+Client: All YUV planes packed. Starting single DMA transfer (3110400 bytes)
+Client: YUV frame DMA transfer complete
+Client: YUV frame ready signal sent
+Client: Waiting for YUV frame acknowledgment
+Client: YUV frame acknowledgment received from server
+Client: YUV frame transferred successfully, freeing original image buffers
+Client: Waiting for server to process and return encoded data
+Client: Still waiting for encoded data... (1 seconds)
+Client: Received encoded data from server
+Client: Encoded data size: 6658564 bytes
+Client: Frame is not a keyframe
+Client: Sending acknowledgment of encoded data receipt
+Client: Writing encoded frame to output file
+Done!
+Processing frame 8, Client: YUV plane sizes - Y: 2073600 bytes, U: 518400 bytes, V: 518400 bytes, Total: 3110400 bytes
+Client: Packing YUV planes into single buffer
+Client: All YUV planes packed. Starting single DMA transfer (3110400 bytes)
+Client: YUV frame DMA transfer complete
+Client: YUV frame ready signal sent
+Client: Waiting for YUV frame acknowledgment
+Client: YUV frame acknowledgment received from server
+Client: YUV frame transferred successfully, freeing original image buffers
+Client: Waiting for server to process and return encoded data
+Client: Received encoded data from server
+Client: Encoded data size: 6658564 bytes
+Client: Frame is not a keyframe
+Client: Sending acknowledgment of encoded data receipt
+Client: Writing encoded frame to output file
+Done!
+Processing frame 9, Client: YUV plane sizes - Y: 2073600 bytes, U: 518400 bytes, V: 518400 bytes, Total: 3110400 bytes
+Client: Packing YUV planes into single buffer
+Client: All YUV planes packed. Starting single DMA transfer (3110400 bytes)
+Client: YUV frame DMA transfer complete
+Client: YUV frame ready signal sent
+Client: Waiting for YUV frame acknowledgment
+Client: YUV frame acknowledgment received from server
+Client: YUV frame transferred successfully, freeing original image buffers
+Client: Waiting for server to process and return encoded data
+Client: Received encoded data from server
+Client: Encoded data size: 6658564 bytes
+Client: Frame is not a keyframe
+Client: Sending acknowledgment of encoded data receipt
+Client: Writing encoded frame to output file
+Done!
+Processing frame 10, Client: YUV plane sizes - Y: 2073600 bytes, U: 518400 bytes, V: 518400 bytes, Total: 3110400 bytes
+Client: Packing YUV planes into single buffer
+Client: All YUV planes packed. Starting single DMA transfer (3110400 bytes)
+Client: YUV frame DMA transfer complete
+Client: YUV frame ready signal sent
+Client: Waiting for YUV frame acknowledgment
+Client: YUV frame acknowledgment received from server
+Client: YUV frame transferred successfully, freeing original image buffers
+Client: Waiting for server to process and return encoded data
+Client: Received encoded data from server
+Client: Encoded data size: 6658564 bytes
+Client: Frame is not a keyframe
+Client: Sending acknowledgment of encoded data receipt
+Client: Writing encoded frame to output file
+Done!
+Processing frame 11, Client: YUV plane sizes - Y: 2073600 bytes, U: 518400 bytes, V: 518400 bytes, Total: 3110400 bytes
+Client: Packing YUV planes into single buffer
+Client: All YUV planes packed. Starting single DMA transfer (3110400 bytes)
+Client: YUV frame DMA transfer complete
+Client: YUV frame ready signal sent
+Client: Waiting for YUV frame acknowledgment
+Client: YUV frame acknowledgment received from server
+Client: YUV frame transferred successfully, freeing original image buffers
+Client: Waiting for server to process and return encoded data
+Client: Received encoded data from server
+Client: Encoded data size: 6658564 bytes
+Client: Frame is not a keyframe
+Client: Sending acknowledgment of encoded data receipt
+Client: Writing encoded frame to output file
+Done!
+Processing frame 12, Client: YUV plane sizes - Y: 2073600 bytes, U: 518400 bytes, V: 518400 bytes, Total: 3110400 bytes
+Client: Packing YUV planes into single buffer
+Client: All YUV planes packed. Starting single DMA transfer (3110400 bytes)
+Client: YUV frame DMA transfer complete
+Client: YUV frame ready signal sent
+Client: Waiting for YUV frame acknowledgment
+Client: YUV frame acknowledgment received from server
+Client: YUV frame transferred successfully, freeing original image buffers
+Client: Waiting for server to process and return encoded data
+Client: Received encoded data from server
+Client: Encoded data size: 6658564 bytes
+Client: Frame is not a keyframe
+Client: Sending acknowledgment of encoded data receipt
+Client: Writing encoded frame to output file
+Done!
+Processing frame 13, Client: YUV plane sizes - Y: 2073600 bytes, U: 518400 bytes, V: 518400 bytes, Total: 3110400 bytes
+Client: Packing YUV planes into single buffer
+Client: All YUV planes packed. Starting single DMA transfer (3110400 bytes)
+Client: YUV frame DMA transfer complete
+Client: YUV frame ready signal sent
+Client: Waiting for YUV frame acknowledgment
+Client: YUV frame acknowledgment received from server
+Client: YUV frame transferred successfully, freeing original image buffers
+Client: Waiting for server to process and return encoded data
+Client: Received encoded data from server
+Client: Encoded data size: 6658564 bytes
+Client: Frame is not a keyframe
+Client: Sending acknowledgment of encoded data receipt
+Client: Writing encoded frame to output file
+Done!
+Processing frame 14, Client: YUV plane sizes - Y: 2073600 bytes, U: 518400 bytes, V: 518400 bytes, Total: 3110400 bytes
+Client: Packing YUV planes into single buffer
+Client: All YUV planes packed. Starting single DMA transfer (3110400 bytes)
+Client: YUV frame DMA transfer complete
+Client: YUV frame ready signal sent
+Client: Waiting for YUV frame acknowledgment
+Client: YUV frame acknowledgment received from server
+Client: YUV frame transferred successfully, freeing original image buffers
+Client: Waiting for server to process and return encoded data
+Client: Received encoded data from server
+Client: Encoded data size: 6658564 bytes
+Client: Frame is not a keyframe
+Client: Sending acknowledgment of encoded data receipt
+Client: Writing encoded frame to output file
+Done!
+Processing frame 15, Client: YUV plane sizes - Y: 2073600 bytes, U: 518400 bytes, V: 518400 bytes, Total: 3110400 bytes
+Client: Packing YUV planes into single buffer
+Client: All YUV planes packed. Starting single DMA transfer (3110400 bytes)
+Client: YUV frame DMA transfer complete
+Client: YUV frame ready signal sent
+Client: Waiting for YUV frame acknowledgment
+Client: YUV frame acknowledgment received from server
+Client: YUV frame transferred successfully, freeing original image buffers
+Client: Waiting for server to process and return encoded data
+Client: Received encoded data from server
+Client: Encoded data size: 6658564 bytes
+Client: Frame is not a keyframe
+Client: Sending acknowledgment of encoded data receipt
+Client: Writing encoded frame to output file
+Done!
+Processing frame 16, Client: YUV plane sizes - Y: 2073600 bytes, U: 518400 bytes, V: 518400 bytes, Total: 3110400 bytes
+Client: Packing YUV planes into single buffer
+Client: All YUV planes packed. Starting single DMA transfer (3110400 bytes)
+Client: YUV frame DMA transfer complete
+Client: YUV frame ready signal sent
+Client: Waiting for YUV frame acknowledgment
+Client: YUV frame acknowledgment received from server
+Client: YUV frame transferred successfully, freeing original image buffers
+Client: Waiting for server to process and return encoded data
+Client: Received encoded data from server
+Client: Encoded data size: 6658564 bytes
+Client: Frame is not a keyframe
+Client: Sending acknowledgment of encoded data receipt
+Client: Writing encoded frame to output file
+Done!
+Processing frame 17, Client: YUV plane sizes - Y: 2073600 bytes, U: 518400 bytes, V: 518400 bytes, Total: 3110400 bytes
+Client: Packing YUV planes into single buffer
+Client: All YUV planes packed. Starting single DMA transfer (3110400 bytes)
+Client: YUV frame DMA transfer complete
+Client: YUV frame ready signal sent
+Client: Waiting for YUV frame acknowledgment
+Client: YUV frame acknowledgment received from server
+Client: YUV frame transferred successfully, freeing original image buffers
+Client: Waiting for server to process and return encoded data
+Client: Received encoded data from server
+Client: Encoded data size: 6658564 bytes
+Client: Frame is not a keyframe
+Client: Sending acknowledgment of encoded data receipt
+Client: Writing encoded frame to output file
+Done!
+Processing frame 18, Client: YUV plane sizes - Y: 2073600 bytes, U: 518400 bytes, V: 518400 bytes, Total: 3110400 bytes
+Client: Packing YUV planes into single buffer
+Client: All YUV planes packed. Starting single DMA transfer (3110400 bytes)
+Client: YUV frame DMA transfer complete
+Client: YUV frame ready signal sent
+Client: Waiting for YUV frame acknowledgment
+Client: YUV frame acknowledgment received from server
+Client: YUV frame transferred successfully, freeing original image buffers
+Client: Waiting for server to process and return encoded data
+Client: Received encoded data from server
+Client: Encoded data size: 6658564 bytes
+Client: Frame is not a keyframe
+Client: Sending acknowledgment of encoded data receipt
+Client: Writing encoded frame to output file
+Done!
+Processing frame 19, Client: YUV plane sizes - Y: 2073600 bytes, U: 518400 bytes, V: 518400 bytes, Total: 3110400 bytes
+Client: Packing YUV planes into single buffer
+Client: All YUV planes packed. Starting single DMA transfer (3110400 bytes)
+Client: YUV frame DMA transfer complete
+Client: YUV frame ready signal sent
+Client: Waiting for YUV frame acknowledgment
+Client: YUV frame acknowledgment received from server
+Client: YUV frame transferred successfully, freeing original image buffers
+Client: Waiting for server to process and return encoded data
+Client: Received encoded data from server
+Client: Encoded data size: 6658564 bytes
+Client: Frame is not a keyframe
+Client: Sending acknowledgment of encoded data receipt
+Client: Writing encoded frame to output file
+Done!
+Processing frame 20, Client: YUV plane sizes - Y: 2073600 bytes, U: 518400 bytes, V: 518400 bytes, Total: 3110400 bytes
+Client: Packing YUV planes into single buffer
+Client: All YUV planes packed. Starting single DMA transfer (3110400 bytes)
+Client: YUV frame DMA transfer complete
+Client: YUV frame ready signal sent
+Client: Waiting for YUV frame acknowledgment
+Client: YUV frame acknowledgment received from server
+Client: YUV frame transferred successfully, freeing original image buffers
+Client: Waiting for server to process and return encoded data
+Client: Received encoded data from server
+Client: Encoded data size: 6658564 bytes
+Client: Frame is not a keyframe
+Client: Sending acknowledgment of encoded data receipt
+Client: Writing encoded frame to output file
+Done!
+Processing frame 21, Client: YUV plane sizes - Y: 2073600 bytes, U: 518400 bytes, V: 518400 bytes, Total: 3110400 bytes
+Client: Packing YUV planes into single buffer
+Client: All YUV planes packed. Starting single DMA transfer (3110400 bytes)
+Client: YUV frame DMA transfer complete
+Client: YUV frame ready signal sent
+Client: Waiting for YUV frame acknowledgment
+Client: YUV frame acknowledgment received from server
+Client: YUV frame transferred successfully, freeing original image buffers
+Client: Waiting for server to process and return encoded data
+Client: Received encoded data from server
+Client: Encoded data size: 6658564 bytes
+Client: Frame is not a keyframe
+Client: Sending acknowledgment of encoded data receipt
+Client: Writing encoded frame to output file
+Done!
+Processing frame 22, Client: YUV plane sizes - Y: 2073600 bytes, U: 518400 bytes, V: 518400 bytes, Total: 3110400 bytes
+Client: Packing YUV planes into single buffer
+Client: All YUV planes packed. Starting single DMA transfer (3110400 bytes)
+Client: YUV frame DMA transfer complete
+Client: YUV frame ready signal sent
+Client: Waiting for YUV frame acknowledgment
+Client: YUV frame acknowledgment received from server
+Client: YUV frame transferred successfully, freeing original image buffers
+Client: Waiting for server to process and return encoded data
+Client: Received encoded data from server
+Client: Encoded data size: 6658564 bytes
+Client: Frame is not a keyframe
+Client: Sending acknowledgment of encoded data receipt
+Client: Writing encoded frame to output file
+Done!
+Processing frame 23, Client: YUV plane sizes - Y: 2073600 bytes, U: 518400 bytes, V: 518400 bytes, Total: 3110400 bytes
+Client: Packing YUV planes into single buffer
+Client: All YUV planes packed. Starting single DMA transfer (3110400 bytes)
+Client: YUV frame DMA transfer complete
+Client: YUV frame ready signal sent
+Client: Waiting for YUV frame acknowledgment
+Client: YUV frame acknowledgment received from server
+Client: YUV frame transferred successfully, freeing original image buffers
+Client: Waiting for server to process and return encoded data
+Client: Received encoded data from server
+Client: Encoded data size: 6658564 bytes
+Client: Frame is not a keyframe
+Client: Sending acknowledgment of encoded data receipt
+Client: Writing encoded frame to output file
+Done!
+Processing frame 24, Client: YUV plane sizes - Y: 2073600 bytes, U: 518400 bytes, V: 518400 bytes, Total: 3110400 bytes
+Client: Packing YUV planes into single buffer
+Client: All YUV planes packed. Starting single DMA transfer (3110400 bytes)
+Client: YUV frame DMA transfer complete
+Client: YUV frame ready signal sent
+Client: Waiting for YUV frame acknowledgment
+Client: YUV frame acknowledgment received from server
+Client: YUV frame transferred successfully, freeing original image buffers
+Client: Waiting for server to process and return encoded data
+Client: Received encoded data from server
+Client: Encoded data size: 6658564 bytes
+Client: Frame is not a keyframe
+Client: Sending acknowledgment of encoded data receipt
+Client: Writing encoded frame to output file
+Done!
+Processing frame 25, Client: YUV plane sizes - Y: 2073600 bytes, U: 518400 bytes, V: 518400 bytes, Total: 3110400 bytes
+Client: Packing YUV planes into single buffer
+Client: All YUV planes packed. Starting single DMA transfer (3110400 bytes)
+Client: YUV frame DMA transfer complete
+Client: YUV frame ready signal sent
+Client: Waiting for YUV frame acknowledgment
+Client: YUV frame acknowledgment received from server
+Client: YUV frame transferred successfully, freeing original image buffers
+Client: Waiting for server to process and return encoded data
+Client: Still waiting for encoded data... (1 seconds)
+Client: Received encoded data from server
+Client: Encoded data size: 6658564 bytes
+Client: Frame is not a keyframe
+Client: Sending acknowledgment of encoded data receipt
+Client: Writing encoded frame to output file
+Done!
+Processing frame 26, Client: YUV plane sizes - Y: 2073600 bytes, U: 518400 bytes, V: 518400 bytes, Total: 3110400 bytes
+Client: Packing YUV planes into single buffer
+Client: All YUV planes packed. Starting single DMA transfer (3110400 bytes)
+Client: YUV frame DMA transfer complete
+Client: YUV frame ready signal sent
+Client: Waiting for YUV frame acknowledgment
+Client: YUV frame acknowledgment received from server
+Client: YUV frame transferred successfully, freeing original image buffers
+Client: Waiting for server to process and return encoded data
+Client: Received encoded data from server
+Client: Encoded data size: 6658564 bytes
+Client: Frame is not a keyframe
+Client: Sending acknowledgment of encoded data receipt
+Client: Writing encoded frame to output file
+Done!
+Processing frame 27, Client: YUV plane sizes - Y: 2073600 bytes, U: 518400 bytes, V: 518400 bytes, Total: 3110400 bytes
+Client: Packing YUV planes into single buffer
+Client: All YUV planes packed. Starting single DMA transfer (3110400 bytes)
+Client: YUV frame DMA transfer complete
+Client: YUV frame ready signal sent
+Client: Waiting for YUV frame acknowledgment
+Client: YUV frame acknowledgment received from server
+Client: YUV frame transferred successfully, freeing original image buffers
+Client: Waiting for server to process and return encoded data
+Client: Received encoded data from server
+Client: Encoded data size: 6658564 bytes
+Client: Frame is not a keyframe
+Client: Sending acknowledgment of encoded data receipt
+Client: Writing encoded frame to output file
+Done!
+Processing frame 28, Client: YUV plane sizes - Y: 2073600 bytes, U: 518400 bytes, V: 518400 bytes, Total: 3110400 bytes
+Client: Packing YUV planes into single buffer
+Client: All YUV planes packed. Starting single DMA transfer (3110400 bytes)
+Client: YUV frame DMA transfer complete
+Client: YUV frame ready signal sent
+Client: Waiting for YUV frame acknowledgment
+Client: YUV frame acknowledgment received from server
+Client: YUV frame transferred successfully, freeing original image buffers
+Client: Waiting for server to process and return encoded data
+Client: Received encoded data from server
+Client: Encoded data size: 6658564 bytes
+Client: Frame is not a keyframe
+Client: Sending acknowledgment of encoded data receipt
+Client: Writing encoded frame to output file
+Done!
+Processing frame 29, Client: YUV plane sizes - Y: 2073600 bytes, U: 518400 bytes, V: 518400 bytes, Total: 3110400 bytes
+Client: Packing YUV planes into single buffer
+Client: All YUV planes packed. Starting single DMA transfer (3110400 bytes)
+Client: YUV frame DMA transfer complete
+Client: YUV frame ready signal sent
+Client: Waiting for YUV frame acknowledgment
+Client: YUV frame acknowledgment received from server
+Client: YUV frame transferred successfully, freeing original image buffers
+Client: Waiting for server to process and return encoded data
+Client: Received encoded data from server
+Client: Encoded data size: 6658564 bytes
+Client: Frame is not a keyframe
+Client: Sending acknowledgment of encoded data receipt
+Client: Writing encoded frame to output file
+Done!
+Processing frame 30, Client: YUV plane sizes - Y: 2073600 bytes, U: 518400 bytes, V: 518400 bytes, Total: 3110400 bytes
+Client: Packing YUV planes into single buffer
+Client: All YUV planes packed. Starting single DMA transfer (3110400 bytes)
+Client: YUV frame DMA transfer complete
+Client: YUV frame ready signal sent
+Client: Waiting for YUV frame acknowledgment
+Client: YUV frame acknowledgment received from server
+Client: YUV frame transferred successfully, freeing original image buffers
+Client: Waiting for server to process and return encoded data
+Client: Received encoded data from server
+Client: Encoded data size: 6658564 bytes
+Client: Frame is not a keyframe
+Client: Sending acknowledgment of encoded data receipt
+Client: Writing encoded frame to output file
+Done!
+Processing frame 31, Client: YUV plane sizes - Y: 2073600 bytes, U: 518400 bytes, V: 518400 bytes, Total: 3110400 bytes
+Client: Packing YUV planes into single buffer
+Client: All YUV planes packed. Starting single DMA transfer (3110400 bytes)
+Client: YUV frame DMA transfer complete
+Client: YUV frame ready signal sent
+Client: Waiting for YUV frame acknowledgment
+Client: YUV frame acknowledgment received from server
+Client: YUV frame transferred successfully, freeing original image buffers
+Client: Waiting for server to process and return encoded data
+Client: Still waiting for encoded data... (1 seconds)
+Client: Received encoded data from server
+Client: Encoded data size: 6658564 bytes
+Client: Frame is not a keyframe
+Client: Sending acknowledgment of encoded data receipt
+Client: Writing encoded frame to output file
+Done!
+Processing frame 32, Client: YUV plane sizes - Y: 2073600 bytes, U: 518400 bytes, V: 518400 bytes, Total: 3110400 bytes
+Client: Packing YUV planes into single buffer
+Client: All YUV planes packed. Starting single DMA transfer (3110400 bytes)
+Client: YUV frame DMA transfer complete
+Client: YUV frame ready signal sent
+Client: Waiting for YUV frame acknowledgment
+Client: YUV frame acknowledgment received from server
+Client: YUV frame transferred successfully, freeing original image buffers
+Client: Waiting for server to process and return encoded data
+Client: Received encoded data from server
+Client: Encoded data size: 6658564 bytes
+Client: Frame is not a keyframe
+Client: Sending acknowledgment of encoded data receipt
+Client: Writing encoded frame to output file
+Done!
+Processing frame 33, Client: YUV plane sizes - Y: 2073600 bytes, U: 518400 bytes, V: 518400 bytes, Total: 3110400 bytes
+Client: Packing YUV planes into single buffer
+Client: All YUV planes packed. Starting single DMA transfer (3110400 bytes)
+Client: YUV frame DMA transfer complete
+Client: YUV frame ready signal sent
+Client: Waiting for YUV frame acknowledgment
+Client: YUV frame acknowledgment received from server
+Client: YUV frame transferred successfully, freeing original image buffers
+Client: Waiting for server to process and return encoded data
+Client: Received encoded data from server
+Client: Encoded data size: 6658564 bytes
+Client: Frame is not a keyframe
+Client: Sending acknowledgment of encoded data receipt
+Client: Writing encoded frame to output file
+Done!
+Processing frame 34, Client: YUV plane sizes - Y: 2073600 bytes, U: 518400 bytes, V: 518400 bytes, Total: 3110400 bytes
+Client: Packing YUV planes into single buffer
+Client: All YUV planes packed. Starting single DMA transfer (3110400 bytes)
+Client: YUV frame DMA transfer complete
+Client: YUV frame ready signal sent
+Client: Waiting for YUV frame acknowledgment
+Client: YUV frame acknowledgment received from server
+Client: YUV frame transferred successfully, freeing original image buffers
+Client: Waiting for server to process and return encoded data
+Client: Received encoded data from server
+Client: Encoded data size: 6658564 bytes
+Client: Frame is not a keyframe
+Client: Sending acknowledgment of encoded data receipt
+Client: Writing encoded frame to output file
+Done!
+Processing frame 35, Client: YUV plane sizes - Y: 2073600 bytes, U: 518400 bytes, V: 518400 bytes, Total: 3110400 bytes
+Client: Packing YUV planes into single buffer
+Client: All YUV planes packed. Starting single DMA transfer (3110400 bytes)
+Client: YUV frame DMA transfer complete
+Client: YUV frame ready signal sent
+Client: Waiting for YUV frame acknowledgment
+Client: YUV frame acknowledgment received from server
+Client: YUV frame transferred successfully, freeing original image buffers
+Client: Waiting for server to process and return encoded data
+Client: Received encoded data from server
+Client: Encoded data size: 6658564 bytes
+Client: Frame is not a keyframe
+Client: Sending acknowledgment of encoded data receipt
+Client: Writing encoded frame to output file
+Done!
+Processing frame 36, Client: YUV plane sizes - Y: 2073600 bytes, U: 518400 bytes, V: 518400 bytes, Total: 3110400 bytes
+Client: Packing YUV planes into single buffer
+Client: All YUV planes packed. Starting single DMA transfer (3110400 bytes)
+Client: YUV frame DMA transfer complete
+Client: YUV frame ready signal sent
+Client: Waiting for YUV frame acknowledgment
+Client: YUV frame acknowledgment received from server
+Client: YUV frame transferred successfully, freeing original image buffers
+Client: Waiting for server to process and return encoded data
+Client: Received encoded data from server
+Client: Encoded data size: 6658564 bytes
+Client: Frame is not a keyframe
+Client: Sending acknowledgment of encoded data receipt
+Client: Writing encoded frame to output file
+Done!
+Processing frame 37, Client: YUV plane sizes - Y: 2073600 bytes, U: 518400 bytes, V: 518400 bytes, Total: 3110400 bytes
+Client: Packing YUV planes into single buffer
+Client: All YUV planes packed. Starting single DMA transfer (3110400 bytes)
+Client: YUV frame DMA transfer complete
+Client: YUV frame ready signal sent
+Client: Waiting for YUV frame acknowledgment
+Client: YUV frame acknowledgment received from server
+Client: YUV frame transferred successfully, freeing original image buffers
+Client: Waiting for server to process and return encoded data
+Client: Received encoded data from server
+Client: Encoded data size: 6658564 bytes
+Client: Frame is not a keyframe
+Client: Sending acknowledgment of encoded data receipt
+Client: Writing encoded frame to output file
+Done!
+Processing frame 38, Client: YUV plane sizes - Y: 2073600 bytes, U: 518400 bytes, V: 518400 bytes, Total: 3110400 bytes
+Client: Packing YUV planes into single buffer
+Client: All YUV planes packed. Starting single DMA transfer (3110400 bytes)
+Client: YUV frame DMA transfer complete
+Client: YUV frame ready signal sent
+Client: Waiting for YUV frame acknowledgment
+Client: YUV frame acknowledgment received from server
+Client: YUV frame transferred successfully, freeing original image buffers
+Client: Waiting for server to process and return encoded data
+Client: Received encoded data from server
+Client: Encoded data size: 6658564 bytes
+Client: Frame is not a keyframe
+Client: Sending acknowledgment of encoded data receipt
+Client: Writing encoded frame to output file
+Done!
+Processing frame 39, Client: YUV plane sizes - Y: 2073600 bytes, U: 518400 bytes, V: 518400 bytes, Total: 3110400 bytes
+Client: Packing YUV planes into single buffer
+Client: All YUV planes packed. Starting single DMA transfer (3110400 bytes)
+Client: YUV frame DMA transfer complete
+Client: YUV frame ready signal sent
+Client: Waiting for YUV frame acknowledgment
+Client: YUV frame acknowledgment received from server
+Client: YUV frame transferred successfully, freeing original image buffers
+Client: Waiting for server to process and return encoded data
+Client: Received encoded data from server
+Client: Encoded data size: 6658564 bytes
+Client: Frame is not a keyframe
+Client: Sending acknowledgment of encoded data receipt
+Client: Writing encoded frame to output file
+Done!
+Processing frame 40, Client: YUV plane sizes - Y: 2073600 bytes, U: 518400 bytes, V: 518400 bytes, Total: 3110400 bytes
+Client: Packing YUV planes into single buffer
+Client: All YUV planes packed. Starting single DMA transfer (3110400 bytes)
+Client: YUV frame DMA transfer complete
+Client: YUV frame ready signal sent
+Client: Waiting for YUV frame acknowledgment
+Client: YUV frame acknowledgment received from server
+Client: YUV frame transferred successfully, freeing original image buffers
+Client: Waiting for server to process and return encoded data
+Client: Received encoded data from server
+Client: Encoded data size: 6658564 bytes
+Client: Frame is not a keyframe
+Client: Sending acknowledgment of encoded data receipt
+Client: Writing encoded frame to output file
+Done!
+Processing frame 41, Client: YUV plane sizes - Y: 2073600 bytes, U: 518400 bytes, V: 518400 bytes, Total: 3110400 bytes
+Client: Packing YUV planes into single buffer
+Client: All YUV planes packed. Starting single DMA transfer (3110400 bytes)
+Client: YUV frame DMA transfer complete
+Client: YUV frame ready signal sent
+Client: Waiting for YUV frame acknowledgment
+Client: YUV frame acknowledgment received from server
+Client: YUV frame transferred successfully, freeing original image buffers
+Client: Waiting for server to process and return encoded data
+Client: Received encoded data from server
+Client: Encoded data size: 6658564 bytes
+Client: Frame is not a keyframe
+Client: Sending acknowledgment of encoded data receipt
+Client: Writing encoded frame to output file
+Done!
+Processing frame 42, Client: YUV plane sizes - Y: 2073600 bytes, U: 518400 bytes, V: 518400 bytes, Total: 3110400 bytes
+Client: Packing YUV planes into single buffer
+Client: All YUV planes packed. Starting single DMA transfer (3110400 bytes)
+Client: YUV frame DMA transfer complete
+Client: YUV frame ready signal sent
+Client: Waiting for YUV frame acknowledgment
+Client: YUV frame acknowledgment received from server
+Client: YUV frame transferred successfully, freeing original image buffers
+Client: Waiting for server to process and return encoded data
+Client: Received encoded data from server
+Client: Encoded data size: 6658564 bytes
+Client: Frame is not a keyframe
+Client: Sending acknowledgment of encoded data receipt
+Client: Writing encoded frame to output file
+Done!
+Processing frame 43, Client: YUV plane sizes - Y: 2073600 bytes, U: 518400 bytes, V: 518400 bytes, Total: 3110400 bytes
+Client: Packing YUV planes into single buffer
+Client: All YUV planes packed. Starting single DMA transfer (3110400 bytes)
+Client: YUV frame DMA transfer complete
+Client: YUV frame ready signal sent
+Client: Waiting for YUV frame acknowledgment
+Client: YUV frame acknowledgment received from server
+Client: YUV frame transferred successfully, freeing original image buffers
+Client: Waiting for server to process and return encoded data
+Client: Received encoded data from server
+Client: Encoded data size: 6658564 bytes
+Client: Frame is not a keyframe
+Client: Sending acknowledgment of encoded data receipt
+Client: Writing encoded frame to output file
+Done!
+Processing frame 44, Client: YUV plane sizes - Y: 2073600 bytes, U: 518400 bytes, V: 518400 bytes, Total: 3110400 bytes
+Client: Packing YUV planes into single buffer
+Client: All YUV planes packed. Starting single DMA transfer (3110400 bytes)
+Client: YUV frame DMA transfer complete
+Client: YUV frame ready signal sent
+Client: Waiting for YUV frame acknowledgment
+Client: YUV frame acknowledgment received from server
+Client: YUV frame transferred successfully, freeing original image buffers
+Client: Waiting for server to process and return encoded data
+Client: Received encoded data from server
+Client: Encoded data size: 6658564 bytes
+Client: Frame is not a keyframe
+Client: Sending acknowledgment of encoded data receipt
+Client: Writing encoded frame to output file
+Done!
+Processing frame 45, Client: YUV plane sizes - Y: 2073600 bytes, U: 518400 bytes, V: 518400 bytes, Total: 3110400 bytes
+Client: Packing YUV planes into single buffer
+Client: All YUV planes packed. Starting single DMA transfer (3110400 bytes)
+Client: YUV frame DMA transfer complete
+Client: YUV frame ready signal sent
+Client: Waiting for YUV frame acknowledgment
+Client: YUV frame acknowledgment received from server
+Client: YUV frame transferred successfully, freeing original image buffers
+Client: Waiting for server to process and return encoded data
+Client: Received encoded data from server
+Client: Encoded data size: 6658564 bytes
+Client: Frame is not a keyframe
+Client: Sending acknowledgment of encoded data receipt
+Client: Writing encoded frame to output file
+Done!
+Processing frame 46, Client: YUV plane sizes - Y: 2073600 bytes, U: 518400 bytes, V: 518400 bytes, Total: 3110400 bytes
+Client: Packing YUV planes into single buffer
+Client: All YUV planes packed. Starting single DMA transfer (3110400 bytes)
+Client: YUV frame DMA transfer complete
+Client: YUV frame ready signal sent
+Client: Waiting for YUV frame acknowledgment
+Client: YUV frame acknowledgment received from server
+Client: YUV frame transferred successfully, freeing original image buffers
+Client: Waiting for server to process and return encoded data
+Client: Received encoded data from server
+Client: Encoded data size: 6658564 bytes
+Client: Frame is not a keyframe
+Client: Sending acknowledgment of encoded data receipt
+Client: Writing encoded frame to output file
+Done!
+Processing frame 47, Client: YUV plane sizes - Y: 2073600 bytes, U: 518400 bytes, V: 518400 bytes, Total: 3110400 bytes
+Client: Packing YUV planes into single buffer
+Client: All YUV planes packed. Starting single DMA transfer (3110400 bytes)
+Client: YUV frame DMA transfer complete
+Client: YUV frame ready signal sent
+Client: Waiting for YUV frame acknowledgment
+Client: YUV frame acknowledgment received from server
+Client: YUV frame transferred successfully, freeing original image buffers
+Client: Waiting for server to process and return encoded data
+Client: Received encoded data from server
+Client: Encoded data size: 6658564 bytes
+Client: Frame is not a keyframe
+Client: Sending acknowledgment of encoded data receipt
+Client: Writing encoded frame to output file
+Done!
+Processing frame 48, Client: YUV plane sizes - Y: 2073600 bytes, U: 518400 bytes, V: 518400 bytes, Total: 3110400 bytes
+Client: Packing YUV planes into single buffer
+Client: All YUV planes packed. Starting single DMA transfer (3110400 bytes)
+Client: YUV frame DMA transfer complete
+Client: YUV frame ready signal sent
+Client: Waiting for YUV frame acknowledgment
+Client: YUV frame acknowledgment received from server
+Client: YUV frame transferred successfully, freeing original image buffers
+Client: Waiting for server to process and return encoded data
+Client: Received encoded data from server
+Client: Encoded data size: 6658564 bytes
+Client: Frame is not a keyframe
+Client: Sending acknowledgment of encoded data receipt
+Client: Writing encoded frame to output file
+Done!
+Processing frame 49, Client: YUV plane sizes - Y: 2073600 bytes, U: 518400 bytes, V: 518400 bytes, Total: 3110400 bytes
+Client: Packing YUV planes into single buffer
+Client: All YUV planes packed. Starting single DMA transfer (3110400 bytes)
+Client: YUV frame DMA transfer complete
+Client: YUV frame ready signal sent
+Client: Waiting for YUV frame acknowledgment
+Client: YUV frame acknowledgment received from server
+Client: YUV frame transferred successfully, freeing original image buffers
+Client: Waiting for server to process and return encoded data
+Client: Received encoded data from server
+Client: Encoded data size: 6658564 bytes
+Client: Frame is not a keyframe
+Client: Sending acknowledgment of encoded data receipt
+Client: Writing encoded frame to output file
+Done!
+Processing frame 50, Client: YUV plane sizes - Y: 2073600 bytes, U: 518400 bytes, V: 518400 bytes, Total: 3110400 bytes
+Client: Packing YUV planes into single buffer
+Client: All YUV planes packed. Starting single DMA transfer (3110400 bytes)
+Client: YUV frame DMA transfer complete
+Client: YUV frame ready signal sent
+Client: Waiting for YUV frame acknowledgment
+Client: YUV frame acknowledgment received from server
+Client: YUV frame transferred successfully, freeing original image buffers
+Client: Waiting for server to process and return encoded data
+Client: Received encoded data from server
+Client: Encoded data size: 6658564 bytes
+Client: Frame is not a keyframe
+Client: Sending acknowledgment of encoded data receipt
+Client: Writing encoded frame to output file
+Done!
+Processing frame 51, Client: YUV plane sizes - Y: 2073600 bytes, U: 518400 bytes, V: 518400 bytes, Total: 3110400 bytes
+Client: Packing YUV planes into single buffer
+Client: All YUV planes packed. Starting single DMA transfer (3110400 bytes)
+Client: YUV frame DMA transfer complete
+Client: YUV frame ready signal sent
+Client: Waiting for YUV frame acknowledgment
+Client: YUV frame acknowledgment received from server
+Client: YUV frame transferred successfully, freeing original image buffers
+Client: Waiting for server to process and return encoded data
+Client: Received encoded data from server
+Client: Encoded data size: 6658564 bytes
+Client: Frame is not a keyframe
+Client: Sending acknowledgment of encoded data receipt
+Client: Writing encoded frame to output file
+Done!
+Processing frame 52, Client: YUV plane sizes - Y: 2073600 bytes, U: 518400 bytes, V: 518400 bytes, Total: 3110400 bytes
+Client: Packing YUV planes into single buffer
+Client: All YUV planes packed. Starting single DMA transfer (3110400 bytes)
+Client: YUV frame DMA transfer complete
+Client: YUV frame ready signal sent
+Client: Waiting for YUV frame acknowledgment
+Client: YUV frame acknowledgment received from server
+Client: YUV frame transferred successfully, freeing original image buffers
+Client: Waiting for server to process and return encoded data
+Client: Received encoded data from server
+Client: Encoded data size: 6658564 bytes
+Client: Frame is not a keyframe
+Client: Sending acknowledgment of encoded data receipt
+Client: Writing encoded frame to output file
+Done!
+Processing frame 53, Client: YUV plane sizes - Y: 2073600 bytes, U: 518400 bytes, V: 518400 bytes, Total: 3110400 bytes
+Client: Packing YUV planes into single buffer
+Client: All YUV planes packed. Starting single DMA transfer (3110400 bytes)
+Client: YUV frame DMA transfer complete
+Client: YUV frame ready signal sent
+Client: Waiting for YUV frame acknowledgment
+Client: YUV frame acknowledgment received from server
+Client: YUV frame transferred successfully, freeing original image buffers
+Client: Waiting for server to process and return encoded data
+Client: Received encoded data from server
+Client: Encoded data size: 6658564 bytes
+Client: Frame is not a keyframe
+Client: Sending acknowledgment of encoded data receipt
+Client: Writing encoded frame to output file
+Done!
+Processing frame 54, Client: YUV plane sizes - Y: 2073600 bytes, U: 518400 bytes, V: 518400 bytes, Total: 3110400 bytes
+Client: Packing YUV planes into single buffer
+Client: All YUV planes packed. Starting single DMA transfer (3110400 bytes)
+Client: YUV frame DMA transfer complete
+Client: YUV frame ready signal sent
+Client: Waiting for YUV frame acknowledgment
+Client: YUV frame acknowledgment received from server
+Client: YUV frame transferred successfully, freeing original image buffers
+Client: Waiting for server to process and return encoded data
+Client: Received encoded data from server
+Client: Encoded data size: 6658564 bytes
+Client: Frame is not a keyframe
+Client: Sending acknowledgment of encoded data receipt
+Client: Writing encoded frame to output file
+Done!
+Processing frame 55, Client: YUV plane sizes - Y: 2073600 bytes, U: 518400 bytes, V: 518400 bytes, Total: 3110400 bytes
+Client: Packing YUV planes into single buffer
+Client: All YUV planes packed. Starting single DMA transfer (3110400 bytes)
+Client: YUV frame DMA transfer complete
+Client: YUV frame ready signal sent
+Client: Waiting for YUV frame acknowledgment
+Client: YUV frame acknowledgment received from server
+Client: YUV frame transferred successfully, freeing original image buffers
+Client: Waiting for server to process and return encoded data
+Client: Received encoded data from server
+Client: Encoded data size: 6658564 bytes
+Client: Frame is not a keyframe
+Client: Sending acknowledgment of encoded data receipt
+Client: Writing encoded frame to output file
+Done!
+Processing frame 56, Client: YUV plane sizes - Y: 2073600 bytes, U: 518400 bytes, V: 518400 bytes, Total: 3110400 bytes
+Client: Packing YUV planes into single buffer
+Client: All YUV planes packed. Starting single DMA transfer (3110400 bytes)
+Client: YUV frame DMA transfer complete
+Client: YUV frame ready signal sent
+Client: Waiting for YUV frame acknowledgment
+Client: YUV frame acknowledgment received from server
+Client: YUV frame transferred successfully, freeing original image buffers
+Client: Waiting for server to process and return encoded data
+Client: Received encoded data from server
+Client: Encoded data size: 6658564 bytes
+Client: Frame is not a keyframe
+Client: Sending acknowledgment of encoded data receipt
+Client: Writing encoded frame to output file
+Done!
+Processing frame 57, Client: YUV plane sizes - Y: 2073600 bytes, U: 518400 bytes, V: 518400 bytes, Total: 3110400 bytes
+Client: Packing YUV planes into single buffer
+Client: All YUV planes packed. Starting single DMA transfer (3110400 bytes)
+Client: YUV frame DMA transfer complete
+Client: YUV frame ready signal sent
+Client: Waiting for YUV frame acknowledgment
+Client: YUV frame acknowledgment received from server
+Client: YUV frame transferred successfully, freeing original image buffers
+Client: Waiting for server to process and return encoded data
+Client: Received encoded data from server
+Client: Encoded data size: 6658564 bytes
+Client: Frame is not a keyframe
+Client: Sending acknowledgment of encoded data receipt
+Client: Writing encoded frame to output file
+Done!
+Processing frame 58, Client: YUV plane sizes - Y: 2073600 bytes, U: 518400 bytes, V: 518400 bytes, Total: 3110400 bytes
+Client: Packing YUV planes into single buffer
+Client: All YUV planes packed. Starting single DMA transfer (3110400 bytes)
+Client: YUV frame DMA transfer complete
+Client: YUV frame ready signal sent
+Client: Waiting for YUV frame acknowledgment
+Client: YUV frame acknowledgment received from server
+Client: YUV frame transferred successfully, freeing original image buffers
+Client: Waiting for server to process and return encoded data
+Client: Received encoded data from server
+Client: Encoded data size: 6658564 bytes
+Client: Frame is not a keyframe
+Client: Sending acknowledgment of encoded data receipt
+Client: Writing encoded frame to output file
+Done!
+Processing frame 59, Client: YUV plane sizes - Y: 2073600 bytes, U: 518400 bytes, V: 518400 bytes, Total: 3110400 bytes
+Client: Packing YUV planes into single buffer
+Client: All YUV planes packed. Starting single DMA transfer (3110400 bytes)
+Client: YUV frame DMA transfer complete
+Client: YUV frame ready signal sent
+Client: Waiting for YUV frame acknowledgment
+Client: YUV frame acknowledgment received from server
+Client: YUV frame transferred successfully, freeing original image buffers
+Client: Waiting for server to process and return encoded data
+Client: Received encoded data from server
+Client: Encoded data size: 6658564 bytes
+Client: Frame is not a keyframe
+Client: Sending acknowledgment of encoded data receipt
+Client: Writing encoded frame to output file
+Done!
+Processing frame 60, Client: YUV plane sizes - Y: 2073600 bytes, U: 518400 bytes, V: 518400 bytes, Total: 3110400 bytes
+Client: Packing YUV planes into single buffer
+Client: All YUV planes packed. Starting single DMA transfer (3110400 bytes)
+Client: YUV frame DMA transfer complete
+Client: YUV frame ready signal sent
+Client: Waiting for YUV frame acknowledgment
+Client: YUV frame acknowledgment received from server
+Client: YUV frame transferred successfully, freeing original image buffers
+Client: Waiting for server to process and return encoded data
+Client: Received encoded data from server
+Client: Encoded data size: 6658564 bytes
+Client: Frame is not a keyframe
+Client: Sending acknowledgment of encoded data receipt
+Client: Writing encoded frame to output file
+Done!
+Processing frame 61, Client: YUV plane sizes - Y: 2073600 bytes, U: 518400 bytes, V: 518400 bytes, Total: 3110400 bytes
+Client: Packing YUV planes into single buffer
+Client: All YUV planes packed. Starting single DMA transfer (3110400 bytes)
+Client: YUV frame DMA transfer complete
+Client: YUV frame ready signal sent
+Client: Waiting for YUV frame acknowledgment
+Client: YUV frame acknowledgment received from server
+Client: YUV frame transferred successfully, freeing original image buffers
+Client: Waiting for server to process and return encoded data
+Client: Received encoded data from server
+Client: Encoded data size: 6658564 bytes
+Client: Frame is not a keyframe
+Client: Sending acknowledgment of encoded data receipt
+Client: Writing encoded frame to output file
+Done!
+Processing frame 62, Client: YUV plane sizes - Y: 2073600 bytes, U: 518400 bytes, V: 518400 bytes, Total: 3110400 bytes
+Client: Packing YUV planes into single buffer
+Client: All YUV planes packed. Starting single DMA transfer (3110400 bytes)
+Client: YUV frame DMA transfer complete
+Client: YUV frame ready signal sent
+Client: Waiting for YUV frame acknowledgment
+Client: YUV frame acknowledgment received from server
+Client: YUV frame transferred successfully, freeing original image buffers
+Client: Waiting for server to process and return encoded data
+Client: Received encoded data from server
+Client: Encoded data size: 6658564 bytes
+Client: Frame is not a keyframe
+Client: Sending acknowledgment of encoded data receipt
+Client: Writing encoded frame to output file
+Done!
+Processing frame 63, Client: YUV plane sizes - Y: 2073600 bytes, U: 518400 bytes, V: 518400 bytes, Total: 3110400 bytes
+Client: Packing YUV planes into single buffer
+Client: All YUV planes packed. Starting single DMA transfer (3110400 bytes)
+Client: YUV frame DMA transfer complete
+Client: YUV frame ready signal sent
+Client: Waiting for YUV frame acknowledgment
+Client: YUV frame acknowledgment received from server
+Client: YUV frame transferred successfully, freeing original image buffers
+Client: Waiting for server to process and return encoded data
+Client: Received encoded data from server
+Client: Encoded data size: 6658564 bytes
+Client: Frame is not a keyframe
+Client: Sending acknowledgment of encoded data receipt
+Client: Writing encoded frame to output file
+Done!
+Processing frame 64, Client: YUV plane sizes - Y: 2073600 bytes, U: 518400 bytes, V: 518400 bytes, Total: 3110400 bytes
+Client: Packing YUV planes into single buffer
+Client: All YUV planes packed. Starting single DMA transfer (3110400 bytes)
+Client: YUV frame DMA transfer complete
+Client: YUV frame ready signal sent
+Client: Waiting for YUV frame acknowledgment
+Client: YUV frame acknowledgment received from server
+Client: YUV frame transferred successfully, freeing original image buffers
+Client: Waiting for server to process and return encoded data
+Client: Received encoded data from server
+Client: Encoded data size: 6658564 bytes
+Client: Frame is not a keyframe
+Client: Sending acknowledgment of encoded data receipt
+Client: Writing encoded frame to output file
+Done!
+Processing frame 65, Client: YUV plane sizes - Y: 2073600 bytes, U: 518400 bytes, V: 518400 bytes, Total: 3110400 bytes
+Client: Packing YUV planes into single buffer
+Client: All YUV planes packed. Starting single DMA transfer (3110400 bytes)
+Client: YUV frame DMA transfer complete
+Client: YUV frame ready signal sent
+Client: Waiting for YUV frame acknowledgment
+Client: YUV frame acknowledgment received from server
+Client: YUV frame transferred successfully, freeing original image buffers
+Client: Waiting for server to process and return encoded data
+Client: Received encoded data from server
+Client: Encoded data size: 6658564 bytes
+Client: Frame is not a keyframe
+Client: Sending acknowledgment of encoded data receipt
+Client: Writing encoded frame to output file
+Done!
+Processing frame 66, Client: YUV plane sizes - Y: 2073600 bytes, U: 518400 bytes, V: 518400 bytes, Total: 3110400 bytes
+Client: Packing YUV planes into single buffer
+Client: All YUV planes packed. Starting single DMA transfer (3110400 bytes)
+Client: YUV frame DMA transfer complete
+Client: YUV frame ready signal sent
+Client: Waiting for YUV frame acknowledgment
+Client: YUV frame acknowledgment received from server
+Client: YUV frame transferred successfully, freeing original image buffers
+Client: Waiting for server to process and return encoded data
+Client: Received encoded data from server
+Client: Encoded data size: 6658564 bytes
+Client: Frame is not a keyframe
+Client: Sending acknowledgment of encoded data receipt
+Client: Writing encoded frame to output file
+Done!
+Processing frame 67, Client: YUV plane sizes - Y: 2073600 bytes, U: 518400 bytes, V: 518400 bytes, Total: 3110400 bytes
+Client: Packing YUV planes into single buffer
+Client: All YUV planes packed. Starting single DMA transfer (3110400 bytes)
+Client: YUV frame DMA transfer complete
+Client: YUV frame ready signal sent
+Client: Waiting for YUV frame acknowledgment
+Client: YUV frame acknowledgment received from server
+Client: YUV frame transferred successfully, freeing original image buffers
+Client: Waiting for server to process and return encoded data
+Client: Received encoded data from server
+Client: Encoded data size: 6658564 bytes
+Client: Frame is not a keyframe
+Client: Sending acknowledgment of encoded data receipt
+Client: Writing encoded frame to output file
+Done!
+Processing frame 68, Client: YUV plane sizes - Y: 2073600 bytes, U: 518400 bytes, V: 518400 bytes, Total: 3110400 bytes
+Client: Packing YUV planes into single buffer
+Client: All YUV planes packed. Starting single DMA transfer (3110400 bytes)
+Client: YUV frame DMA transfer complete
+Client: YUV frame ready signal sent
+Client: Waiting for YUV frame acknowledgment
+Client: YUV frame acknowledgment received from server
+Client: YUV frame transferred successfully, freeing original image buffers
+Client: Waiting for server to process and return encoded data
+Client: Received encoded data from server
+Client: Encoded data size: 6658564 bytes
+Client: Frame is not a keyframe
+Client: Sending acknowledgment of encoded data receipt
+Client: Writing encoded frame to output file
+Done!
+Processing frame 69, Client: YUV plane sizes - Y: 2073600 bytes, U: 518400 bytes, V: 518400 bytes, Total: 3110400 bytes
+Client: Packing YUV planes into single buffer
+Client: All YUV planes packed. Starting single DMA transfer (3110400 bytes)
+Client: YUV frame DMA transfer complete
+Client: YUV frame ready signal sent
+Client: Waiting for YUV frame acknowledgment
+Client: YUV frame acknowledgment received from server
+Client: YUV frame transferred successfully, freeing original image buffers
+Client: Waiting for server to process and return encoded data
+Client: Received encoded data from server
+Client: Encoded data size: 6658564 bytes
+Client: Frame is not a keyframe
+Client: Sending acknowledgment of encoded data receipt
+Client: Writing encoded frame to output file
+Done!
+Processing frame 70, Client: YUV plane sizes - Y: 2073600 bytes, U: 518400 bytes, V: 518400 bytes, Total: 3110400 bytes
+Client: Packing YUV planes into single buffer
+Client: All YUV planes packed. Starting single DMA transfer (3110400 bytes)
+Client: YUV frame DMA transfer complete
+Client: YUV frame ready signal sent
+Client: Waiting for YUV frame acknowledgment
+Client: YUV frame acknowledgment received from server
+Client: YUV frame transferred successfully, freeing original image buffers
+Client: Waiting for server to process and return encoded data
+Client: Received encoded data from server
+Client: Encoded data size: 6658564 bytes
+Client: Frame is not a keyframe
+Client: Sending acknowledgment of encoded data receipt
+Client: Writing encoded frame to output file
+Done!
+Processing frame 71, Client: YUV plane sizes - Y: 2073600 bytes, U: 518400 bytes, V: 518400 bytes, Total: 3110400 bytes
+Client: Packing YUV planes into single buffer
+Client: All YUV planes packed. Starting single DMA transfer (3110400 bytes)
+Client: YUV frame DMA transfer complete
+Client: YUV frame ready signal sent
+Client: Waiting for YUV frame acknowledgment
+Client: YUV frame acknowledgment received from server
+Client: YUV frame transferred successfully, freeing original image buffers
+Client: Waiting for server to process and return encoded data
+Client: Received encoded data from server
+Client: Encoded data size: 6658564 bytes
+Client: Frame is not a keyframe
+Client: Sending acknowledgment of encoded data receipt
+Client: Writing encoded frame to output file
+Done!
+Processing frame 72, Client: YUV plane sizes - Y: 2073600 bytes, U: 518400 bytes, V: 518400 bytes, Total: 3110400 bytes
+Client: Packing YUV planes into single buffer
+Client: All YUV planes packed. Starting single DMA transfer (3110400 bytes)
+Client: YUV frame DMA transfer complete
+Client: YUV frame ready signal sent
+Client: Waiting for YUV frame acknowledgment
+Client: YUV frame acknowledgment received from server
+Client: YUV frame transferred successfully, freeing original image buffers
+Client: Waiting for server to process and return encoded data
+Client: Received encoded data from server
+Client: Encoded data size: 6658564 bytes
+Client: Frame is not a keyframe
+Client: Sending acknowledgment of encoded data receipt
+Client: Writing encoded frame to output file
+Done!
+Processing frame 73, Client: YUV plane sizes - Y: 2073600 bytes, U: 518400 bytes, V: 518400 bytes, Total: 3110400 bytes
+Client: Packing YUV planes into single buffer
+Client: All YUV planes packed. Starting single DMA transfer (3110400 bytes)
+Client: YUV frame DMA transfer complete
+Client: YUV frame ready signal sent
+Client: Waiting for YUV frame acknowledgment
+Client: YUV frame acknowledgment received from server
+Client: YUV frame transferred successfully, freeing original image buffers
+Client: Waiting for server to process and return encoded data
+Client: Received encoded data from server
+Client: Encoded data size: 6658564 bytes
+Client: Frame is not a keyframe
+Client: Sending acknowledgment of encoded data receipt
+Client: Writing encoded frame to output file
+Done!
+Processing frame 74, Client: YUV plane sizes - Y: 2073600 bytes, U: 518400 bytes, V: 518400 bytes, Total: 3110400 bytes
+Client: Packing YUV planes into single buffer
+Client: All YUV planes packed. Starting single DMA transfer (3110400 bytes)
+Client: YUV frame DMA transfer complete
+Client: YUV frame ready signal sent
+Client: Waiting for YUV frame acknowledgment
+Client: YUV frame acknowledgment received from server
+Client: YUV frame transferred successfully, freeing original image buffers
+Client: Waiting for server to process and return encoded data
+Client: Received encoded data from server
+Client: Encoded data size: 6658564 bytes
+Client: Frame is not a keyframe
+Client: Sending acknowledgment of encoded data receipt
+Client: Writing encoded frame to output file
+Done!
+Processing frame 75, Client: YUV plane sizes - Y: 2073600 bytes, U: 518400 bytes, V: 518400 bytes, Total: 3110400 bytes
+Client: Packing YUV planes into single buffer
+Client: All YUV planes packed. Starting single DMA transfer (3110400 bytes)
+Client: YUV frame DMA transfer complete
+Client: YUV frame ready signal sent
+Client: Waiting for YUV frame acknowledgment
+Client: YUV frame acknowledgment received from server
+Client: YUV frame transferred successfully, freeing original image buffers
+Client: Waiting for server to process and return encoded data
+Client: Received encoded data from server
+Client: Encoded data size: 6658564 bytes
+Client: Frame is not a keyframe
+Client: Sending acknowledgment of encoded data receipt
+Client: Writing encoded frame to output file
+Done!
+Processing frame 76, Client: YUV plane sizes - Y: 2073600 bytes, U: 518400 bytes, V: 518400 bytes, Total: 3110400 bytes
+Client: Packing YUV planes into single buffer
+Client: All YUV planes packed. Starting single DMA transfer (3110400 bytes)
+Client: YUV frame DMA transfer complete
+Client: YUV frame ready signal sent
+Client: Waiting for YUV frame acknowledgment
+Client: YUV frame acknowledgment received from server
+Client: YUV frame transferred successfully, freeing original image buffers
+Client: Waiting for server to process and return encoded data
+Client: Received encoded data from server
+Client: Encoded data size: 6658564 bytes
+Client: Frame is not a keyframe
+Client: Sending acknowledgment of encoded data receipt
+Client: Writing encoded frame to output file
+Done!
+Processing frame 77, Client: YUV plane sizes - Y: 2073600 bytes, U: 518400 bytes, V: 518400 bytes, Total: 3110400 bytes
+Client: Packing YUV planes into single buffer
+Client: All YUV planes packed. Starting single DMA transfer (3110400 bytes)
+Client: YUV frame DMA transfer complete
+Client: YUV frame ready signal sent
+Client: Waiting for YUV frame acknowledgment
+Client: YUV frame acknowledgment received from server
+Client: YUV frame transferred successfully, freeing original image buffers
+Client: Waiting for server to process and return encoded data
+Client: Received encoded data from server
+Client: Encoded data size: 6658564 bytes
+Client: Frame is not a keyframe
+Client: Sending acknowledgment of encoded data receipt
+Client: Writing encoded frame to output file
+Done!
+Processing frame 78, Client: YUV plane sizes - Y: 2073600 bytes, U: 518400 bytes, V: 518400 bytes, Total: 3110400 bytes
+Client: Packing YUV planes into single buffer
+Client: All YUV planes packed. Starting single DMA transfer (3110400 bytes)
+Client: YUV frame DMA transfer complete
+Client: YUV frame ready signal sent
+Client: Waiting for YUV frame acknowledgment
+Client: YUV frame acknowledgment received from server
+Client: YUV frame transferred successfully, freeing original image buffers
+Client: Waiting for server to process and return encoded data
+Client: Still waiting for encoded data... (1 seconds)
+Client: Received encoded data from server
+Client: Encoded data size: 6658564 bytes
+Client: Frame is not a keyframe
+Client: Sending acknowledgment of encoded data receipt
+Client: Writing encoded frame to output file
+Done!
+Processing frame 79, Client: YUV plane sizes - Y: 2073600 bytes, U: 518400 bytes, V: 518400 bytes, Total: 3110400 bytes
+Client: Packing YUV planes into single buffer
+Client: All YUV planes packed. Starting single DMA transfer (3110400 bytes)
+Client: YUV frame DMA transfer complete
+Client: YUV frame ready signal sent
+Client: Waiting for YUV frame acknowledgment
+Client: YUV frame acknowledgment received from server
+Client: YUV frame transferred successfully, freeing original image buffers
+Client: Waiting for server to process and return encoded data
+Client: Received encoded data from server
+Client: Encoded data size: 6658564 bytes
+Client: Frame is not a keyframe
+Client: Sending acknowledgment of encoded data receipt
+Client: Writing encoded frame to output file
+Done!
+Processing frame 80, Client: YUV plane sizes - Y: 2073600 bytes, U: 518400 bytes, V: 518400 bytes, Total: 3110400 bytes
+Client: Packing YUV planes into single buffer
+Client: All YUV planes packed. Starting single DMA transfer (3110400 bytes)
+Client: YUV frame DMA transfer complete
+Client: YUV frame ready signal sent
+Client: Waiting for YUV frame acknowledgment
+Client: YUV frame acknowledgment received from server
+Client: YUV frame transferred successfully, freeing original image buffers
+Client: Waiting for server to process and return encoded data
+Client: Received encoded data from server
+Client: Encoded data size: 6658564 bytes
+Client: Frame is not a keyframe
+Client: Sending acknowledgment of encoded data receipt
+Client: Writing encoded frame to output file
+Done!
+Processing frame 81, Client: YUV plane sizes - Y: 2073600 bytes, U: 518400 bytes, V: 518400 bytes, Total: 3110400 bytes
+Client: Packing YUV planes into single buffer
+Client: All YUV planes packed. Starting single DMA transfer (3110400 bytes)
+Client: YUV frame DMA transfer complete
+Client: YUV frame ready signal sent
+Client: Waiting for YUV frame acknowledgment
+Client: YUV frame acknowledgment received from server
+Client: YUV frame transferred successfully, freeing original image buffers
+Client: Waiting for server to process and return encoded data
+Client: Received encoded data from server
+Client: Encoded data size: 6658564 bytes
+Client: Frame is not a keyframe
+Client: Sending acknowledgment of encoded data receipt
+Client: Writing encoded frame to output file
+Done!
+Processing frame 82, Client: YUV plane sizes - Y: 2073600 bytes, U: 518400 bytes, V: 518400 bytes, Total: 3110400 bytes
+Client: Packing YUV planes into single buffer
+Client: All YUV planes packed. Starting single DMA transfer (3110400 bytes)
+Client: YUV frame DMA transfer complete
+Client: YUV frame ready signal sent
+Client: Waiting for YUV frame acknowledgment
+Client: YUV frame acknowledgment received from server
+Client: YUV frame transferred successfully, freeing original image buffers
+Client: Waiting for server to process and return encoded data
+Client: Received encoded data from server
+Client: Encoded data size: 6658564 bytes
+Client: Frame is not a keyframe
+Client: Sending acknowledgment of encoded data receipt
+Client: Writing encoded frame to output file
+Done!
+Processing frame 83, Client: YUV plane sizes - Y: 2073600 bytes, U: 518400 bytes, V: 518400 bytes, Total: 3110400 bytes
+Client: Packing YUV planes into single buffer
+Client: All YUV planes packed. Starting single DMA transfer (3110400 bytes)
+Client: YUV frame DMA transfer complete
+Client: YUV frame ready signal sent
+Client: Waiting for YUV frame acknowledgment
+Client: YUV frame acknowledgment received from server
+Client: YUV frame transferred successfully, freeing original image buffers
+Client: Waiting for server to process and return encoded data
+Client: Received encoded data from server
+Client: Encoded data size: 6658564 bytes
+Client: Frame is not a keyframe
+Client: Sending acknowledgment of encoded data receipt
+Client: Writing encoded frame to output file
+Done!
+Processing frame 84, Client: YUV plane sizes - Y: 2073600 bytes, U: 518400 bytes, V: 518400 bytes, Total: 3110400 bytes
+Client: Packing YUV planes into single buffer
+Client: All YUV planes packed. Starting single DMA transfer (3110400 bytes)
+Client: YUV frame DMA transfer complete
+Client: YUV frame ready signal sent
+Client: Waiting for YUV frame acknowledgment
+Client: YUV frame acknowledgment received from server
+Client: YUV frame transferred successfully, freeing original image buffers
+Client: Waiting for server to process and return encoded data
+Client: Received encoded data from server
+Client: Encoded data size: 6658564 bytes
+Client: Frame is not a keyframe
+Client: Sending acknowledgment of encoded data receipt
+Client: Writing encoded frame to output file
+Done!
+Processing frame 85, Client: YUV plane sizes - Y: 2073600 bytes, U: 518400 bytes, V: 518400 bytes, Total: 3110400 bytes
+Client: Packing YUV planes into single buffer
+Client: All YUV planes packed. Starting single DMA transfer (3110400 bytes)
+Client: YUV frame DMA transfer complete
+Client: YUV frame ready signal sent
+Client: Waiting for YUV frame acknowledgment
+Client: YUV frame acknowledgment received from server
+Client: YUV frame transferred successfully, freeing original image buffers
+Client: Waiting for server to process and return encoded data
+Client: Received encoded data from server
+Client: Encoded data size: 6658564 bytes
+Client: Frame is not a keyframe
+Client: Sending acknowledgment of encoded data receipt
+Client: Writing encoded frame to output file
+Done!
+Processing frame 86, Client: YUV plane sizes - Y: 2073600 bytes, U: 518400 bytes, V: 518400 bytes, Total: 3110400 bytes
+Client: Packing YUV planes into single buffer
+Client: All YUV planes packed. Starting single DMA transfer (3110400 bytes)
+Client: YUV frame DMA transfer complete
+Client: YUV frame ready signal sent
+Client: Waiting for YUV frame acknowledgment
+Client: YUV frame acknowledgment received from server
+Client: YUV frame transferred successfully, freeing original image buffers
+Client: Waiting for server to process and return encoded data
+Client: Received encoded data from server
+Client: Encoded data size: 6658564 bytes
+Client: Frame is not a keyframe
+Client: Sending acknowledgment of encoded data receipt
+Client: Writing encoded frame to output file
+Done!
+Processing frame 87, Client: YUV plane sizes - Y: 2073600 bytes, U: 518400 bytes, V: 518400 bytes, Total: 3110400 bytes
+Client: Packing YUV planes into single buffer
+Client: All YUV planes packed. Starting single DMA transfer (3110400 bytes)
+Client: YUV frame DMA transfer complete
+Client: YUV frame ready signal sent
+Client: Waiting for YUV frame acknowledgment
+Client: YUV frame acknowledgment received from server
+Client: YUV frame transferred successfully, freeing original image buffers
+Client: Waiting for server to process and return encoded data
+Client: Received encoded data from server
+Client: Encoded data size: 6658564 bytes
+Client: Frame is not a keyframe
+Client: Sending acknowledgment of encoded data receipt
+Client: Writing encoded frame to output file
+Done!
+Processing frame 88, Client: YUV plane sizes - Y: 2073600 bytes, U: 518400 bytes, V: 518400 bytes, Total: 3110400 bytes
+Client: Packing YUV planes into single buffer
+Client: All YUV planes packed. Starting single DMA transfer (3110400 bytes)
+Client: YUV frame DMA transfer complete
+Client: YUV frame ready signal sent
+Client: Waiting for YUV frame acknowledgment
+Client: YUV frame acknowledgment received from server
+Client: YUV frame transferred successfully, freeing original image buffers
+Client: Waiting for server to process and return encoded data
+Client: Received encoded data from server
+Client: Encoded data size: 6658564 bytes
+Client: Frame is not a keyframe
+Client: Sending acknowledgment of encoded data receipt
+Client: Writing encoded frame to output file
+Done!
+Processing frame 89, Client: YUV plane sizes - Y: 2073600 bytes, U: 518400 bytes, V: 518400 bytes, Total: 3110400 bytes
+Client: Packing YUV planes into single buffer
+Client: All YUV planes packed. Starting single DMA transfer (3110400 bytes)
+Client: YUV frame DMA transfer complete
+Client: YUV frame ready signal sent
+Client: Waiting for YUV frame acknowledgment
+Client: YUV frame acknowledgment received from server
+Client: YUV frame transferred successfully, freeing original image buffers
+Client: Waiting for server to process and return encoded data
+Client: Received encoded data from server
+Client: Encoded data size: 6658564 bytes
+Client: Frame is not a keyframe
+Client: Sending acknowledgment of encoded data receipt
+Client: Writing encoded frame to output file
+Done!
+Processing frame 90, Client: YUV plane sizes - Y: 2073600 bytes, U: 518400 bytes, V: 518400 bytes, Total: 3110400 bytes
+Client: Packing YUV planes into single buffer
+Client: All YUV planes packed. Starting single DMA transfer (3110400 bytes)
+Client: YUV frame DMA transfer complete
+Client: YUV frame ready signal sent
+Client: Waiting for YUV frame acknowledgment
+Client: YUV frame acknowledgment received from server
+Client: YUV frame transferred successfully, freeing original image buffers
+Client: Waiting for server to process and return encoded data
+Client: Still waiting for encoded data... (1 seconds)
+Client: Received encoded data from server
+Client: Encoded data size: 6658564 bytes
+Client: Frame is not a keyframe
+Client: Sending acknowledgment of encoded data receipt
+Client: Writing encoded frame to output file
+Done!
+Processing frame 91, Client: YUV plane sizes - Y: 2073600 bytes, U: 518400 bytes, V: 518400 bytes, Total: 3110400 bytes
+Client: Packing YUV planes into single buffer
+Client: All YUV planes packed. Starting single DMA transfer (3110400 bytes)
+Client: YUV frame DMA transfer complete
+Client: YUV frame ready signal sent
+Client: Waiting for YUV frame acknowledgment
+Client: YUV frame acknowledgment received from server
+Client: YUV frame transferred successfully, freeing original image buffers
+Client: Waiting for server to process and return encoded data
+Client: Received encoded data from server
+Client: Encoded data size: 6658564 bytes
+Client: Frame is not a keyframe
+Client: Sending acknowledgment of encoded data receipt
+Client: Writing encoded frame to output file
+Done!
+Processing frame 92, Client: YUV plane sizes - Y: 2073600 bytes, U: 518400 bytes, V: 518400 bytes, Total: 3110400 bytes
+Client: Packing YUV planes into single buffer
+Client: All YUV planes packed. Starting single DMA transfer (3110400 bytes)
+Client: YUV frame DMA transfer complete
+Client: YUV frame ready signal sent
+Client: Waiting for YUV frame acknowledgment
+Client: YUV frame acknowledgment received from server
+Client: YUV frame transferred successfully, freeing original image buffers
+Client: Waiting for server to process and return encoded data
+Client: Received encoded data from server
+Client: Encoded data size: 6658564 bytes
+Client: Frame is not a keyframe
+Client: Sending acknowledgment of encoded data receipt
+Client: Writing encoded frame to output file
+Done!
+Processing frame 93, Client: YUV plane sizes - Y: 2073600 bytes, U: 518400 bytes, V: 518400 bytes, Total: 3110400 bytes
+Client: Packing YUV planes into single buffer
+Client: All YUV planes packed. Starting single DMA transfer (3110400 bytes)
+Client: YUV frame DMA transfer complete
+Client: YUV frame ready signal sent
+Client: Waiting for YUV frame acknowledgment
+Client: YUV frame acknowledgment received from server
+Client: YUV frame transferred successfully, freeing original image buffers
+Client: Waiting for server to process and return encoded data
+Client: Received encoded data from server
+Client: Encoded data size: 6658564 bytes
+Client: Frame is not a keyframe
+Client: Sending acknowledgment of encoded data receipt
+Client: Writing encoded frame to output file
+Done!
+Processing frame 94, Client: YUV plane sizes - Y: 2073600 bytes, U: 518400 bytes, V: 518400 bytes, Total: 3110400 bytes
+Client: Packing YUV planes into single buffer
+Client: All YUV planes packed. Starting single DMA transfer (3110400 bytes)
+Client: YUV frame DMA transfer complete
+Client: YUV frame ready signal sent
+Client: Waiting for YUV frame acknowledgment
+Client: YUV frame acknowledgment received from server
+Client: YUV frame transferred successfully, freeing original image buffers
+Client: Waiting for server to process and return encoded data
+Client: Received encoded data from server
+Client: Encoded data size: 6658564 bytes
+Client: Frame is not a keyframe
+Client: Sending acknowledgment of encoded data receipt
+Client: Writing encoded frame to output file
+Done!
+Processing frame 95, Client: YUV plane sizes - Y: 2073600 bytes, U: 518400 bytes, V: 518400 bytes, Total: 3110400 bytes
+Client: Packing YUV planes into single buffer
+Client: All YUV planes packed. Starting single DMA transfer (3110400 bytes)
+Client: YUV frame DMA transfer complete
+Client: YUV frame ready signal sent
+Client: Waiting for YUV frame acknowledgment
+Client: YUV frame acknowledgment received from server
+Client: YUV frame transferred successfully, freeing original image buffers
+Client: Waiting for server to process and return encoded data
+Client: Received encoded data from server
+Client: Encoded data size: 6658564 bytes
+Client: Frame is not a keyframe
+Client: Sending acknowledgment of encoded data receipt
+Client: Writing encoded frame to output file
+Done!
+Processing frame 96, Client: YUV plane sizes - Y: 2073600 bytes, U: 518400 bytes, V: 518400 bytes, Total: 3110400 bytes
+Client: Packing YUV planes into single buffer
+Client: All YUV planes packed. Starting single DMA transfer (3110400 bytes)
+Client: YUV frame DMA transfer complete
+Client: YUV frame ready signal sent
+Client: Waiting for YUV frame acknowledgment
+Client: YUV frame acknowledgment received from server
+Client: YUV frame transferred successfully, freeing original image buffers
+Client: Waiting for server to process and return encoded data
+Client: Received encoded data from server
+Client: Encoded data size: 6658564 bytes
+Client: Frame is not a keyframe
+Client: Sending acknowledgment of encoded data receipt
+Client: Writing encoded frame to output file
+Done!
+Processing frame 97, Client: YUV plane sizes - Y: 2073600 bytes, U: 518400 bytes, V: 518400 bytes, Total: 3110400 bytes
+Client: Packing YUV planes into single buffer
+Client: All YUV planes packed. Starting single DMA transfer (3110400 bytes)
+Client: YUV frame DMA transfer complete
+Client: YUV frame ready signal sent
+Client: Waiting for YUV frame acknowledgment
+Client: YUV frame acknowledgment received from server
+Client: YUV frame transferred successfully, freeing original image buffers
+Client: Waiting for server to process and return encoded data
+Client: Received encoded data from server
+Client: Encoded data size: 6658564 bytes
+Client: Frame is not a keyframe
+Client: Sending acknowledgment of encoded data receipt
+Client: Writing encoded frame to output file
+Done!
+Processing frame 98, Client: YUV plane sizes - Y: 2073600 bytes, U: 518400 bytes, V: 518400 bytes, Total: 3110400 bytes
+Client: Packing YUV planes into single buffer
+Client: All YUV planes packed. Starting single DMA transfer (3110400 bytes)
+Client: YUV frame DMA transfer complete
+Client: YUV frame ready signal sent
+Client: Waiting for YUV frame acknowledgment
+Client: YUV frame acknowledgment received from server
+Client: YUV frame transferred successfully, freeing original image buffers
+Client: Waiting for server to process and return encoded data
+Client: Received encoded data from server
+Client: Encoded data size: 6658564 bytes
+Client: Frame is not a keyframe
+Client: Sending acknowledgment of encoded data receipt
+Client: Writing encoded frame to output file
+Done!
+Processing frame 99, Client: YUV plane sizes - Y: 2073600 bytes, U: 518400 bytes, V: 518400 bytes, Total: 3110400 bytes
+Client: Packing YUV planes into single buffer
+Client: All YUV planes packed. Starting single DMA transfer (3110400 bytes)
+Client: YUV frame DMA transfer complete
+Client: YUV frame ready signal sent
+Client: Waiting for YUV frame acknowledgment
+Client: YUV frame acknowledgment received from server
+Client: YUV frame transferred successfully, freeing original image buffers
+Client: Waiting for server to process and return encoded data
+Client: Received encoded data from server
+Client: Encoded data size: 6658564 bytes
+Client: Frame is not a keyframe
+Client: Sending acknowledgment of encoded data receipt
+Client: Writing encoded frame to output file
+Done!
+Client: Reached frame limit (100 frames), stopping
+Client: Sending quit command to server
+Client: Finished processing 100 frames
+PC exit code: 0
+
+real	0m17,594s
+user	0m17,209s
+sys	0m0,160s

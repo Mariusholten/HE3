@@ -1,0 +1,9 @@
+Server: Waiting for client connection...
+Server: Connected to client segment
+Server: Waiting for commands...
+Tegra exit code: 143
+Terminated
+
+real	0m2.898s
+user	0m2.884s
+sys	0m0.004s

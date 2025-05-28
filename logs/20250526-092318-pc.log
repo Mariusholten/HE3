@@ -1,0 +1,26 @@
+Limited to 250 frames.
+Client: Connecting to server segment...
+Client: Connected to server segment
+Client: Starting video encoding
+Client: Waiting for server to acknowledge dimensions
+Client: Dimensions acknowledged by server
+Processing frame 0, Client: YUV plane sizes - Y: 2073600 bytes, U: 518400 bytes, V: 518400 bytes, Total: 3110400 bytes
+Client: Packing YUV planes into single buffer
+Client: All YUV planes packed. Starting single DMA transfer (3110400 bytes)
+Client: YUV frame DMA transfer complete
+Client: YUV frame ready signal sent
+Client: Waiting for YUV frame acknowledgment
+Client: Timeout waiting for YUV frame acknowledgment
+Client: Failed to get YUV frame acknowledgment, skipping frame
+Processing frame 0, Client: YUV plane sizes - Y: 2073600 bytes, U: 518400 bytes, V: 518400 bytes, Total: 3110400 bytes
+Client: Packing YUV planes into single buffer
+Client: All YUV planes packed. Starting single DMA transfer (3110400 bytes)
+Client: YUV frame DMA transfer complete
+Client: YUV frame ready signal sent
+Client: Waiting for YUV frame acknowledgment
+PC exit code: 143
+Terminated
+
+real	0m42,789s
+user	0m42,580s
+sys	0m0,084s

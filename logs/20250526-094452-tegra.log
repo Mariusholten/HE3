@@ -1,0 +1,17 @@
+Server: Waiting for client connection...
+Server: Connected to client segment
+Server: Waiting for commands...
+Server: Received dimensions (width=1920, height=1080)
+Thread pool initialized with 8 threads
+Task pool is initialized with 136 tasks
+Server: Dimensions acknowledged
+Server: Waiting for frames...
+Server: Received YUV frame with size 3110400 bytes
+Server: Sending YUV frame acknowledgment to client
+Server: YUV frame acknowledgment sent
+Terminated
+
+real	0m23.338s
+user	0m23.169s
+sys	0m0.084s
+Tegra exit code: 143

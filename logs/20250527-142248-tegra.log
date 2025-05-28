@@ -1,0 +1,2713 @@
+Server: Waiting for client connection...
+Server: Connected to client segment
+Server: Waiting for commands...
+Server: Received dimensions (width=1920, height=1080)
+Thread pool initialized with 8 threads
+Task pool is initialized with 136 tasks
+Server: Dimensions acknowledged
+Server: Waiting for frames...
+Server: Received YUV frame with size 3110400 bytes
+Server: Sending YUV frame acknowledgment to client
+Server: YUV frame acknowledgment sent
+Server: Encoding frame 0
+Server: Frame 0 is a keyframe
+Server: Starting DCT/quantization for Y plane
+Server: Y plane DCT/quantization complete
+Server: Starting DCT/quantization for U plane
+Server: U plane DCT/quantization complete
+Server: Starting DCT/quantization for V plane
+Server: V plane DCT/quantization complete
+Server: Starting dequantization/IDCT for reference frame
+Server: Dequantization/IDCT complete
+Server: Preparing encoded data for transfer
+Server: Encoded data size: 6658564 bytes
+Server: Starting DMA transfer of encoded data
+Server: Waiting for encoded data DMA transfer to complete
+Server: Encoded data DMA transfer complete
+Server: Signaling client that encoded data is ready
+Server: Encoded data ready signal sent
+Server: Waiting for client to acknowledge encoded data
+Server: Client acknowledged receipt of encoded data
+Server: Frame 0 processing complete
+Server: Received YUV frame with size 3110400 bytes
+Server: Sending YUV frame acknowledgment to client
+Server: YUV frame acknowledgment sent
+Server: Encoding frame 1
+Server: Frame 1 is not a keyframe
+Server: Starting motion estimation
+Server: Motion estimation complete
+Server: Starting motion compensation
+Server: Motion compensation complete
+Server: Starting DCT/quantization for Y plane
+Server: Y plane DCT/quantization complete
+Server: Starting DCT/quantization for U plane
+Server: U plane DCT/quantization complete
+Server: Starting DCT/quantization for V plane
+Server: V plane DCT/quantization complete
+Server: Starting dequantization/IDCT for reference frame
+Server: Dequantization/IDCT complete
+Server: Preparing encoded data for transfer
+Server: Encoded data size: 6658564 bytes
+Server: Starting DMA transfer of encoded data
+Server: Waiting for encoded data DMA transfer to complete
+Server: Encoded data DMA transfer complete
+Server: Signaling client that encoded data is ready
+Server: Encoded data ready signal sent
+Server: Waiting for client to acknowledge encoded data
+Server: Client acknowledged receipt of encoded data
+Server: Frame 1 processing complete
+Server: Received YUV frame with size 3110400 bytes
+Server: Sending YUV frame acknowledgment to client
+Server: YUV frame acknowledgment sent
+Server: Encoding frame 2
+Server: Frame 2 is not a keyframe
+Server: Starting motion estimation
+Server: Motion estimation complete
+Server: Starting motion compensation
+Server: Motion compensation complete
+Server: Starting DCT/quantization for Y plane
+Server: Y plane DCT/quantization complete
+Server: Starting DCT/quantization for U plane
+Server: U plane DCT/quantization complete
+Server: Starting DCT/quantization for V plane
+Server: V plane DCT/quantization complete
+Server: Starting dequantization/IDCT for reference frame
+Server: Dequantization/IDCT complete
+Server: Preparing encoded data for transfer
+Server: Encoded data size: 6658564 bytes
+Server: Starting DMA transfer of encoded data
+Server: Waiting for encoded data DMA transfer to complete
+Server: Encoded data DMA transfer complete
+Server: Signaling client that encoded data is ready
+Server: Encoded data ready signal sent
+Server: Waiting for client to acknowledge encoded data
+Server: Client acknowledged receipt of encoded data
+Server: Frame 2 processing complete
+Server: Received YUV frame with size 3110400 bytes
+Server: Sending YUV frame acknowledgment to client
+Server: YUV frame acknowledgment sent
+Server: Encoding frame 3
+Server: Frame 3 is not a keyframe
+Server: Starting motion estimation
+Server: Motion estimation complete
+Server: Starting motion compensation
+Server: Motion compensation complete
+Server: Starting DCT/quantization for Y plane
+Server: Y plane DCT/quantization complete
+Server: Starting DCT/quantization for U plane
+Server: U plane DCT/quantization complete
+Server: Starting DCT/quantization for V plane
+Server: V plane DCT/quantization complete
+Server: Starting dequantization/IDCT for reference frame
+Server: Dequantization/IDCT complete
+Server: Preparing encoded data for transfer
+Server: Encoded data size: 6658564 bytes
+Server: Starting DMA transfer of encoded data
+Server: Waiting for encoded data DMA transfer to complete
+Server: Encoded data DMA transfer complete
+Server: Signaling client that encoded data is ready
+Server: Encoded data ready signal sent
+Server: Waiting for client to acknowledge encoded data
+Server: Client acknowledged receipt of encoded data
+Server: Frame 3 processing complete
+Server: Received YUV frame with size 3110400 bytes
+Server: Sending YUV frame acknowledgment to client
+Server: YUV frame acknowledgment sent
+Server: Encoding frame 4
+Server: Frame 4 is not a keyframe
+Server: Starting motion estimation
+Server: Motion estimation complete
+Server: Starting motion compensation
+Server: Motion compensation complete
+Server: Starting DCT/quantization for Y plane
+Server: Y plane DCT/quantization complete
+Server: Starting DCT/quantization for U plane
+Server: U plane DCT/quantization complete
+Server: Starting DCT/quantization for V plane
+Server: V plane DCT/quantization complete
+Server: Starting dequantization/IDCT for reference frame
+Server: Dequantization/IDCT complete
+Server: Preparing encoded data for transfer
+Server: Encoded data size: 6658564 bytes
+Server: Starting DMA transfer of encoded data
+Server: Waiting for encoded data DMA transfer to complete
+Server: Encoded data DMA transfer complete
+Server: Signaling client that encoded data is ready
+Server: Encoded data ready signal sent
+Server: Waiting for client to acknowledge encoded data
+Server: Client acknowledged receipt of encoded data
+Server: Frame 4 processing complete
+Server: Received YUV frame with size 3110400 bytes
+Server: Sending YUV frame acknowledgment to client
+Server: YUV frame acknowledgment sent
+Server: Encoding frame 5
+Server: Frame 5 is not a keyframe
+Server: Starting motion estimation
+Server: Motion estimation complete
+Server: Starting motion compensation
+Server: Motion compensation complete
+Server: Starting DCT/quantization for Y plane
+Server: Y plane DCT/quantization complete
+Server: Starting DCT/quantization for U plane
+Server: U plane DCT/quantization complete
+Server: Starting DCT/quantization for V plane
+Server: V plane DCT/quantization complete
+Server: Starting dequantization/IDCT for reference frame
+Server: Dequantization/IDCT complete
+Server: Preparing encoded data for transfer
+Server: Encoded data size: 6658564 bytes
+Server: Starting DMA transfer of encoded data
+Server: Waiting for encoded data DMA transfer to complete
+Server: Encoded data DMA transfer complete
+Server: Signaling client that encoded data is ready
+Server: Encoded data ready signal sent
+Server: Waiting for client to acknowledge encoded data
+Server: Client acknowledged receipt of encoded data
+Server: Frame 5 processing complete
+Server: Received YUV frame with size 3110400 bytes
+Server: Sending YUV frame acknowledgment to client
+Server: YUV frame acknowledgment sent
+Server: Encoding frame 6
+Server: Frame 6 is not a keyframe
+Server: Starting motion estimation
+Server: Motion estimation complete
+Server: Starting motion compensation
+Server: Motion compensation complete
+Server: Starting DCT/quantization for Y plane
+Server: Y plane DCT/quantization complete
+Server: Starting DCT/quantization for U plane
+Server: U plane DCT/quantization complete
+Server: Starting DCT/quantization for V plane
+Server: V plane DCT/quantization complete
+Server: Starting dequantization/IDCT for reference frame
+Server: Dequantization/IDCT complete
+Server: Preparing encoded data for transfer
+Server: Encoded data size: 6658564 bytes
+Server: Starting DMA transfer of encoded data
+Server: Waiting for encoded data DMA transfer to complete
+Server: Encoded data DMA transfer complete
+Server: Signaling client that encoded data is ready
+Server: Encoded data ready signal sent
+Server: Waiting for client to acknowledge encoded data
+Server: Client acknowledged receipt of encoded data
+Server: Frame 6 processing complete
+Server: Received YUV frame with size 3110400 bytes
+Server: Sending YUV frame acknowledgment to client
+Server: YUV frame acknowledgment sent
+Server: Encoding frame 7
+Server: Frame 7 is not a keyframe
+Server: Starting motion estimation
+Server: Motion estimation complete
+Server: Starting motion compensation
+Server: Motion compensation complete
+Server: Starting DCT/quantization for Y plane
+Server: Y plane DCT/quantization complete
+Server: Starting DCT/quantization for U plane
+Server: U plane DCT/quantization complete
+Server: Starting DCT/quantization for V plane
+Server: V plane DCT/quantization complete
+Server: Starting dequantization/IDCT for reference frame
+Server: Dequantization/IDCT complete
+Server: Preparing encoded data for transfer
+Server: Encoded data size: 6658564 bytes
+Server: Starting DMA transfer of encoded data
+Server: Waiting for encoded data DMA transfer to complete
+Server: Encoded data DMA transfer complete
+Server: Signaling client that encoded data is ready
+Server: Encoded data ready signal sent
+Server: Waiting for client to acknowledge encoded data
+Server: Client acknowledged receipt of encoded data
+Server: Frame 7 processing complete
+Server: Received YUV frame with size 3110400 bytes
+Server: Sending YUV frame acknowledgment to client
+Server: YUV frame acknowledgment sent
+Server: Encoding frame 8
+Server: Frame 8 is not a keyframe
+Server: Starting motion estimation
+Server: Motion estimation complete
+Server: Starting motion compensation
+Server: Motion compensation complete
+Server: Starting DCT/quantization for Y plane
+Server: Y plane DCT/quantization complete
+Server: Starting DCT/quantization for U plane
+Server: U plane DCT/quantization complete
+Server: Starting DCT/quantization for V plane
+Server: V plane DCT/quantization complete
+Server: Starting dequantization/IDCT for reference frame
+Server: Dequantization/IDCT complete
+Server: Preparing encoded data for transfer
+Server: Encoded data size: 6658564 bytes
+Server: Starting DMA transfer of encoded data
+Server: Waiting for encoded data DMA transfer to complete
+Server: Encoded data DMA transfer complete
+Server: Signaling client that encoded data is ready
+Server: Encoded data ready signal sent
+Server: Waiting for client to acknowledge encoded data
+Server: Client acknowledged receipt of encoded data
+Server: Frame 8 processing complete
+Server: Received YUV frame with size 3110400 bytes
+Server: Sending YUV frame acknowledgment to client
+Server: YUV frame acknowledgment sent
+Server: Encoding frame 9
+Server: Frame 9 is not a keyframe
+Server: Starting motion estimation
+Server: Motion estimation complete
+Server: Starting motion compensation
+Server: Motion compensation complete
+Server: Starting DCT/quantization for Y plane
+Server: Y plane DCT/quantization complete
+Server: Starting DCT/quantization for U plane
+Server: U plane DCT/quantization complete
+Server: Starting DCT/quantization for V plane
+Server: V plane DCT/quantization complete
+Server: Starting dequantization/IDCT for reference frame
+Server: Dequantization/IDCT complete
+Server: Preparing encoded data for transfer
+Server: Encoded data size: 6658564 bytes
+Server: Starting DMA transfer of encoded data
+Server: Waiting for encoded data DMA transfer to complete
+Server: Encoded data DMA transfer complete
+Server: Signaling client that encoded data is ready
+Server: Encoded data ready signal sent
+Server: Waiting for client to acknowledge encoded data
+Server: Client acknowledged receipt of encoded data
+Server: Frame 9 processing complete
+Server: Received YUV frame with size 3110400 bytes
+Server: Sending YUV frame acknowledgment to client
+Server: YUV frame acknowledgment sent
+Server: Encoding frame 10
+Server: Frame 10 is not a keyframe
+Server: Starting motion estimation
+Server: Motion estimation complete
+Server: Starting motion compensation
+Server: Motion compensation complete
+Server: Starting DCT/quantization for Y plane
+Server: Y plane DCT/quantization complete
+Server: Starting DCT/quantization for U plane
+Server: U plane DCT/quantization complete
+Server: Starting DCT/quantization for V plane
+Server: V plane DCT/quantization complete
+Server: Starting dequantization/IDCT for reference frame
+Server: Dequantization/IDCT complete
+Server: Preparing encoded data for transfer
+Server: Encoded data size: 6658564 bytes
+Server: Starting DMA transfer of encoded data
+Server: Waiting for encoded data DMA transfer to complete
+Server: Encoded data DMA transfer complete
+Server: Signaling client that encoded data is ready
+Server: Encoded data ready signal sent
+Server: Waiting for client to acknowledge encoded data
+Server: Client acknowledged receipt of encoded data
+Server: Frame 10 processing complete
+Server: Received YUV frame with size 3110400 bytes
+Server: Sending YUV frame acknowledgment to client
+Server: YUV frame acknowledgment sent
+Server: Encoding frame 11
+Server: Frame 11 is not a keyframe
+Server: Starting motion estimation
+Server: Motion estimation complete
+Server: Starting motion compensation
+Server: Motion compensation complete
+Server: Starting DCT/quantization for Y plane
+Server: Y plane DCT/quantization complete
+Server: Starting DCT/quantization for U plane
+Server: U plane DCT/quantization complete
+Server: Starting DCT/quantization for V plane
+Server: V plane DCT/quantization complete
+Server: Starting dequantization/IDCT for reference frame
+Server: Dequantization/IDCT complete
+Server: Preparing encoded data for transfer
+Server: Encoded data size: 6658564 bytes
+Server: Starting DMA transfer of encoded data
+Server: Waiting for encoded data DMA transfer to complete
+Server: Encoded data DMA transfer complete
+Server: Signaling client that encoded data is ready
+Server: Encoded data ready signal sent
+Server: Waiting for client to acknowledge encoded data
+Server: Client acknowledged receipt of encoded data
+Server: Frame 11 processing complete
+Server: Received YUV frame with size 3110400 bytes
+Server: Sending YUV frame acknowledgment to client
+Server: YUV frame acknowledgment sent
+Server: Encoding frame 12
+Server: Frame 12 is not a keyframe
+Server: Starting motion estimation
+Server: Motion estimation complete
+Server: Starting motion compensation
+Server: Motion compensation complete
+Server: Starting DCT/quantization for Y plane
+Server: Y plane DCT/quantization complete
+Server: Starting DCT/quantization for U plane
+Server: U plane DCT/quantization complete
+Server: Starting DCT/quantization for V plane
+Server: V plane DCT/quantization complete
+Server: Starting dequantization/IDCT for reference frame
+Server: Dequantization/IDCT complete
+Server: Preparing encoded data for transfer
+Server: Encoded data size: 6658564 bytes
+Server: Starting DMA transfer of encoded data
+Server: Waiting for encoded data DMA transfer to complete
+Server: Encoded data DMA transfer complete
+Server: Signaling client that encoded data is ready
+Server: Encoded data ready signal sent
+Server: Waiting for client to acknowledge encoded data
+Server: Client acknowledged receipt of encoded data
+Server: Frame 12 processing complete
+Server: Received YUV frame with size 3110400 bytes
+Server: Sending YUV frame acknowledgment to client
+Server: YUV frame acknowledgment sent
+Server: Encoding frame 13
+Server: Frame 13 is not a keyframe
+Server: Starting motion estimation
+Server: Motion estimation complete
+Server: Starting motion compensation
+Server: Motion compensation complete
+Server: Starting DCT/quantization for Y plane
+Server: Y plane DCT/quantization complete
+Server: Starting DCT/quantization for U plane
+Server: U plane DCT/quantization complete
+Server: Starting DCT/quantization for V plane
+Server: V plane DCT/quantization complete
+Server: Starting dequantization/IDCT for reference frame
+Server: Dequantization/IDCT complete
+Server: Preparing encoded data for transfer
+Server: Encoded data size: 6658564 bytes
+Server: Starting DMA transfer of encoded data
+Server: Waiting for encoded data DMA transfer to complete
+Server: Encoded data DMA transfer complete
+Server: Signaling client that encoded data is ready
+Server: Encoded data ready signal sent
+Server: Waiting for client to acknowledge encoded data
+Server: Client acknowledged receipt of encoded data
+Server: Frame 13 processing complete
+Server: Received YUV frame with size 3110400 bytes
+Server: Sending YUV frame acknowledgment to client
+Server: YUV frame acknowledgment sent
+Server: Encoding frame 14
+Server: Frame 14 is not a keyframe
+Server: Starting motion estimation
+Server: Motion estimation complete
+Server: Starting motion compensation
+Server: Motion compensation complete
+Server: Starting DCT/quantization for Y plane
+Server: Y plane DCT/quantization complete
+Server: Starting DCT/quantization for U plane
+Server: U plane DCT/quantization complete
+Server: Starting DCT/quantization for V plane
+Server: V plane DCT/quantization complete
+Server: Starting dequantization/IDCT for reference frame
+Server: Dequantization/IDCT complete
+Server: Preparing encoded data for transfer
+Server: Encoded data size: 6658564 bytes
+Server: Starting DMA transfer of encoded data
+Server: Waiting for encoded data DMA transfer to complete
+Server: Encoded data DMA transfer complete
+Server: Signaling client that encoded data is ready
+Server: Encoded data ready signal sent
+Server: Waiting for client to acknowledge encoded data
+Server: Client acknowledged receipt of encoded data
+Server: Frame 14 processing complete
+Server: Received YUV frame with size 3110400 bytes
+Server: Sending YUV frame acknowledgment to client
+Server: YUV frame acknowledgment sent
+Server: Encoding frame 15
+Server: Frame 15 is not a keyframe
+Server: Starting motion estimation
+Server: Motion estimation complete
+Server: Starting motion compensation
+Server: Motion compensation complete
+Server: Starting DCT/quantization for Y plane
+Server: Y plane DCT/quantization complete
+Server: Starting DCT/quantization for U plane
+Server: U plane DCT/quantization complete
+Server: Starting DCT/quantization for V plane
+Server: V plane DCT/quantization complete
+Server: Starting dequantization/IDCT for reference frame
+Server: Dequantization/IDCT complete
+Server: Preparing encoded data for transfer
+Server: Encoded data size: 6658564 bytes
+Server: Starting DMA transfer of encoded data
+Server: Waiting for encoded data DMA transfer to complete
+Server: Encoded data DMA transfer complete
+Server: Signaling client that encoded data is ready
+Server: Encoded data ready signal sent
+Server: Waiting for client to acknowledge encoded data
+Server: Client acknowledged receipt of encoded data
+Server: Frame 15 processing complete
+Server: Received YUV frame with size 3110400 bytes
+Server: Sending YUV frame acknowledgment to client
+Server: YUV frame acknowledgment sent
+Server: Encoding frame 16
+Server: Frame 16 is not a keyframe
+Server: Starting motion estimation
+Server: Motion estimation complete
+Server: Starting motion compensation
+Server: Motion compensation complete
+Server: Starting DCT/quantization for Y plane
+Server: Y plane DCT/quantization complete
+Server: Starting DCT/quantization for U plane
+Server: U plane DCT/quantization complete
+Server: Starting DCT/quantization for V plane
+Server: V plane DCT/quantization complete
+Server: Starting dequantization/IDCT for reference frame
+Server: Dequantization/IDCT complete
+Server: Preparing encoded data for transfer
+Server: Encoded data size: 6658564 bytes
+Server: Starting DMA transfer of encoded data
+Server: Waiting for encoded data DMA transfer to complete
+Server: Encoded data DMA transfer complete
+Server: Signaling client that encoded data is ready
+Server: Encoded data ready signal sent
+Server: Waiting for client to acknowledge encoded data
+Server: Client acknowledged receipt of encoded data
+Server: Frame 16 processing complete
+Server: Received YUV frame with size 3110400 bytes
+Server: Sending YUV frame acknowledgment to client
+Server: YUV frame acknowledgment sent
+Server: Encoding frame 17
+Server: Frame 17 is not a keyframe
+Server: Starting motion estimation
+Server: Motion estimation complete
+Server: Starting motion compensation
+Server: Motion compensation complete
+Server: Starting DCT/quantization for Y plane
+Server: Y plane DCT/quantization complete
+Server: Starting DCT/quantization for U plane
+Server: U plane DCT/quantization complete
+Server: Starting DCT/quantization for V plane
+Server: V plane DCT/quantization complete
+Server: Starting dequantization/IDCT for reference frame
+Server: Dequantization/IDCT complete
+Server: Preparing encoded data for transfer
+Server: Encoded data size: 6658564 bytes
+Server: Starting DMA transfer of encoded data
+Server: Waiting for encoded data DMA transfer to complete
+Server: Encoded data DMA transfer complete
+Server: Signaling client that encoded data is ready
+Server: Encoded data ready signal sent
+Server: Waiting for client to acknowledge encoded data
+Server: Client acknowledged receipt of encoded data
+Server: Frame 17 processing complete
+Server: Received YUV frame with size 3110400 bytes
+Server: Sending YUV frame acknowledgment to client
+Server: YUV frame acknowledgment sent
+Server: Encoding frame 18
+Server: Frame 18 is not a keyframe
+Server: Starting motion estimation
+Server: Motion estimation complete
+Server: Starting motion compensation
+Server: Motion compensation complete
+Server: Starting DCT/quantization for Y plane
+Server: Y plane DCT/quantization complete
+Server: Starting DCT/quantization for U plane
+Server: U plane DCT/quantization complete
+Server: Starting DCT/quantization for V plane
+Server: V plane DCT/quantization complete
+Server: Starting dequantization/IDCT for reference frame
+Server: Dequantization/IDCT complete
+Server: Preparing encoded data for transfer
+Server: Encoded data size: 6658564 bytes
+Server: Starting DMA transfer of encoded data
+Server: Waiting for encoded data DMA transfer to complete
+Server: Encoded data DMA transfer complete
+Server: Signaling client that encoded data is ready
+Server: Encoded data ready signal sent
+Server: Waiting for client to acknowledge encoded data
+Server: Client acknowledged receipt of encoded data
+Server: Frame 18 processing complete
+Server: Received YUV frame with size 3110400 bytes
+Server: Sending YUV frame acknowledgment to client
+Server: YUV frame acknowledgment sent
+Server: Encoding frame 19
+Server: Frame 19 is not a keyframe
+Server: Starting motion estimation
+Server: Motion estimation complete
+Server: Starting motion compensation
+Server: Motion compensation complete
+Server: Starting DCT/quantization for Y plane
+Server: Y plane DCT/quantization complete
+Server: Starting DCT/quantization for U plane
+Server: U plane DCT/quantization complete
+Server: Starting DCT/quantization for V plane
+Server: V plane DCT/quantization complete
+Server: Starting dequantization/IDCT for reference frame
+Server: Dequantization/IDCT complete
+Server: Preparing encoded data for transfer
+Server: Encoded data size: 6658564 bytes
+Server: Starting DMA transfer of encoded data
+Server: Waiting for encoded data DMA transfer to complete
+Server: Encoded data DMA transfer complete
+Server: Signaling client that encoded data is ready
+Server: Encoded data ready signal sent
+Server: Waiting for client to acknowledge encoded data
+Server: Client acknowledged receipt of encoded data
+Server: Frame 19 processing complete
+Server: Received YUV frame with size 3110400 bytes
+Server: Sending YUV frame acknowledgment to client
+Server: YUV frame acknowledgment sent
+Server: Encoding frame 20
+Server: Frame 20 is not a keyframe
+Server: Starting motion estimation
+Server: Motion estimation complete
+Server: Starting motion compensation
+Server: Motion compensation complete
+Server: Starting DCT/quantization for Y plane
+Server: Y plane DCT/quantization complete
+Server: Starting DCT/quantization for U plane
+Server: U plane DCT/quantization complete
+Server: Starting DCT/quantization for V plane
+Server: V plane DCT/quantization complete
+Server: Starting dequantization/IDCT for reference frame
+Server: Dequantization/IDCT complete
+Server: Preparing encoded data for transfer
+Server: Encoded data size: 6658564 bytes
+Server: Starting DMA transfer of encoded data
+Server: Waiting for encoded data DMA transfer to complete
+Server: Encoded data DMA transfer complete
+Server: Signaling client that encoded data is ready
+Server: Encoded data ready signal sent
+Server: Waiting for client to acknowledge encoded data
+Server: Client acknowledged receipt of encoded data
+Server: Frame 20 processing complete
+Server: Received YUV frame with size 3110400 bytes
+Server: Sending YUV frame acknowledgment to client
+Server: YUV frame acknowledgment sent
+Server: Encoding frame 21
+Server: Frame 21 is not a keyframe
+Server: Starting motion estimation
+Server: Motion estimation complete
+Server: Starting motion compensation
+Server: Motion compensation complete
+Server: Starting DCT/quantization for Y plane
+Server: Y plane DCT/quantization complete
+Server: Starting DCT/quantization for U plane
+Server: U plane DCT/quantization complete
+Server: Starting DCT/quantization for V plane
+Server: V plane DCT/quantization complete
+Server: Starting dequantization/IDCT for reference frame
+Server: Dequantization/IDCT complete
+Server: Preparing encoded data for transfer
+Server: Encoded data size: 6658564 bytes
+Server: Starting DMA transfer of encoded data
+Server: Waiting for encoded data DMA transfer to complete
+Server: Encoded data DMA transfer complete
+Server: Signaling client that encoded data is ready
+Server: Encoded data ready signal sent
+Server: Waiting for client to acknowledge encoded data
+Server: Client acknowledged receipt of encoded data
+Server: Frame 21 processing complete
+Server: Received YUV frame with size 3110400 bytes
+Server: Sending YUV frame acknowledgment to client
+Server: YUV frame acknowledgment sent
+Server: Encoding frame 22
+Server: Frame 22 is not a keyframe
+Server: Starting motion estimation
+Server: Motion estimation complete
+Server: Starting motion compensation
+Server: Motion compensation complete
+Server: Starting DCT/quantization for Y plane
+Server: Y plane DCT/quantization complete
+Server: Starting DCT/quantization for U plane
+Server: U plane DCT/quantization complete
+Server: Starting DCT/quantization for V plane
+Server: V plane DCT/quantization complete
+Server: Starting dequantization/IDCT for reference frame
+Server: Dequantization/IDCT complete
+Server: Preparing encoded data for transfer
+Server: Encoded data size: 6658564 bytes
+Server: Starting DMA transfer of encoded data
+Server: Waiting for encoded data DMA transfer to complete
+Server: Encoded data DMA transfer complete
+Server: Signaling client that encoded data is ready
+Server: Encoded data ready signal sent
+Server: Waiting for client to acknowledge encoded data
+Server: Client acknowledged receipt of encoded data
+Server: Frame 22 processing complete
+Server: Received YUV frame with size 3110400 bytes
+Server: Sending YUV frame acknowledgment to client
+Server: YUV frame acknowledgment sent
+Server: Encoding frame 23
+Server: Frame 23 is not a keyframe
+Server: Starting motion estimation
+Server: Motion estimation complete
+Server: Starting motion compensation
+Server: Motion compensation complete
+Server: Starting DCT/quantization for Y plane
+Server: Y plane DCT/quantization complete
+Server: Starting DCT/quantization for U plane
+Server: U plane DCT/quantization complete
+Server: Starting DCT/quantization for V plane
+Server: V plane DCT/quantization complete
+Server: Starting dequantization/IDCT for reference frame
+Server: Dequantization/IDCT complete
+Server: Preparing encoded data for transfer
+Server: Encoded data size: 6658564 bytes
+Server: Starting DMA transfer of encoded data
+Server: Waiting for encoded data DMA transfer to complete
+Server: Encoded data DMA transfer complete
+Server: Signaling client that encoded data is ready
+Server: Encoded data ready signal sent
+Server: Waiting for client to acknowledge encoded data
+Server: Client acknowledged receipt of encoded data
+Server: Frame 23 processing complete
+Server: Received YUV frame with size 3110400 bytes
+Server: Sending YUV frame acknowledgment to client
+Server: YUV frame acknowledgment sent
+Server: Encoding frame 24
+Server: Frame 24 is not a keyframe
+Server: Starting motion estimation
+Server: Motion estimation complete
+Server: Starting motion compensation
+Server: Motion compensation complete
+Server: Starting DCT/quantization for Y plane
+Server: Y plane DCT/quantization complete
+Server: Starting DCT/quantization for U plane
+Server: U plane DCT/quantization complete
+Server: Starting DCT/quantization for V plane
+Server: V plane DCT/quantization complete
+Server: Starting dequantization/IDCT for reference frame
+Server: Dequantization/IDCT complete
+Server: Preparing encoded data for transfer
+Server: Encoded data size: 6658564 bytes
+Server: Starting DMA transfer of encoded data
+Server: Waiting for encoded data DMA transfer to complete
+Server: Encoded data DMA transfer complete
+Server: Signaling client that encoded data is ready
+Server: Encoded data ready signal sent
+Server: Waiting for client to acknowledge encoded data
+Server: Client acknowledged receipt of encoded data
+Server: Frame 24 processing complete
+Server: Received YUV frame with size 3110400 bytes
+Server: Sending YUV frame acknowledgment to client
+Server: YUV frame acknowledgment sent
+Server: Encoding frame 25
+Server: Frame 25 is not a keyframe
+Server: Starting motion estimation
+Server: Motion estimation complete
+Server: Starting motion compensation
+Server: Motion compensation complete
+Server: Starting DCT/quantization for Y plane
+Server: Y plane DCT/quantization complete
+Server: Starting DCT/quantization for U plane
+Server: U plane DCT/quantization complete
+Server: Starting DCT/quantization for V plane
+Server: V plane DCT/quantization complete
+Server: Starting dequantization/IDCT for reference frame
+Server: Dequantization/IDCT complete
+Server: Preparing encoded data for transfer
+Server: Encoded data size: 6658564 bytes
+Server: Starting DMA transfer of encoded data
+Server: Waiting for encoded data DMA transfer to complete
+Server: Encoded data DMA transfer complete
+Server: Signaling client that encoded data is ready
+Server: Encoded data ready signal sent
+Server: Waiting for client to acknowledge encoded data
+Server: Client acknowledged receipt of encoded data
+Server: Frame 25 processing complete
+Server: Received YUV frame with size 3110400 bytes
+Server: Sending YUV frame acknowledgment to client
+Server: YUV frame acknowledgment sent
+Server: Encoding frame 26
+Server: Frame 26 is not a keyframe
+Server: Starting motion estimation
+Server: Motion estimation complete
+Server: Starting motion compensation
+Server: Motion compensation complete
+Server: Starting DCT/quantization for Y plane
+Server: Y plane DCT/quantization complete
+Server: Starting DCT/quantization for U plane
+Server: U plane DCT/quantization complete
+Server: Starting DCT/quantization for V plane
+Server: V plane DCT/quantization complete
+Server: Starting dequantization/IDCT for reference frame
+Server: Dequantization/IDCT complete
+Server: Preparing encoded data for transfer
+Server: Encoded data size: 6658564 bytes
+Server: Starting DMA transfer of encoded data
+Server: Waiting for encoded data DMA transfer to complete
+Server: Encoded data DMA transfer complete
+Server: Signaling client that encoded data is ready
+Server: Encoded data ready signal sent
+Server: Waiting for client to acknowledge encoded data
+Server: Client acknowledged receipt of encoded data
+Server: Frame 26 processing complete
+Server: Received YUV frame with size 3110400 bytes
+Server: Sending YUV frame acknowledgment to client
+Server: YUV frame acknowledgment sent
+Server: Encoding frame 27
+Server: Frame 27 is not a keyframe
+Server: Starting motion estimation
+Server: Motion estimation complete
+Server: Starting motion compensation
+Server: Motion compensation complete
+Server: Starting DCT/quantization for Y plane
+Server: Y plane DCT/quantization complete
+Server: Starting DCT/quantization for U plane
+Server: U plane DCT/quantization complete
+Server: Starting DCT/quantization for V plane
+Server: V plane DCT/quantization complete
+Server: Starting dequantization/IDCT for reference frame
+Server: Dequantization/IDCT complete
+Server: Preparing encoded data for transfer
+Server: Encoded data size: 6658564 bytes
+Server: Starting DMA transfer of encoded data
+Server: Waiting for encoded data DMA transfer to complete
+Server: Encoded data DMA transfer complete
+Server: Signaling client that encoded data is ready
+Server: Encoded data ready signal sent
+Server: Waiting for client to acknowledge encoded data
+Server: Client acknowledged receipt of encoded data
+Server: Frame 27 processing complete
+Server: Received YUV frame with size 3110400 bytes
+Server: Sending YUV frame acknowledgment to client
+Server: YUV frame acknowledgment sent
+Server: Encoding frame 28
+Server: Frame 28 is not a keyframe
+Server: Starting motion estimation
+Server: Motion estimation complete
+Server: Starting motion compensation
+Server: Motion compensation complete
+Server: Starting DCT/quantization for Y plane
+Server: Y plane DCT/quantization complete
+Server: Starting DCT/quantization for U plane
+Server: U plane DCT/quantization complete
+Server: Starting DCT/quantization for V plane
+Server: V plane DCT/quantization complete
+Server: Starting dequantization/IDCT for reference frame
+Server: Dequantization/IDCT complete
+Server: Preparing encoded data for transfer
+Server: Encoded data size: 6658564 bytes
+Server: Starting DMA transfer of encoded data
+Server: Waiting for encoded data DMA transfer to complete
+Server: Encoded data DMA transfer complete
+Server: Signaling client that encoded data is ready
+Server: Encoded data ready signal sent
+Server: Waiting for client to acknowledge encoded data
+Server: Client acknowledged receipt of encoded data
+Server: Frame 28 processing complete
+Server: Received YUV frame with size 3110400 bytes
+Server: Sending YUV frame acknowledgment to client
+Server: YUV frame acknowledgment sent
+Server: Encoding frame 29
+Server: Frame 29 is not a keyframe
+Server: Starting motion estimation
+Server: Motion estimation complete
+Server: Starting motion compensation
+Server: Motion compensation complete
+Server: Starting DCT/quantization for Y plane
+Server: Y plane DCT/quantization complete
+Server: Starting DCT/quantization for U plane
+Server: U plane DCT/quantization complete
+Server: Starting DCT/quantization for V plane
+Server: V plane DCT/quantization complete
+Server: Starting dequantization/IDCT for reference frame
+Server: Dequantization/IDCT complete
+Server: Preparing encoded data for transfer
+Server: Encoded data size: 6658564 bytes
+Server: Starting DMA transfer of encoded data
+Server: Waiting for encoded data DMA transfer to complete
+Server: Encoded data DMA transfer complete
+Server: Signaling client that encoded data is ready
+Server: Encoded data ready signal sent
+Server: Waiting for client to acknowledge encoded data
+Server: Client acknowledged receipt of encoded data
+Server: Frame 29 processing complete
+Server: Received YUV frame with size 3110400 bytes
+Server: Sending YUV frame acknowledgment to client
+Server: YUV frame acknowledgment sent
+Server: Encoding frame 30
+Server: Frame 30 is not a keyframe
+Server: Starting motion estimation
+Server: Motion estimation complete
+Server: Starting motion compensation
+Server: Motion compensation complete
+Server: Starting DCT/quantization for Y plane
+Server: Y plane DCT/quantization complete
+Server: Starting DCT/quantization for U plane
+Server: U plane DCT/quantization complete
+Server: Starting DCT/quantization for V plane
+Server: V plane DCT/quantization complete
+Server: Starting dequantization/IDCT for reference frame
+Server: Dequantization/IDCT complete
+Server: Preparing encoded data for transfer
+Server: Encoded data size: 6658564 bytes
+Server: Starting DMA transfer of encoded data
+Server: Waiting for encoded data DMA transfer to complete
+Server: Encoded data DMA transfer complete
+Server: Signaling client that encoded data is ready
+Server: Encoded data ready signal sent
+Server: Waiting for client to acknowledge encoded data
+Server: Client acknowledged receipt of encoded data
+Server: Frame 30 processing complete
+Server: Received YUV frame with size 3110400 bytes
+Server: Sending YUV frame acknowledgment to client
+Server: YUV frame acknowledgment sent
+Server: Encoding frame 31
+Server: Frame 31 is not a keyframe
+Server: Starting motion estimation
+Server: Motion estimation complete
+Server: Starting motion compensation
+Server: Motion compensation complete
+Server: Starting DCT/quantization for Y plane
+Server: Y plane DCT/quantization complete
+Server: Starting DCT/quantization for U plane
+Server: U plane DCT/quantization complete
+Server: Starting DCT/quantization for V plane
+Server: V plane DCT/quantization complete
+Server: Starting dequantization/IDCT for reference frame
+Server: Dequantization/IDCT complete
+Server: Preparing encoded data for transfer
+Server: Encoded data size: 6658564 bytes
+Server: Starting DMA transfer of encoded data
+Server: Waiting for encoded data DMA transfer to complete
+Server: Encoded data DMA transfer complete
+Server: Signaling client that encoded data is ready
+Server: Encoded data ready signal sent
+Server: Waiting for client to acknowledge encoded data
+Server: Client acknowledged receipt of encoded data
+Server: Frame 31 processing complete
+Server: Received YUV frame with size 3110400 bytes
+Server: Sending YUV frame acknowledgment to client
+Server: YUV frame acknowledgment sent
+Server: Encoding frame 32
+Server: Frame 32 is not a keyframe
+Server: Starting motion estimation
+Server: Motion estimation complete
+Server: Starting motion compensation
+Server: Motion compensation complete
+Server: Starting DCT/quantization for Y plane
+Server: Y plane DCT/quantization complete
+Server: Starting DCT/quantization for U plane
+Server: U plane DCT/quantization complete
+Server: Starting DCT/quantization for V plane
+Server: V plane DCT/quantization complete
+Server: Starting dequantization/IDCT for reference frame
+Server: Dequantization/IDCT complete
+Server: Preparing encoded data for transfer
+Server: Encoded data size: 6658564 bytes
+Server: Starting DMA transfer of encoded data
+Server: Waiting for encoded data DMA transfer to complete
+Server: Encoded data DMA transfer complete
+Server: Signaling client that encoded data is ready
+Server: Encoded data ready signal sent
+Server: Waiting for client to acknowledge encoded data
+Server: Client acknowledged receipt of encoded data
+Server: Frame 32 processing complete
+Server: Received YUV frame with size 3110400 bytes
+Server: Sending YUV frame acknowledgment to client
+Server: YUV frame acknowledgment sent
+Server: Encoding frame 33
+Server: Frame 33 is not a keyframe
+Server: Starting motion estimation
+Server: Motion estimation complete
+Server: Starting motion compensation
+Server: Motion compensation complete
+Server: Starting DCT/quantization for Y plane
+Server: Y plane DCT/quantization complete
+Server: Starting DCT/quantization for U plane
+Server: U plane DCT/quantization complete
+Server: Starting DCT/quantization for V plane
+Server: V plane DCT/quantization complete
+Server: Starting dequantization/IDCT for reference frame
+Server: Dequantization/IDCT complete
+Server: Preparing encoded data for transfer
+Server: Encoded data size: 6658564 bytes
+Server: Starting DMA transfer of encoded data
+Server: Waiting for encoded data DMA transfer to complete
+Server: Encoded data DMA transfer complete
+Server: Signaling client that encoded data is ready
+Server: Encoded data ready signal sent
+Server: Waiting for client to acknowledge encoded data
+Server: Client acknowledged receipt of encoded data
+Server: Frame 33 processing complete
+Server: Received YUV frame with size 3110400 bytes
+Server: Sending YUV frame acknowledgment to client
+Server: YUV frame acknowledgment sent
+Server: Encoding frame 34
+Server: Frame 34 is not a keyframe
+Server: Starting motion estimation
+Server: Motion estimation complete
+Server: Starting motion compensation
+Server: Motion compensation complete
+Server: Starting DCT/quantization for Y plane
+Server: Y plane DCT/quantization complete
+Server: Starting DCT/quantization for U plane
+Server: U plane DCT/quantization complete
+Server: Starting DCT/quantization for V plane
+Server: V plane DCT/quantization complete
+Server: Starting dequantization/IDCT for reference frame
+Server: Dequantization/IDCT complete
+Server: Preparing encoded data for transfer
+Server: Encoded data size: 6658564 bytes
+Server: Starting DMA transfer of encoded data
+Server: Waiting for encoded data DMA transfer to complete
+Server: Encoded data DMA transfer complete
+Server: Signaling client that encoded data is ready
+Server: Encoded data ready signal sent
+Server: Waiting for client to acknowledge encoded data
+Server: Client acknowledged receipt of encoded data
+Server: Frame 34 processing complete
+Server: Received YUV frame with size 3110400 bytes
+Server: Sending YUV frame acknowledgment to client
+Server: YUV frame acknowledgment sent
+Server: Encoding frame 35
+Server: Frame 35 is not a keyframe
+Server: Starting motion estimation
+Server: Motion estimation complete
+Server: Starting motion compensation
+Server: Motion compensation complete
+Server: Starting DCT/quantization for Y plane
+Server: Y plane DCT/quantization complete
+Server: Starting DCT/quantization for U plane
+Server: U plane DCT/quantization complete
+Server: Starting DCT/quantization for V plane
+Server: V plane DCT/quantization complete
+Server: Starting dequantization/IDCT for reference frame
+Server: Dequantization/IDCT complete
+Server: Preparing encoded data for transfer
+Server: Encoded data size: 6658564 bytes
+Server: Starting DMA transfer of encoded data
+Server: Waiting for encoded data DMA transfer to complete
+Server: Encoded data DMA transfer complete
+Server: Signaling client that encoded data is ready
+Server: Encoded data ready signal sent
+Server: Waiting for client to acknowledge encoded data
+Server: Client acknowledged receipt of encoded data
+Server: Frame 35 processing complete
+Server: Received YUV frame with size 3110400 bytes
+Server: Sending YUV frame acknowledgment to client
+Server: YUV frame acknowledgment sent
+Server: Encoding frame 36
+Server: Frame 36 is not a keyframe
+Server: Starting motion estimation
+Server: Motion estimation complete
+Server: Starting motion compensation
+Server: Motion compensation complete
+Server: Starting DCT/quantization for Y plane
+Server: Y plane DCT/quantization complete
+Server: Starting DCT/quantization for U plane
+Server: U plane DCT/quantization complete
+Server: Starting DCT/quantization for V plane
+Server: V plane DCT/quantization complete
+Server: Starting dequantization/IDCT for reference frame
+Server: Dequantization/IDCT complete
+Server: Preparing encoded data for transfer
+Server: Encoded data size: 6658564 bytes
+Server: Starting DMA transfer of encoded data
+Server: Waiting for encoded data DMA transfer to complete
+Server: Encoded data DMA transfer complete
+Server: Signaling client that encoded data is ready
+Server: Encoded data ready signal sent
+Server: Waiting for client to acknowledge encoded data
+Server: Client acknowledged receipt of encoded data
+Server: Frame 36 processing complete
+Server: Received YUV frame with size 3110400 bytes
+Server: Sending YUV frame acknowledgment to client
+Server: YUV frame acknowledgment sent
+Server: Encoding frame 37
+Server: Frame 37 is not a keyframe
+Server: Starting motion estimation
+Server: Motion estimation complete
+Server: Starting motion compensation
+Server: Motion compensation complete
+Server: Starting DCT/quantization for Y plane
+Server: Y plane DCT/quantization complete
+Server: Starting DCT/quantization for U plane
+Server: U plane DCT/quantization complete
+Server: Starting DCT/quantization for V plane
+Server: V plane DCT/quantization complete
+Server: Starting dequantization/IDCT for reference frame
+Server: Dequantization/IDCT complete
+Server: Preparing encoded data for transfer
+Server: Encoded data size: 6658564 bytes
+Server: Starting DMA transfer of encoded data
+Server: Waiting for encoded data DMA transfer to complete
+Server: Encoded data DMA transfer complete
+Server: Signaling client that encoded data is ready
+Server: Encoded data ready signal sent
+Server: Waiting for client to acknowledge encoded data
+Server: Client acknowledged receipt of encoded data
+Server: Frame 37 processing complete
+Server: Received YUV frame with size 3110400 bytes
+Server: Sending YUV frame acknowledgment to client
+Server: YUV frame acknowledgment sent
+Server: Encoding frame 38
+Server: Frame 38 is not a keyframe
+Server: Starting motion estimation
+Server: Motion estimation complete
+Server: Starting motion compensation
+Server: Motion compensation complete
+Server: Starting DCT/quantization for Y plane
+Server: Y plane DCT/quantization complete
+Server: Starting DCT/quantization for U plane
+Server: U plane DCT/quantization complete
+Server: Starting DCT/quantization for V plane
+Server: V plane DCT/quantization complete
+Server: Starting dequantization/IDCT for reference frame
+Server: Dequantization/IDCT complete
+Server: Preparing encoded data for transfer
+Server: Encoded data size: 6658564 bytes
+Server: Starting DMA transfer of encoded data
+Server: Waiting for encoded data DMA transfer to complete
+Server: Encoded data DMA transfer complete
+Server: Signaling client that encoded data is ready
+Server: Encoded data ready signal sent
+Server: Waiting for client to acknowledge encoded data
+Server: Client acknowledged receipt of encoded data
+Server: Frame 38 processing complete
+Server: Received YUV frame with size 3110400 bytes
+Server: Sending YUV frame acknowledgment to client
+Server: YUV frame acknowledgment sent
+Server: Encoding frame 39
+Server: Frame 39 is not a keyframe
+Server: Starting motion estimation
+Server: Motion estimation complete
+Server: Starting motion compensation
+Server: Motion compensation complete
+Server: Starting DCT/quantization for Y plane
+Server: Y plane DCT/quantization complete
+Server: Starting DCT/quantization for U plane
+Server: U plane DCT/quantization complete
+Server: Starting DCT/quantization for V plane
+Server: V plane DCT/quantization complete
+Server: Starting dequantization/IDCT for reference frame
+Server: Dequantization/IDCT complete
+Server: Preparing encoded data for transfer
+Server: Encoded data size: 6658564 bytes
+Server: Starting DMA transfer of encoded data
+Server: Waiting for encoded data DMA transfer to complete
+Server: Encoded data DMA transfer complete
+Server: Signaling client that encoded data is ready
+Server: Encoded data ready signal sent
+Server: Waiting for client to acknowledge encoded data
+Server: Client acknowledged receipt of encoded data
+Server: Frame 39 processing complete
+Server: Received YUV frame with size 3110400 bytes
+Server: Sending YUV frame acknowledgment to client
+Server: YUV frame acknowledgment sent
+Server: Encoding frame 40
+Server: Frame 40 is not a keyframe
+Server: Starting motion estimation
+Server: Motion estimation complete
+Server: Starting motion compensation
+Server: Motion compensation complete
+Server: Starting DCT/quantization for Y plane
+Server: Y plane DCT/quantization complete
+Server: Starting DCT/quantization for U plane
+Server: U plane DCT/quantization complete
+Server: Starting DCT/quantization for V plane
+Server: V plane DCT/quantization complete
+Server: Starting dequantization/IDCT for reference frame
+Server: Dequantization/IDCT complete
+Server: Preparing encoded data for transfer
+Server: Encoded data size: 6658564 bytes
+Server: Starting DMA transfer of encoded data
+Server: Waiting for encoded data DMA transfer to complete
+Server: Encoded data DMA transfer complete
+Server: Signaling client that encoded data is ready
+Server: Encoded data ready signal sent
+Server: Waiting for client to acknowledge encoded data
+Server: Client acknowledged receipt of encoded data
+Server: Frame 40 processing complete
+Server: Received YUV frame with size 3110400 bytes
+Server: Sending YUV frame acknowledgment to client
+Server: YUV frame acknowledgment sent
+Server: Encoding frame 41
+Server: Frame 41 is not a keyframe
+Server: Starting motion estimation
+Server: Motion estimation complete
+Server: Starting motion compensation
+Server: Motion compensation complete
+Server: Starting DCT/quantization for Y plane
+Server: Y plane DCT/quantization complete
+Server: Starting DCT/quantization for U plane
+Server: U plane DCT/quantization complete
+Server: Starting DCT/quantization for V plane
+Server: V plane DCT/quantization complete
+Server: Starting dequantization/IDCT for reference frame
+Server: Dequantization/IDCT complete
+Server: Preparing encoded data for transfer
+Server: Encoded data size: 6658564 bytes
+Server: Starting DMA transfer of encoded data
+Server: Waiting for encoded data DMA transfer to complete
+Server: Encoded data DMA transfer complete
+Server: Signaling client that encoded data is ready
+Server: Encoded data ready signal sent
+Server: Waiting for client to acknowledge encoded data
+Server: Client acknowledged receipt of encoded data
+Server: Frame 41 processing complete
+Server: Received YUV frame with size 3110400 bytes
+Server: Sending YUV frame acknowledgment to client
+Server: YUV frame acknowledgment sent
+Server: Encoding frame 42
+Server: Frame 42 is not a keyframe
+Server: Starting motion estimation
+Server: Motion estimation complete
+Server: Starting motion compensation
+Server: Motion compensation complete
+Server: Starting DCT/quantization for Y plane
+Server: Y plane DCT/quantization complete
+Server: Starting DCT/quantization for U plane
+Server: U plane DCT/quantization complete
+Server: Starting DCT/quantization for V plane
+Server: V plane DCT/quantization complete
+Server: Starting dequantization/IDCT for reference frame
+Server: Dequantization/IDCT complete
+Server: Preparing encoded data for transfer
+Server: Encoded data size: 6658564 bytes
+Server: Starting DMA transfer of encoded data
+Server: Waiting for encoded data DMA transfer to complete
+Server: Encoded data DMA transfer complete
+Server: Signaling client that encoded data is ready
+Server: Encoded data ready signal sent
+Server: Waiting for client to acknowledge encoded data
+Server: Client acknowledged receipt of encoded data
+Server: Frame 42 processing complete
+Server: Received YUV frame with size 3110400 bytes
+Server: Sending YUV frame acknowledgment to client
+Server: YUV frame acknowledgment sent
+Server: Encoding frame 43
+Server: Frame 43 is not a keyframe
+Server: Starting motion estimation
+Server: Motion estimation complete
+Server: Starting motion compensation
+Server: Motion compensation complete
+Server: Starting DCT/quantization for Y plane
+Server: Y plane DCT/quantization complete
+Server: Starting DCT/quantization for U plane
+Server: U plane DCT/quantization complete
+Server: Starting DCT/quantization for V plane
+Server: V plane DCT/quantization complete
+Server: Starting dequantization/IDCT for reference frame
+Server: Dequantization/IDCT complete
+Server: Preparing encoded data for transfer
+Server: Encoded data size: 6658564 bytes
+Server: Starting DMA transfer of encoded data
+Server: Waiting for encoded data DMA transfer to complete
+Server: Encoded data DMA transfer complete
+Server: Signaling client that encoded data is ready
+Server: Encoded data ready signal sent
+Server: Waiting for client to acknowledge encoded data
+Server: Client acknowledged receipt of encoded data
+Server: Frame 43 processing complete
+Server: Received YUV frame with size 3110400 bytes
+Server: Sending YUV frame acknowledgment to client
+Server: YUV frame acknowledgment sent
+Server: Encoding frame 44
+Server: Frame 44 is not a keyframe
+Server: Starting motion estimation
+Server: Motion estimation complete
+Server: Starting motion compensation
+Server: Motion compensation complete
+Server: Starting DCT/quantization for Y plane
+Server: Y plane DCT/quantization complete
+Server: Starting DCT/quantization for U plane
+Server: U plane DCT/quantization complete
+Server: Starting DCT/quantization for V plane
+Server: V plane DCT/quantization complete
+Server: Starting dequantization/IDCT for reference frame
+Server: Dequantization/IDCT complete
+Server: Preparing encoded data for transfer
+Server: Encoded data size: 6658564 bytes
+Server: Starting DMA transfer of encoded data
+Server: Waiting for encoded data DMA transfer to complete
+Server: Encoded data DMA transfer complete
+Server: Signaling client that encoded data is ready
+Server: Encoded data ready signal sent
+Server: Waiting for client to acknowledge encoded data
+Server: Client acknowledged receipt of encoded data
+Server: Frame 44 processing complete
+Server: Received YUV frame with size 3110400 bytes
+Server: Sending YUV frame acknowledgment to client
+Server: YUV frame acknowledgment sent
+Server: Encoding frame 45
+Server: Frame 45 is not a keyframe
+Server: Starting motion estimation
+Server: Motion estimation complete
+Server: Starting motion compensation
+Server: Motion compensation complete
+Server: Starting DCT/quantization for Y plane
+Server: Y plane DCT/quantization complete
+Server: Starting DCT/quantization for U plane
+Server: U plane DCT/quantization complete
+Server: Starting DCT/quantization for V plane
+Server: V plane DCT/quantization complete
+Server: Starting dequantization/IDCT for reference frame
+Server: Dequantization/IDCT complete
+Server: Preparing encoded data for transfer
+Server: Encoded data size: 6658564 bytes
+Server: Starting DMA transfer of encoded data
+Server: Waiting for encoded data DMA transfer to complete
+Server: Encoded data DMA transfer complete
+Server: Signaling client that encoded data is ready
+Server: Encoded data ready signal sent
+Server: Waiting for client to acknowledge encoded data
+Server: Client acknowledged receipt of encoded data
+Server: Frame 45 processing complete
+Server: Received YUV frame with size 3110400 bytes
+Server: Sending YUV frame acknowledgment to client
+Server: YUV frame acknowledgment sent
+Server: Encoding frame 46
+Server: Frame 46 is not a keyframe
+Server: Starting motion estimation
+Server: Motion estimation complete
+Server: Starting motion compensation
+Server: Motion compensation complete
+Server: Starting DCT/quantization for Y plane
+Server: Y plane DCT/quantization complete
+Server: Starting DCT/quantization for U plane
+Server: U plane DCT/quantization complete
+Server: Starting DCT/quantization for V plane
+Server: V plane DCT/quantization complete
+Server: Starting dequantization/IDCT for reference frame
+Server: Dequantization/IDCT complete
+Server: Preparing encoded data for transfer
+Server: Encoded data size: 6658564 bytes
+Server: Starting DMA transfer of encoded data
+Server: Waiting for encoded data DMA transfer to complete
+Server: Encoded data DMA transfer complete
+Server: Signaling client that encoded data is ready
+Server: Encoded data ready signal sent
+Server: Waiting for client to acknowledge encoded data
+Server: Client acknowledged receipt of encoded data
+Server: Frame 46 processing complete
+Server: Received YUV frame with size 3110400 bytes
+Server: Sending YUV frame acknowledgment to client
+Server: YUV frame acknowledgment sent
+Server: Encoding frame 47
+Server: Frame 47 is not a keyframe
+Server: Starting motion estimation
+Server: Motion estimation complete
+Server: Starting motion compensation
+Server: Motion compensation complete
+Server: Starting DCT/quantization for Y plane
+Server: Y plane DCT/quantization complete
+Server: Starting DCT/quantization for U plane
+Server: U plane DCT/quantization complete
+Server: Starting DCT/quantization for V plane
+Server: V plane DCT/quantization complete
+Server: Starting dequantization/IDCT for reference frame
+Server: Dequantization/IDCT complete
+Server: Preparing encoded data for transfer
+Server: Encoded data size: 6658564 bytes
+Server: Starting DMA transfer of encoded data
+Server: Waiting for encoded data DMA transfer to complete
+Server: Encoded data DMA transfer complete
+Server: Signaling client that encoded data is ready
+Server: Encoded data ready signal sent
+Server: Waiting for client to acknowledge encoded data
+Server: Client acknowledged receipt of encoded data
+Server: Frame 47 processing complete
+Server: Received YUV frame with size 3110400 bytes
+Server: Sending YUV frame acknowledgment to client
+Server: YUV frame acknowledgment sent
+Server: Encoding frame 48
+Server: Frame 48 is not a keyframe
+Server: Starting motion estimation
+Server: Motion estimation complete
+Server: Starting motion compensation
+Server: Motion compensation complete
+Server: Starting DCT/quantization for Y plane
+Server: Y plane DCT/quantization complete
+Server: Starting DCT/quantization for U plane
+Server: U plane DCT/quantization complete
+Server: Starting DCT/quantization for V plane
+Server: V plane DCT/quantization complete
+Server: Starting dequantization/IDCT for reference frame
+Server: Dequantization/IDCT complete
+Server: Preparing encoded data for transfer
+Server: Encoded data size: 6658564 bytes
+Server: Starting DMA transfer of encoded data
+Server: Waiting for encoded data DMA transfer to complete
+Server: Encoded data DMA transfer complete
+Server: Signaling client that encoded data is ready
+Server: Encoded data ready signal sent
+Server: Waiting for client to acknowledge encoded data
+Server: Client acknowledged receipt of encoded data
+Server: Frame 48 processing complete
+Server: Received YUV frame with size 3110400 bytes
+Server: Sending YUV frame acknowledgment to client
+Server: YUV frame acknowledgment sent
+Server: Encoding frame 49
+Server: Frame 49 is not a keyframe
+Server: Starting motion estimation
+Server: Motion estimation complete
+Server: Starting motion compensation
+Server: Motion compensation complete
+Server: Starting DCT/quantization for Y plane
+Server: Y plane DCT/quantization complete
+Server: Starting DCT/quantization for U plane
+Server: U plane DCT/quantization complete
+Server: Starting DCT/quantization for V plane
+Server: V plane DCT/quantization complete
+Server: Starting dequantization/IDCT for reference frame
+Server: Dequantization/IDCT complete
+Server: Preparing encoded data for transfer
+Server: Encoded data size: 6658564 bytes
+Server: Starting DMA transfer of encoded data
+Server: Waiting for encoded data DMA transfer to complete
+Server: Encoded data DMA transfer complete
+Server: Signaling client that encoded data is ready
+Server: Encoded data ready signal sent
+Server: Waiting for client to acknowledge encoded data
+Server: Client acknowledged receipt of encoded data
+Server: Frame 49 processing complete
+Server: Received YUV frame with size 3110400 bytes
+Server: Sending YUV frame acknowledgment to client
+Server: YUV frame acknowledgment sent
+Server: Encoding frame 50
+Server: Frame 50 is not a keyframe
+Server: Starting motion estimation
+Server: Motion estimation complete
+Server: Starting motion compensation
+Server: Motion compensation complete
+Server: Starting DCT/quantization for Y plane
+Server: Y plane DCT/quantization complete
+Server: Starting DCT/quantization for U plane
+Server: U plane DCT/quantization complete
+Server: Starting DCT/quantization for V plane
+Server: V plane DCT/quantization complete
+Server: Starting dequantization/IDCT for reference frame
+Server: Dequantization/IDCT complete
+Server: Preparing encoded data for transfer
+Server: Encoded data size: 6658564 bytes
+Server: Starting DMA transfer of encoded data
+Server: Waiting for encoded data DMA transfer to complete
+Server: Encoded data DMA transfer complete
+Server: Signaling client that encoded data is ready
+Server: Encoded data ready signal sent
+Server: Waiting for client to acknowledge encoded data
+Server: Client acknowledged receipt of encoded data
+Server: Frame 50 processing complete
+Server: Received YUV frame with size 3110400 bytes
+Server: Sending YUV frame acknowledgment to client
+Server: YUV frame acknowledgment sent
+Server: Encoding frame 51
+Server: Frame 51 is not a keyframe
+Server: Starting motion estimation
+Server: Motion estimation complete
+Server: Starting motion compensation
+Server: Motion compensation complete
+Server: Starting DCT/quantization for Y plane
+Server: Y plane DCT/quantization complete
+Server: Starting DCT/quantization for U plane
+Server: U plane DCT/quantization complete
+Server: Starting DCT/quantization for V plane
+Server: V plane DCT/quantization complete
+Server: Starting dequantization/IDCT for reference frame
+Server: Dequantization/IDCT complete
+Server: Preparing encoded data for transfer
+Server: Encoded data size: 6658564 bytes
+Server: Starting DMA transfer of encoded data
+Server: Waiting for encoded data DMA transfer to complete
+Server: Encoded data DMA transfer complete
+Server: Signaling client that encoded data is ready
+Server: Encoded data ready signal sent
+Server: Waiting for client to acknowledge encoded data
+Server: Client acknowledged receipt of encoded data
+Server: Frame 51 processing complete
+Server: Received YUV frame with size 3110400 bytes
+Server: Sending YUV frame acknowledgment to client
+Server: YUV frame acknowledgment sent
+Server: Encoding frame 52
+Server: Frame 52 is not a keyframe
+Server: Starting motion estimation
+Server: Motion estimation complete
+Server: Starting motion compensation
+Server: Motion compensation complete
+Server: Starting DCT/quantization for Y plane
+Server: Y plane DCT/quantization complete
+Server: Starting DCT/quantization for U plane
+Server: U plane DCT/quantization complete
+Server: Starting DCT/quantization for V plane
+Server: V plane DCT/quantization complete
+Server: Starting dequantization/IDCT for reference frame
+Server: Dequantization/IDCT complete
+Server: Preparing encoded data for transfer
+Server: Encoded data size: 6658564 bytes
+Server: Starting DMA transfer of encoded data
+Server: Waiting for encoded data DMA transfer to complete
+Server: Encoded data DMA transfer complete
+Server: Signaling client that encoded data is ready
+Server: Encoded data ready signal sent
+Server: Waiting for client to acknowledge encoded data
+Server: Client acknowledged receipt of encoded data
+Server: Frame 52 processing complete
+Server: Received YUV frame with size 3110400 bytes
+Server: Sending YUV frame acknowledgment to client
+Server: YUV frame acknowledgment sent
+Server: Encoding frame 53
+Server: Frame 53 is not a keyframe
+Server: Starting motion estimation
+Server: Motion estimation complete
+Server: Starting motion compensation
+Server: Motion compensation complete
+Server: Starting DCT/quantization for Y plane
+Server: Y plane DCT/quantization complete
+Server: Starting DCT/quantization for U plane
+Server: U plane DCT/quantization complete
+Server: Starting DCT/quantization for V plane
+Server: V plane DCT/quantization complete
+Server: Starting dequantization/IDCT for reference frame
+Server: Dequantization/IDCT complete
+Server: Preparing encoded data for transfer
+Server: Encoded data size: 6658564 bytes
+Server: Starting DMA transfer of encoded data
+Server: Waiting for encoded data DMA transfer to complete
+Server: Encoded data DMA transfer complete
+Server: Signaling client that encoded data is ready
+Server: Encoded data ready signal sent
+Server: Waiting for client to acknowledge encoded data
+Server: Client acknowledged receipt of encoded data
+Server: Frame 53 processing complete
+Server: Received YUV frame with size 3110400 bytes
+Server: Sending YUV frame acknowledgment to client
+Server: YUV frame acknowledgment sent
+Server: Encoding frame 54
+Server: Frame 54 is not a keyframe
+Server: Starting motion estimation
+Server: Motion estimation complete
+Server: Starting motion compensation
+Server: Motion compensation complete
+Server: Starting DCT/quantization for Y plane
+Server: Y plane DCT/quantization complete
+Server: Starting DCT/quantization for U plane
+Server: U plane DCT/quantization complete
+Server: Starting DCT/quantization for V plane
+Server: V plane DCT/quantization complete
+Server: Starting dequantization/IDCT for reference frame
+Server: Dequantization/IDCT complete
+Server: Preparing encoded data for transfer
+Server: Encoded data size: 6658564 bytes
+Server: Starting DMA transfer of encoded data
+Server: Waiting for encoded data DMA transfer to complete
+Server: Encoded data DMA transfer complete
+Server: Signaling client that encoded data is ready
+Server: Encoded data ready signal sent
+Server: Waiting for client to acknowledge encoded data
+Server: Client acknowledged receipt of encoded data
+Server: Frame 54 processing complete
+Server: Received YUV frame with size 3110400 bytes
+Server: Sending YUV frame acknowledgment to client
+Server: YUV frame acknowledgment sent
+Server: Encoding frame 55
+Server: Frame 55 is not a keyframe
+Server: Starting motion estimation
+Server: Motion estimation complete
+Server: Starting motion compensation
+Server: Motion compensation complete
+Server: Starting DCT/quantization for Y plane
+Server: Y plane DCT/quantization complete
+Server: Starting DCT/quantization for U plane
+Server: U plane DCT/quantization complete
+Server: Starting DCT/quantization for V plane
+Server: V plane DCT/quantization complete
+Server: Starting dequantization/IDCT for reference frame
+Server: Dequantization/IDCT complete
+Server: Preparing encoded data for transfer
+Server: Encoded data size: 6658564 bytes
+Server: Starting DMA transfer of encoded data
+Server: Waiting for encoded data DMA transfer to complete
+Server: Encoded data DMA transfer complete
+Server: Signaling client that encoded data is ready
+Server: Encoded data ready signal sent
+Server: Waiting for client to acknowledge encoded data
+Server: Client acknowledged receipt of encoded data
+Server: Frame 55 processing complete
+Server: Received YUV frame with size 3110400 bytes
+Server: Sending YUV frame acknowledgment to client
+Server: YUV frame acknowledgment sent
+Server: Encoding frame 56
+Server: Frame 56 is not a keyframe
+Server: Starting motion estimation
+Server: Motion estimation complete
+Server: Starting motion compensation
+Server: Motion compensation complete
+Server: Starting DCT/quantization for Y plane
+Server: Y plane DCT/quantization complete
+Server: Starting DCT/quantization for U plane
+Server: U plane DCT/quantization complete
+Server: Starting DCT/quantization for V plane
+Server: V plane DCT/quantization complete
+Server: Starting dequantization/IDCT for reference frame
+Server: Dequantization/IDCT complete
+Server: Preparing encoded data for transfer
+Server: Encoded data size: 6658564 bytes
+Server: Starting DMA transfer of encoded data
+Server: Waiting for encoded data DMA transfer to complete
+Server: Encoded data DMA transfer complete
+Server: Signaling client that encoded data is ready
+Server: Encoded data ready signal sent
+Server: Waiting for client to acknowledge encoded data
+Server: Client acknowledged receipt of encoded data
+Server: Frame 56 processing complete
+Server: Received YUV frame with size 3110400 bytes
+Server: Sending YUV frame acknowledgment to client
+Server: YUV frame acknowledgment sent
+Server: Encoding frame 57
+Server: Frame 57 is not a keyframe
+Server: Starting motion estimation
+Server: Motion estimation complete
+Server: Starting motion compensation
+Server: Motion compensation complete
+Server: Starting DCT/quantization for Y plane
+Server: Y plane DCT/quantization complete
+Server: Starting DCT/quantization for U plane
+Server: U plane DCT/quantization complete
+Server: Starting DCT/quantization for V plane
+Server: V plane DCT/quantization complete
+Server: Starting dequantization/IDCT for reference frame
+Server: Dequantization/IDCT complete
+Server: Preparing encoded data for transfer
+Server: Encoded data size: 6658564 bytes
+Server: Starting DMA transfer of encoded data
+Server: Waiting for encoded data DMA transfer to complete
+Server: Encoded data DMA transfer complete
+Server: Signaling client that encoded data is ready
+Server: Encoded data ready signal sent
+Server: Waiting for client to acknowledge encoded data
+Server: Client acknowledged receipt of encoded data
+Server: Frame 57 processing complete
+Server: Received YUV frame with size 3110400 bytes
+Server: Sending YUV frame acknowledgment to client
+Server: YUV frame acknowledgment sent
+Server: Encoding frame 58
+Server: Frame 58 is not a keyframe
+Server: Starting motion estimation
+Server: Motion estimation complete
+Server: Starting motion compensation
+Server: Motion compensation complete
+Server: Starting DCT/quantization for Y plane
+Server: Y plane DCT/quantization complete
+Server: Starting DCT/quantization for U plane
+Server: U plane DCT/quantization complete
+Server: Starting DCT/quantization for V plane
+Server: V plane DCT/quantization complete
+Server: Starting dequantization/IDCT for reference frame
+Server: Dequantization/IDCT complete
+Server: Preparing encoded data for transfer
+Server: Encoded data size: 6658564 bytes
+Server: Starting DMA transfer of encoded data
+Server: Waiting for encoded data DMA transfer to complete
+Server: Encoded data DMA transfer complete
+Server: Signaling client that encoded data is ready
+Server: Encoded data ready signal sent
+Server: Waiting for client to acknowledge encoded data
+Server: Client acknowledged receipt of encoded data
+Server: Frame 58 processing complete
+Server: Received YUV frame with size 3110400 bytes
+Server: Sending YUV frame acknowledgment to client
+Server: YUV frame acknowledgment sent
+Server: Encoding frame 59
+Server: Frame 59 is not a keyframe
+Server: Starting motion estimation
+Server: Motion estimation complete
+Server: Starting motion compensation
+Server: Motion compensation complete
+Server: Starting DCT/quantization for Y plane
+Server: Y plane DCT/quantization complete
+Server: Starting DCT/quantization for U plane
+Server: U plane DCT/quantization complete
+Server: Starting DCT/quantization for V plane
+Server: V plane DCT/quantization complete
+Server: Starting dequantization/IDCT for reference frame
+Server: Dequantization/IDCT complete
+Server: Preparing encoded data for transfer
+Server: Encoded data size: 6658564 bytes
+Server: Starting DMA transfer of encoded data
+Server: Waiting for encoded data DMA transfer to complete
+Server: Encoded data DMA transfer complete
+Server: Signaling client that encoded data is ready
+Server: Encoded data ready signal sent
+Server: Waiting for client to acknowledge encoded data
+Server: Client acknowledged receipt of encoded data
+Server: Frame 59 processing complete
+Server: Received YUV frame with size 3110400 bytes
+Server: Sending YUV frame acknowledgment to client
+Server: YUV frame acknowledgment sent
+Server: Encoding frame 60
+Server: Frame 60 is not a keyframe
+Server: Starting motion estimation
+Server: Motion estimation complete
+Server: Starting motion compensation
+Server: Motion compensation complete
+Server: Starting DCT/quantization for Y plane
+Server: Y plane DCT/quantization complete
+Server: Starting DCT/quantization for U plane
+Server: U plane DCT/quantization complete
+Server: Starting DCT/quantization for V plane
+Server: V plane DCT/quantization complete
+Server: Starting dequantization/IDCT for reference frame
+Server: Dequantization/IDCT complete
+Server: Preparing encoded data for transfer
+Server: Encoded data size: 6658564 bytes
+Server: Starting DMA transfer of encoded data
+Server: Waiting for encoded data DMA transfer to complete
+Server: Encoded data DMA transfer complete
+Server: Signaling client that encoded data is ready
+Server: Encoded data ready signal sent
+Server: Waiting for client to acknowledge encoded data
+Server: Client acknowledged receipt of encoded data
+Server: Frame 60 processing complete
+Server: Received YUV frame with size 3110400 bytes
+Server: Sending YUV frame acknowledgment to client
+Server: YUV frame acknowledgment sent
+Server: Encoding frame 61
+Server: Frame 61 is not a keyframe
+Server: Starting motion estimation
+Server: Motion estimation complete
+Server: Starting motion compensation
+Server: Motion compensation complete
+Server: Starting DCT/quantization for Y plane
+Server: Y plane DCT/quantization complete
+Server: Starting DCT/quantization for U plane
+Server: U plane DCT/quantization complete
+Server: Starting DCT/quantization for V plane
+Server: V plane DCT/quantization complete
+Server: Starting dequantization/IDCT for reference frame
+Server: Dequantization/IDCT complete
+Server: Preparing encoded data for transfer
+Server: Encoded data size: 6658564 bytes
+Server: Starting DMA transfer of encoded data
+Server: Waiting for encoded data DMA transfer to complete
+Server: Encoded data DMA transfer complete
+Server: Signaling client that encoded data is ready
+Server: Encoded data ready signal sent
+Server: Waiting for client to acknowledge encoded data
+Server: Client acknowledged receipt of encoded data
+Server: Frame 61 processing complete
+Server: Received YUV frame with size 3110400 bytes
+Server: Sending YUV frame acknowledgment to client
+Server: YUV frame acknowledgment sent
+Server: Encoding frame 62
+Server: Frame 62 is not a keyframe
+Server: Starting motion estimation
+Server: Motion estimation complete
+Server: Starting motion compensation
+Server: Motion compensation complete
+Server: Starting DCT/quantization for Y plane
+Server: Y plane DCT/quantization complete
+Server: Starting DCT/quantization for U plane
+Server: U plane DCT/quantization complete
+Server: Starting DCT/quantization for V plane
+Server: V plane DCT/quantization complete
+Server: Starting dequantization/IDCT for reference frame
+Server: Dequantization/IDCT complete
+Server: Preparing encoded data for transfer
+Server: Encoded data size: 6658564 bytes
+Server: Starting DMA transfer of encoded data
+Server: Waiting for encoded data DMA transfer to complete
+Server: Encoded data DMA transfer complete
+Server: Signaling client that encoded data is ready
+Server: Encoded data ready signal sent
+Server: Waiting for client to acknowledge encoded data
+Server: Client acknowledged receipt of encoded data
+Server: Frame 62 processing complete
+Server: Received YUV frame with size 3110400 bytes
+Server: Sending YUV frame acknowledgment to client
+Server: YUV frame acknowledgment sent
+Server: Encoding frame 63
+Server: Frame 63 is not a keyframe
+Server: Starting motion estimation
+Server: Motion estimation complete
+Server: Starting motion compensation
+Server: Motion compensation complete
+Server: Starting DCT/quantization for Y plane
+Server: Y plane DCT/quantization complete
+Server: Starting DCT/quantization for U plane
+Server: U plane DCT/quantization complete
+Server: Starting DCT/quantization for V plane
+Server: V plane DCT/quantization complete
+Server: Starting dequantization/IDCT for reference frame
+Server: Dequantization/IDCT complete
+Server: Preparing encoded data for transfer
+Server: Encoded data size: 6658564 bytes
+Server: Starting DMA transfer of encoded data
+Server: Waiting for encoded data DMA transfer to complete
+Server: Encoded data DMA transfer complete
+Server: Signaling client that encoded data is ready
+Server: Encoded data ready signal sent
+Server: Waiting for client to acknowledge encoded data
+Server: Client acknowledged receipt of encoded data
+Server: Frame 63 processing complete
+Server: Received YUV frame with size 3110400 bytes
+Server: Sending YUV frame acknowledgment to client
+Server: YUV frame acknowledgment sent
+Server: Encoding frame 64
+Server: Frame 64 is not a keyframe
+Server: Starting motion estimation
+Server: Motion estimation complete
+Server: Starting motion compensation
+Server: Motion compensation complete
+Server: Starting DCT/quantization for Y plane
+Server: Y plane DCT/quantization complete
+Server: Starting DCT/quantization for U plane
+Server: U plane DCT/quantization complete
+Server: Starting DCT/quantization for V plane
+Server: V plane DCT/quantization complete
+Server: Starting dequantization/IDCT for reference frame
+Server: Dequantization/IDCT complete
+Server: Preparing encoded data for transfer
+Server: Encoded data size: 6658564 bytes
+Server: Starting DMA transfer of encoded data
+Server: Waiting for encoded data DMA transfer to complete
+Server: Encoded data DMA transfer complete
+Server: Signaling client that encoded data is ready
+Server: Encoded data ready signal sent
+Server: Waiting for client to acknowledge encoded data
+Server: Client acknowledged receipt of encoded data
+Server: Frame 64 processing complete
+Server: Received YUV frame with size 3110400 bytes
+Server: Sending YUV frame acknowledgment to client
+Server: YUV frame acknowledgment sent
+Server: Encoding frame 65
+Server: Frame 65 is not a keyframe
+Server: Starting motion estimation
+Server: Motion estimation complete
+Server: Starting motion compensation
+Server: Motion compensation complete
+Server: Starting DCT/quantization for Y plane
+Server: Y plane DCT/quantization complete
+Server: Starting DCT/quantization for U plane
+Server: U plane DCT/quantization complete
+Server: Starting DCT/quantization for V plane
+Server: V plane DCT/quantization complete
+Server: Starting dequantization/IDCT for reference frame
+Server: Dequantization/IDCT complete
+Server: Preparing encoded data for transfer
+Server: Encoded data size: 6658564 bytes
+Server: Starting DMA transfer of encoded data
+Server: Waiting for encoded data DMA transfer to complete
+Server: Encoded data DMA transfer complete
+Server: Signaling client that encoded data is ready
+Server: Encoded data ready signal sent
+Server: Waiting for client to acknowledge encoded data
+Server: Client acknowledged receipt of encoded data
+Server: Frame 65 processing complete
+Server: Received YUV frame with size 3110400 bytes
+Server: Sending YUV frame acknowledgment to client
+Server: YUV frame acknowledgment sent
+Server: Encoding frame 66
+Server: Frame 66 is not a keyframe
+Server: Starting motion estimation
+Server: Motion estimation complete
+Server: Starting motion compensation
+Server: Motion compensation complete
+Server: Starting DCT/quantization for Y plane
+Server: Y plane DCT/quantization complete
+Server: Starting DCT/quantization for U plane
+Server: U plane DCT/quantization complete
+Server: Starting DCT/quantization for V plane
+Server: V plane DCT/quantization complete
+Server: Starting dequantization/IDCT for reference frame
+Server: Dequantization/IDCT complete
+Server: Preparing encoded data for transfer
+Server: Encoded data size: 6658564 bytes
+Server: Starting DMA transfer of encoded data
+Server: Waiting for encoded data DMA transfer to complete
+Server: Encoded data DMA transfer complete
+Server: Signaling client that encoded data is ready
+Server: Encoded data ready signal sent
+Server: Waiting for client to acknowledge encoded data
+Server: Client acknowledged receipt of encoded data
+Server: Frame 66 processing complete
+Server: Received YUV frame with size 3110400 bytes
+Server: Sending YUV frame acknowledgment to client
+Server: YUV frame acknowledgment sent
+Server: Encoding frame 67
+Server: Frame 67 is not a keyframe
+Server: Starting motion estimation
+Server: Motion estimation complete
+Server: Starting motion compensation
+Server: Motion compensation complete
+Server: Starting DCT/quantization for Y plane
+Server: Y plane DCT/quantization complete
+Server: Starting DCT/quantization for U plane
+Server: U plane DCT/quantization complete
+Server: Starting DCT/quantization for V plane
+Server: V plane DCT/quantization complete
+Server: Starting dequantization/IDCT for reference frame
+Server: Dequantization/IDCT complete
+Server: Preparing encoded data for transfer
+Server: Encoded data size: 6658564 bytes
+Server: Starting DMA transfer of encoded data
+Server: Waiting for encoded data DMA transfer to complete
+Server: Encoded data DMA transfer complete
+Server: Signaling client that encoded data is ready
+Server: Encoded data ready signal sent
+Server: Waiting for client to acknowledge encoded data
+Server: Client acknowledged receipt of encoded data
+Server: Frame 67 processing complete
+Server: Received YUV frame with size 3110400 bytes
+Server: Sending YUV frame acknowledgment to client
+Server: YUV frame acknowledgment sent
+Server: Encoding frame 68
+Server: Frame 68 is not a keyframe
+Server: Starting motion estimation
+Server: Motion estimation complete
+Server: Starting motion compensation
+Server: Motion compensation complete
+Server: Starting DCT/quantization for Y plane
+Server: Y plane DCT/quantization complete
+Server: Starting DCT/quantization for U plane
+Server: U plane DCT/quantization complete
+Server: Starting DCT/quantization for V plane
+Server: V plane DCT/quantization complete
+Server: Starting dequantization/IDCT for reference frame
+Server: Dequantization/IDCT complete
+Server: Preparing encoded data for transfer
+Server: Encoded data size: 6658564 bytes
+Server: Starting DMA transfer of encoded data
+Server: Waiting for encoded data DMA transfer to complete
+Server: Encoded data DMA transfer complete
+Server: Signaling client that encoded data is ready
+Server: Encoded data ready signal sent
+Server: Waiting for client to acknowledge encoded data
+Server: Client acknowledged receipt of encoded data
+Server: Frame 68 processing complete
+Server: Received YUV frame with size 3110400 bytes
+Server: Sending YUV frame acknowledgment to client
+Server: YUV frame acknowledgment sent
+Server: Encoding frame 69
+Server: Frame 69 is not a keyframe
+Server: Starting motion estimation
+Server: Motion estimation complete
+Server: Starting motion compensation
+Server: Motion compensation complete
+Server: Starting DCT/quantization for Y plane
+Server: Y plane DCT/quantization complete
+Server: Starting DCT/quantization for U plane
+Server: U plane DCT/quantization complete
+Server: Starting DCT/quantization for V plane
+Server: V plane DCT/quantization complete
+Server: Starting dequantization/IDCT for reference frame
+Server: Dequantization/IDCT complete
+Server: Preparing encoded data for transfer
+Server: Encoded data size: 6658564 bytes
+Server: Starting DMA transfer of encoded data
+Server: Waiting for encoded data DMA transfer to complete
+Server: Encoded data DMA transfer complete
+Server: Signaling client that encoded data is ready
+Server: Encoded data ready signal sent
+Server: Waiting for client to acknowledge encoded data
+Server: Client acknowledged receipt of encoded data
+Server: Frame 69 processing complete
+Server: Received YUV frame with size 3110400 bytes
+Server: Sending YUV frame acknowledgment to client
+Server: YUV frame acknowledgment sent
+Server: Encoding frame 70
+Server: Frame 70 is not a keyframe
+Server: Starting motion estimation
+Server: Motion estimation complete
+Server: Starting motion compensation
+Server: Motion compensation complete
+Server: Starting DCT/quantization for Y plane
+Server: Y plane DCT/quantization complete
+Server: Starting DCT/quantization for U plane
+Server: U plane DCT/quantization complete
+Server: Starting DCT/quantization for V plane
+Server: V plane DCT/quantization complete
+Server: Starting dequantization/IDCT for reference frame
+Server: Dequantization/IDCT complete
+Server: Preparing encoded data for transfer
+Server: Encoded data size: 6658564 bytes
+Server: Starting DMA transfer of encoded data
+Server: Waiting for encoded data DMA transfer to complete
+Server: Encoded data DMA transfer complete
+Server: Signaling client that encoded data is ready
+Server: Encoded data ready signal sent
+Server: Waiting for client to acknowledge encoded data
+Server: Client acknowledged receipt of encoded data
+Server: Frame 70 processing complete
+Server: Received YUV frame with size 3110400 bytes
+Server: Sending YUV frame acknowledgment to client
+Server: YUV frame acknowledgment sent
+Server: Encoding frame 71
+Server: Frame 71 is not a keyframe
+Server: Starting motion estimation
+Server: Motion estimation complete
+Server: Starting motion compensation
+Server: Motion compensation complete
+Server: Starting DCT/quantization for Y plane
+Server: Y plane DCT/quantization complete
+Server: Starting DCT/quantization for U plane
+Server: U plane DCT/quantization complete
+Server: Starting DCT/quantization for V plane
+Server: V plane DCT/quantization complete
+Server: Starting dequantization/IDCT for reference frame
+Server: Dequantization/IDCT complete
+Server: Preparing encoded data for transfer
+Server: Encoded data size: 6658564 bytes
+Server: Starting DMA transfer of encoded data
+Server: Waiting for encoded data DMA transfer to complete
+Server: Encoded data DMA transfer complete
+Server: Signaling client that encoded data is ready
+Server: Encoded data ready signal sent
+Server: Waiting for client to acknowledge encoded data
+Server: Client acknowledged receipt of encoded data
+Server: Frame 71 processing complete
+Server: Received YUV frame with size 3110400 bytes
+Server: Sending YUV frame acknowledgment to client
+Server: YUV frame acknowledgment sent
+Server: Encoding frame 72
+Server: Frame 72 is not a keyframe
+Server: Starting motion estimation
+Server: Motion estimation complete
+Server: Starting motion compensation
+Server: Motion compensation complete
+Server: Starting DCT/quantization for Y plane
+Server: Y plane DCT/quantization complete
+Server: Starting DCT/quantization for U plane
+Server: U plane DCT/quantization complete
+Server: Starting DCT/quantization for V plane
+Server: V plane DCT/quantization complete
+Server: Starting dequantization/IDCT for reference frame
+Server: Dequantization/IDCT complete
+Server: Preparing encoded data for transfer
+Server: Encoded data size: 6658564 bytes
+Server: Starting DMA transfer of encoded data
+Server: Waiting for encoded data DMA transfer to complete
+Server: Encoded data DMA transfer complete
+Server: Signaling client that encoded data is ready
+Server: Encoded data ready signal sent
+Server: Waiting for client to acknowledge encoded data
+Server: Client acknowledged receipt of encoded data
+Server: Frame 72 processing complete
+Server: Received YUV frame with size 3110400 bytes
+Server: Sending YUV frame acknowledgment to client
+Server: YUV frame acknowledgment sent
+Server: Encoding frame 73
+Server: Frame 73 is not a keyframe
+Server: Starting motion estimation
+Server: Motion estimation complete
+Server: Starting motion compensation
+Server: Motion compensation complete
+Server: Starting DCT/quantization for Y plane
+Server: Y plane DCT/quantization complete
+Server: Starting DCT/quantization for U plane
+Server: U plane DCT/quantization complete
+Server: Starting DCT/quantization for V plane
+Server: V plane DCT/quantization complete
+Server: Starting dequantization/IDCT for reference frame
+Server: Dequantization/IDCT complete
+Server: Preparing encoded data for transfer
+Server: Encoded data size: 6658564 bytes
+Server: Starting DMA transfer of encoded data
+Server: Waiting for encoded data DMA transfer to complete
+Server: Encoded data DMA transfer complete
+Server: Signaling client that encoded data is ready
+Server: Encoded data ready signal sent
+Server: Waiting for client to acknowledge encoded data
+Server: Client acknowledged receipt of encoded data
+Server: Frame 73 processing complete
+Server: Received YUV frame with size 3110400 bytes
+Server: Sending YUV frame acknowledgment to client
+Server: YUV frame acknowledgment sent
+Server: Encoding frame 74
+Server: Frame 74 is not a keyframe
+Server: Starting motion estimation
+Server: Motion estimation complete
+Server: Starting motion compensation
+Server: Motion compensation complete
+Server: Starting DCT/quantization for Y plane
+Server: Y plane DCT/quantization complete
+Server: Starting DCT/quantization for U plane
+Server: U plane DCT/quantization complete
+Server: Starting DCT/quantization for V plane
+Server: V plane DCT/quantization complete
+Server: Starting dequantization/IDCT for reference frame
+Server: Dequantization/IDCT complete
+Server: Preparing encoded data for transfer
+Server: Encoded data size: 6658564 bytes
+Server: Starting DMA transfer of encoded data
+Server: Waiting for encoded data DMA transfer to complete
+Server: Encoded data DMA transfer complete
+Server: Signaling client that encoded data is ready
+Server: Encoded data ready signal sent
+Server: Waiting for client to acknowledge encoded data
+Server: Client acknowledged receipt of encoded data
+Server: Frame 74 processing complete
+Server: Received YUV frame with size 3110400 bytes
+Server: Sending YUV frame acknowledgment to client
+Server: YUV frame acknowledgment sent
+Server: Encoding frame 75
+Server: Frame 75 is not a keyframe
+Server: Starting motion estimation
+Server: Motion estimation complete
+Server: Starting motion compensation
+Server: Motion compensation complete
+Server: Starting DCT/quantization for Y plane
+Server: Y plane DCT/quantization complete
+Server: Starting DCT/quantization for U plane
+Server: U plane DCT/quantization complete
+Server: Starting DCT/quantization for V plane
+Server: V plane DCT/quantization complete
+Server: Starting dequantization/IDCT for reference frame
+Server: Dequantization/IDCT complete
+Server: Preparing encoded data for transfer
+Server: Encoded data size: 6658564 bytes
+Server: Starting DMA transfer of encoded data
+Server: Waiting for encoded data DMA transfer to complete
+Server: Encoded data DMA transfer complete
+Server: Signaling client that encoded data is ready
+Server: Encoded data ready signal sent
+Server: Waiting for client to acknowledge encoded data
+Server: Client acknowledged receipt of encoded data
+Server: Frame 75 processing complete
+Server: Received YUV frame with size 3110400 bytes
+Server: Sending YUV frame acknowledgment to client
+Server: YUV frame acknowledgment sent
+Server: Encoding frame 76
+Server: Frame 76 is not a keyframe
+Server: Starting motion estimation
+Server: Motion estimation complete
+Server: Starting motion compensation
+Server: Motion compensation complete
+Server: Starting DCT/quantization for Y plane
+Server: Y plane DCT/quantization complete
+Server: Starting DCT/quantization for U plane
+Server: U plane DCT/quantization complete
+Server: Starting DCT/quantization for V plane
+Server: V plane DCT/quantization complete
+Server: Starting dequantization/IDCT for reference frame
+Server: Dequantization/IDCT complete
+Server: Preparing encoded data for transfer
+Server: Encoded data size: 6658564 bytes
+Server: Starting DMA transfer of encoded data
+Server: Waiting for encoded data DMA transfer to complete
+Server: Encoded data DMA transfer complete
+Server: Signaling client that encoded data is ready
+Server: Encoded data ready signal sent
+Server: Waiting for client to acknowledge encoded data
+Server: Client acknowledged receipt of encoded data
+Server: Frame 76 processing complete
+Server: Received YUV frame with size 3110400 bytes
+Server: Sending YUV frame acknowledgment to client
+Server: YUV frame acknowledgment sent
+Server: Encoding frame 77
+Server: Frame 77 is not a keyframe
+Server: Starting motion estimation
+Server: Motion estimation complete
+Server: Starting motion compensation
+Server: Motion compensation complete
+Server: Starting DCT/quantization for Y plane
+Server: Y plane DCT/quantization complete
+Server: Starting DCT/quantization for U plane
+Server: U plane DCT/quantization complete
+Server: Starting DCT/quantization for V plane
+Server: V plane DCT/quantization complete
+Server: Starting dequantization/IDCT for reference frame
+Server: Dequantization/IDCT complete
+Server: Preparing encoded data for transfer
+Server: Encoded data size: 6658564 bytes
+Server: Starting DMA transfer of encoded data
+Server: Waiting for encoded data DMA transfer to complete
+Server: Encoded data DMA transfer complete
+Server: Signaling client that encoded data is ready
+Server: Encoded data ready signal sent
+Server: Waiting for client to acknowledge encoded data
+Server: Client acknowledged receipt of encoded data
+Server: Frame 77 processing complete
+Server: Received YUV frame with size 3110400 bytes
+Server: Sending YUV frame acknowledgment to client
+Server: YUV frame acknowledgment sent
+Server: Encoding frame 78
+Server: Frame 78 is not a keyframe
+Server: Starting motion estimation
+Server: Motion estimation complete
+Server: Starting motion compensation
+Server: Motion compensation complete
+Server: Starting DCT/quantization for Y plane
+Server: Y plane DCT/quantization complete
+Server: Starting DCT/quantization for U plane
+Server: U plane DCT/quantization complete
+Server: Starting DCT/quantization for V plane
+Server: V plane DCT/quantization complete
+Server: Starting dequantization/IDCT for reference frame
+Server: Dequantization/IDCT complete
+Server: Preparing encoded data for transfer
+Server: Encoded data size: 6658564 bytes
+Server: Starting DMA transfer of encoded data
+Server: Waiting for encoded data DMA transfer to complete
+Server: Encoded data DMA transfer complete
+Server: Signaling client that encoded data is ready
+Server: Encoded data ready signal sent
+Server: Waiting for client to acknowledge encoded data
+Server: Client acknowledged receipt of encoded data
+Server: Frame 78 processing complete
+Server: Received YUV frame with size 3110400 bytes
+Server: Sending YUV frame acknowledgment to client
+Server: YUV frame acknowledgment sent
+Server: Encoding frame 79
+Server: Frame 79 is not a keyframe
+Server: Starting motion estimation
+Server: Motion estimation complete
+Server: Starting motion compensation
+Server: Motion compensation complete
+Server: Starting DCT/quantization for Y plane
+Server: Y plane DCT/quantization complete
+Server: Starting DCT/quantization for U plane
+Server: U plane DCT/quantization complete
+Server: Starting DCT/quantization for V plane
+Server: V plane DCT/quantization complete
+Server: Starting dequantization/IDCT for reference frame
+Server: Dequantization/IDCT complete
+Server: Preparing encoded data for transfer
+Server: Encoded data size: 6658564 bytes
+Server: Starting DMA transfer of encoded data
+Server: Waiting for encoded data DMA transfer to complete
+Server: Encoded data DMA transfer complete
+Server: Signaling client that encoded data is ready
+Server: Encoded data ready signal sent
+Server: Waiting for client to acknowledge encoded data
+Server: Client acknowledged receipt of encoded data
+Server: Frame 79 processing complete
+Server: Received YUV frame with size 3110400 bytes
+Server: Sending YUV frame acknowledgment to client
+Server: YUV frame acknowledgment sent
+Server: Encoding frame 80
+Server: Frame 80 is not a keyframe
+Server: Starting motion estimation
+Server: Motion estimation complete
+Server: Starting motion compensation
+Server: Motion compensation complete
+Server: Starting DCT/quantization for Y plane
+Server: Y plane DCT/quantization complete
+Server: Starting DCT/quantization for U plane
+Server: U plane DCT/quantization complete
+Server: Starting DCT/quantization for V plane
+Server: V plane DCT/quantization complete
+Server: Starting dequantization/IDCT for reference frame
+Server: Dequantization/IDCT complete
+Server: Preparing encoded data for transfer
+Server: Encoded data size: 6658564 bytes
+Server: Starting DMA transfer of encoded data
+Server: Waiting for encoded data DMA transfer to complete
+Server: Encoded data DMA transfer complete
+Server: Signaling client that encoded data is ready
+Server: Encoded data ready signal sent
+Server: Waiting for client to acknowledge encoded data
+Server: Client acknowledged receipt of encoded data
+Server: Frame 80 processing complete
+Server: Received YUV frame with size 3110400 bytes
+Server: Sending YUV frame acknowledgment to client
+Server: YUV frame acknowledgment sent
+Server: Encoding frame 81
+Server: Frame 81 is not a keyframe
+Server: Starting motion estimation
+Server: Motion estimation complete
+Server: Starting motion compensation
+Server: Motion compensation complete
+Server: Starting DCT/quantization for Y plane
+Server: Y plane DCT/quantization complete
+Server: Starting DCT/quantization for U plane
+Server: U plane DCT/quantization complete
+Server: Starting DCT/quantization for V plane
+Server: V plane DCT/quantization complete
+Server: Starting dequantization/IDCT for reference frame
+Server: Dequantization/IDCT complete
+Server: Preparing encoded data for transfer
+Server: Encoded data size: 6658564 bytes
+Server: Starting DMA transfer of encoded data
+Server: Waiting for encoded data DMA transfer to complete
+Server: Encoded data DMA transfer complete
+Server: Signaling client that encoded data is ready
+Server: Encoded data ready signal sent
+Server: Waiting for client to acknowledge encoded data
+Server: Client acknowledged receipt of encoded data
+Server: Frame 81 processing complete
+Server: Received YUV frame with size 3110400 bytes
+Server: Sending YUV frame acknowledgment to client
+Server: YUV frame acknowledgment sent
+Server: Encoding frame 82
+Server: Frame 82 is not a keyframe
+Server: Starting motion estimation
+Server: Motion estimation complete
+Server: Starting motion compensation
+Server: Motion compensation complete
+Server: Starting DCT/quantization for Y plane
+Server: Y plane DCT/quantization complete
+Server: Starting DCT/quantization for U plane
+Server: U plane DCT/quantization complete
+Server: Starting DCT/quantization for V plane
+Server: V plane DCT/quantization complete
+Server: Starting dequantization/IDCT for reference frame
+Server: Dequantization/IDCT complete
+Server: Preparing encoded data for transfer
+Server: Encoded data size: 6658564 bytes
+Server: Starting DMA transfer of encoded data
+Server: Waiting for encoded data DMA transfer to complete
+Server: Encoded data DMA transfer complete
+Server: Signaling client that encoded data is ready
+Server: Encoded data ready signal sent
+Server: Waiting for client to acknowledge encoded data
+Server: Client acknowledged receipt of encoded data
+Server: Frame 82 processing complete
+Server: Received YUV frame with size 3110400 bytes
+Server: Sending YUV frame acknowledgment to client
+Server: YUV frame acknowledgment sent
+Server: Encoding frame 83
+Server: Frame 83 is not a keyframe
+Server: Starting motion estimation
+Server: Motion estimation complete
+Server: Starting motion compensation
+Server: Motion compensation complete
+Server: Starting DCT/quantization for Y plane
+Server: Y plane DCT/quantization complete
+Server: Starting DCT/quantization for U plane
+Server: U plane DCT/quantization complete
+Server: Starting DCT/quantization for V plane
+Server: V plane DCT/quantization complete
+Server: Starting dequantization/IDCT for reference frame
+Server: Dequantization/IDCT complete
+Server: Preparing encoded data for transfer
+Server: Encoded data size: 6658564 bytes
+Server: Starting DMA transfer of encoded data
+Server: Waiting for encoded data DMA transfer to complete
+Server: Encoded data DMA transfer complete
+Server: Signaling client that encoded data is ready
+Server: Encoded data ready signal sent
+Server: Waiting for client to acknowledge encoded data
+Server: Client acknowledged receipt of encoded data
+Server: Frame 83 processing complete
+Server: Received YUV frame with size 3110400 bytes
+Server: Sending YUV frame acknowledgment to client
+Server: YUV frame acknowledgment sent
+Server: Encoding frame 84
+Server: Frame 84 is not a keyframe
+Server: Starting motion estimation
+Server: Motion estimation complete
+Server: Starting motion compensation
+Server: Motion compensation complete
+Server: Starting DCT/quantization for Y plane
+Server: Y plane DCT/quantization complete
+Server: Starting DCT/quantization for U plane
+Server: U plane DCT/quantization complete
+Server: Starting DCT/quantization for V plane
+Server: V plane DCT/quantization complete
+Server: Starting dequantization/IDCT for reference frame
+Server: Dequantization/IDCT complete
+Server: Preparing encoded data for transfer
+Server: Encoded data size: 6658564 bytes
+Server: Starting DMA transfer of encoded data
+Server: Waiting for encoded data DMA transfer to complete
+Server: Encoded data DMA transfer complete
+Server: Signaling client that encoded data is ready
+Server: Encoded data ready signal sent
+Server: Waiting for client to acknowledge encoded data
+Server: Client acknowledged receipt of encoded data
+Server: Frame 84 processing complete
+Server: Received YUV frame with size 3110400 bytes
+Server: Sending YUV frame acknowledgment to client
+Server: YUV frame acknowledgment sent
+Server: Encoding frame 85
+Server: Frame 85 is not a keyframe
+Server: Starting motion estimation
+Server: Motion estimation complete
+Server: Starting motion compensation
+Server: Motion compensation complete
+Server: Starting DCT/quantization for Y plane
+Server: Y plane DCT/quantization complete
+Server: Starting DCT/quantization for U plane
+Server: U plane DCT/quantization complete
+Server: Starting DCT/quantization for V plane
+Server: V plane DCT/quantization complete
+Server: Starting dequantization/IDCT for reference frame
+Server: Dequantization/IDCT complete
+Server: Preparing encoded data for transfer
+Server: Encoded data size: 6658564 bytes
+Server: Starting DMA transfer of encoded data
+Server: Waiting for encoded data DMA transfer to complete
+Server: Encoded data DMA transfer complete
+Server: Signaling client that encoded data is ready
+Server: Encoded data ready signal sent
+Server: Waiting for client to acknowledge encoded data
+Server: Client acknowledged receipt of encoded data
+Server: Frame 85 processing complete
+Server: Received YUV frame with size 3110400 bytes
+Server: Sending YUV frame acknowledgment to client
+Server: YUV frame acknowledgment sent
+Server: Encoding frame 86
+Server: Frame 86 is not a keyframe
+Server: Starting motion estimation
+Server: Motion estimation complete
+Server: Starting motion compensation
+Server: Motion compensation complete
+Server: Starting DCT/quantization for Y plane
+Server: Y plane DCT/quantization complete
+Server: Starting DCT/quantization for U plane
+Server: U plane DCT/quantization complete
+Server: Starting DCT/quantization for V plane
+Server: V plane DCT/quantization complete
+Server: Starting dequantization/IDCT for reference frame
+Server: Dequantization/IDCT complete
+Server: Preparing encoded data for transfer
+Server: Encoded data size: 6658564 bytes
+Server: Starting DMA transfer of encoded data
+Server: Waiting for encoded data DMA transfer to complete
+Server: Encoded data DMA transfer complete
+Server: Signaling client that encoded data is ready
+Server: Encoded data ready signal sent
+Server: Waiting for client to acknowledge encoded data
+Server: Client acknowledged receipt of encoded data
+Server: Frame 86 processing complete
+Server: Received YUV frame with size 3110400 bytes
+Server: Sending YUV frame acknowledgment to client
+Server: YUV frame acknowledgment sent
+Server: Encoding frame 87
+Server: Frame 87 is not a keyframe
+Server: Starting motion estimation
+Server: Motion estimation complete
+Server: Starting motion compensation
+Server: Motion compensation complete
+Server: Starting DCT/quantization for Y plane
+Server: Y plane DCT/quantization complete
+Server: Starting DCT/quantization for U plane
+Server: U plane DCT/quantization complete
+Server: Starting DCT/quantization for V plane
+Server: V plane DCT/quantization complete
+Server: Starting dequantization/IDCT for reference frame
+Server: Dequantization/IDCT complete
+Server: Preparing encoded data for transfer
+Server: Encoded data size: 6658564 bytes
+Server: Starting DMA transfer of encoded data
+Server: Waiting for encoded data DMA transfer to complete
+Server: Encoded data DMA transfer complete
+Server: Signaling client that encoded data is ready
+Server: Encoded data ready signal sent
+Server: Waiting for client to acknowledge encoded data
+Server: Client acknowledged receipt of encoded data
+Server: Frame 87 processing complete
+Server: Received YUV frame with size 3110400 bytes
+Server: Sending YUV frame acknowledgment to client
+Server: YUV frame acknowledgment sent
+Server: Encoding frame 88
+Server: Frame 88 is not a keyframe
+Server: Starting motion estimation
+Server: Motion estimation complete
+Server: Starting motion compensation
+Server: Motion compensation complete
+Server: Starting DCT/quantization for Y plane
+Server: Y plane DCT/quantization complete
+Server: Starting DCT/quantization for U plane
+Server: U plane DCT/quantization complete
+Server: Starting DCT/quantization for V plane
+Server: V plane DCT/quantization complete
+Server: Starting dequantization/IDCT for reference frame
+Server: Dequantization/IDCT complete
+Server: Preparing encoded data for transfer
+Server: Encoded data size: 6658564 bytes
+Server: Starting DMA transfer of encoded data
+Server: Waiting for encoded data DMA transfer to complete
+Server: Encoded data DMA transfer complete
+Server: Signaling client that encoded data is ready
+Server: Encoded data ready signal sent
+Server: Waiting for client to acknowledge encoded data
+Server: Client acknowledged receipt of encoded data
+Server: Frame 88 processing complete
+Server: Received YUV frame with size 3110400 bytes
+Server: Sending YUV frame acknowledgment to client
+Server: YUV frame acknowledgment sent
+Server: Encoding frame 89
+Server: Frame 89 is not a keyframe
+Server: Starting motion estimation
+Server: Motion estimation complete
+Server: Starting motion compensation
+Server: Motion compensation complete
+Server: Starting DCT/quantization for Y plane
+Server: Y plane DCT/quantization complete
+Server: Starting DCT/quantization for U plane
+Server: U plane DCT/quantization complete
+Server: Starting DCT/quantization for V plane
+Server: V plane DCT/quantization complete
+Server: Starting dequantization/IDCT for reference frame
+Server: Dequantization/IDCT complete
+Server: Preparing encoded data for transfer
+Server: Encoded data size: 6658564 bytes
+Server: Starting DMA transfer of encoded data
+Server: Waiting for encoded data DMA transfer to complete
+Server: Encoded data DMA transfer complete
+Server: Signaling client that encoded data is ready
+Server: Encoded data ready signal sent
+Server: Waiting for client to acknowledge encoded data
+Server: Client acknowledged receipt of encoded data
+Server: Frame 89 processing complete
+Server: Received YUV frame with size 3110400 bytes
+Server: Sending YUV frame acknowledgment to client
+Server: YUV frame acknowledgment sent
+Server: Encoding frame 90
+Server: Frame 90 is not a keyframe
+Server: Starting motion estimation
+Server: Motion estimation complete
+Server: Starting motion compensation
+Server: Motion compensation complete
+Server: Starting DCT/quantization for Y plane
+Server: Y plane DCT/quantization complete
+Server: Starting DCT/quantization for U plane
+Server: U plane DCT/quantization complete
+Server: Starting DCT/quantization for V plane
+Server: V plane DCT/quantization complete
+Server: Starting dequantization/IDCT for reference frame
+Server: Dequantization/IDCT complete
+Server: Preparing encoded data for transfer
+Server: Encoded data size: 6658564 bytes
+Server: Starting DMA transfer of encoded data
+Server: Waiting for encoded data DMA transfer to complete
+Server: Encoded data DMA transfer complete
+Server: Signaling client that encoded data is ready
+Server: Encoded data ready signal sent
+Server: Waiting for client to acknowledge encoded data
+Server: Client acknowledged receipt of encoded data
+Server: Frame 90 processing complete
+Server: Received YUV frame with size 3110400 bytes
+Server: Sending YUV frame acknowledgment to client
+Server: YUV frame acknowledgment sent
+Server: Encoding frame 91
+Server: Frame 91 is not a keyframe
+Server: Starting motion estimation
+Server: Motion estimation complete
+Server: Starting motion compensation
+Server: Motion compensation complete
+Server: Starting DCT/quantization for Y plane
+Server: Y plane DCT/quantization complete
+Server: Starting DCT/quantization for U plane
+Server: U plane DCT/quantization complete
+Server: Starting DCT/quantization for V plane
+Server: V plane DCT/quantization complete
+Server: Starting dequantization/IDCT for reference frame
+Server: Dequantization/IDCT complete
+Server: Preparing encoded data for transfer
+Server: Encoded data size: 6658564 bytes
+Server: Starting DMA transfer of encoded data
+Server: Waiting for encoded data DMA transfer to complete
+Server: Encoded data DMA transfer complete
+Server: Signaling client that encoded data is ready
+Server: Encoded data ready signal sent
+Server: Waiting for client to acknowledge encoded data
+Server: Client acknowledged receipt of encoded data
+Server: Frame 91 processing complete
+Server: Received YUV frame with size 3110400 bytes
+Server: Sending YUV frame acknowledgment to client
+Server: YUV frame acknowledgment sent
+Server: Encoding frame 92
+Server: Frame 92 is not a keyframe
+Server: Starting motion estimation
+Server: Motion estimation complete
+Server: Starting motion compensation
+Server: Motion compensation complete
+Server: Starting DCT/quantization for Y plane
+Server: Y plane DCT/quantization complete
+Server: Starting DCT/quantization for U plane
+Server: U plane DCT/quantization complete
+Server: Starting DCT/quantization for V plane
+Server: V plane DCT/quantization complete
+Server: Starting dequantization/IDCT for reference frame
+Server: Dequantization/IDCT complete
+Server: Preparing encoded data for transfer
+Server: Encoded data size: 6658564 bytes
+Server: Starting DMA transfer of encoded data
+Server: Waiting for encoded data DMA transfer to complete
+Server: Encoded data DMA transfer complete
+Server: Signaling client that encoded data is ready
+Server: Encoded data ready signal sent
+Server: Waiting for client to acknowledge encoded data
+Server: Client acknowledged receipt of encoded data
+Server: Frame 92 processing complete
+Server: Received YUV frame with size 3110400 bytes
+Server: Sending YUV frame acknowledgment to client
+Server: YUV frame acknowledgment sent
+Server: Encoding frame 93
+Server: Frame 93 is not a keyframe
+Server: Starting motion estimation
+Server: Motion estimation complete
+Server: Starting motion compensation
+Server: Motion compensation complete
+Server: Starting DCT/quantization for Y plane
+Server: Y plane DCT/quantization complete
+Server: Starting DCT/quantization for U plane
+Server: U plane DCT/quantization complete
+Server: Starting DCT/quantization for V plane
+Server: V plane DCT/quantization complete
+Server: Starting dequantization/IDCT for reference frame
+Server: Dequantization/IDCT complete
+Server: Preparing encoded data for transfer
+Server: Encoded data size: 6658564 bytes
+Server: Starting DMA transfer of encoded data
+Server: Waiting for encoded data DMA transfer to complete
+Server: Encoded data DMA transfer complete
+Server: Signaling client that encoded data is ready
+Server: Encoded data ready signal sent
+Server: Waiting for client to acknowledge encoded data
+Server: Client acknowledged receipt of encoded data
+Server: Frame 93 processing complete
+Server: Received YUV frame with size 3110400 bytes
+Server: Sending YUV frame acknowledgment to client
+Server: YUV frame acknowledgment sent
+Server: Encoding frame 94
+Server: Frame 94 is not a keyframe
+Server: Starting motion estimation
+Server: Motion estimation complete
+Server: Starting motion compensation
+Server: Motion compensation complete
+Server: Starting DCT/quantization for Y plane
+Server: Y plane DCT/quantization complete
+Server: Starting DCT/quantization for U plane
+Server: U plane DCT/quantization complete
+Server: Starting DCT/quantization for V plane
+Server: V plane DCT/quantization complete
+Server: Starting dequantization/IDCT for reference frame
+Server: Dequantization/IDCT complete
+Server: Preparing encoded data for transfer
+Server: Encoded data size: 6658564 bytes
+Server: Starting DMA transfer of encoded data
+Server: Waiting for encoded data DMA transfer to complete
+Server: Encoded data DMA transfer complete
+Server: Signaling client that encoded data is ready
+Server: Encoded data ready signal sent
+Server: Waiting for client to acknowledge encoded data
+Server: Client acknowledged receipt of encoded data
+Server: Frame 94 processing complete
+Server: Received YUV frame with size 3110400 bytes
+Server: Sending YUV frame acknowledgment to client
+Server: YUV frame acknowledgment sent
+Server: Encoding frame 95
+Server: Frame 95 is not a keyframe
+Server: Starting motion estimation
+Server: Motion estimation complete
+Server: Starting motion compensation
+Server: Motion compensation complete
+Server: Starting DCT/quantization for Y plane
+Server: Y plane DCT/quantization complete
+Server: Starting DCT/quantization for U plane
+Server: U plane DCT/quantization complete
+Server: Starting DCT/quantization for V plane
+Server: V plane DCT/quantization complete
+Server: Starting dequantization/IDCT for reference frame
+Server: Dequantization/IDCT complete
+Server: Preparing encoded data for transfer
+Server: Encoded data size: 6658564 bytes
+Server: Starting DMA transfer of encoded data
+Server: Waiting for encoded data DMA transfer to complete
+Server: Encoded data DMA transfer complete
+Server: Signaling client that encoded data is ready
+Server: Encoded data ready signal sent
+Server: Waiting for client to acknowledge encoded data
+Server: Client acknowledged receipt of encoded data
+Server: Frame 95 processing complete
+Server: Received YUV frame with size 3110400 bytes
+Server: Sending YUV frame acknowledgment to client
+Server: YUV frame acknowledgment sent
+Server: Encoding frame 96
+Server: Frame 96 is not a keyframe
+Server: Starting motion estimation
+Server: Motion estimation complete
+Server: Starting motion compensation
+Server: Motion compensation complete
+Server: Starting DCT/quantization for Y plane
+Server: Y plane DCT/quantization complete
+Server: Starting DCT/quantization for U plane
+Server: U plane DCT/quantization complete
+Server: Starting DCT/quantization for V plane
+Server: V plane DCT/quantization complete
+Server: Starting dequantization/IDCT for reference frame
+Server: Dequantization/IDCT complete
+Server: Preparing encoded data for transfer
+Server: Encoded data size: 6658564 bytes
+Server: Starting DMA transfer of encoded data
+Server: Waiting for encoded data DMA transfer to complete
+Server: Encoded data DMA transfer complete
+Server: Signaling client that encoded data is ready
+Server: Encoded data ready signal sent
+Server: Waiting for client to acknowledge encoded data
+Server: Client acknowledged receipt of encoded data
+Server: Frame 96 processing complete
+Server: Received YUV frame with size 3110400 bytes
+Server: Sending YUV frame acknowledgment to client
+Server: YUV frame acknowledgment sent
+Server: Encoding frame 97
+Server: Frame 97 is not a keyframe
+Server: Starting motion estimation
+Server: Motion estimation complete
+Server: Starting motion compensation
+Server: Motion compensation complete
+Server: Starting DCT/quantization for Y plane
+Server: Y plane DCT/quantization complete
+Server: Starting DCT/quantization for U plane
+Server: U plane DCT/quantization complete
+Server: Starting DCT/quantization for V plane
+Server: V plane DCT/quantization complete
+Server: Starting dequantization/IDCT for reference frame
+Server: Dequantization/IDCT complete
+Server: Preparing encoded data for transfer
+Server: Encoded data size: 6658564 bytes
+Server: Starting DMA transfer of encoded data
+Server: Waiting for encoded data DMA transfer to complete
+Server: Encoded data DMA transfer complete
+Server: Signaling client that encoded data is ready
+Server: Encoded data ready signal sent
+Server: Waiting for client to acknowledge encoded data
+Server: Client acknowledged receipt of encoded data
+Server: Frame 97 processing complete
+Server: Received YUV frame with size 3110400 bytes
+Server: Sending YUV frame acknowledgment to client
+Server: YUV frame acknowledgment sent
+Server: Encoding frame 98
+Server: Frame 98 is not a keyframe
+Server: Starting motion estimation
+Server: Motion estimation complete
+Server: Starting motion compensation
+Server: Motion compensation complete
+Server: Starting DCT/quantization for Y plane
+Server: Y plane DCT/quantization complete
+Server: Starting DCT/quantization for U plane
+Server: U plane DCT/quantization complete
+Server: Starting DCT/quantization for V plane
+Server: V plane DCT/quantization complete
+Server: Starting dequantization/IDCT for reference frame
+Server: Dequantization/IDCT complete
+Server: Preparing encoded data for transfer
+Server: Encoded data size: 6658564 bytes
+Server: Starting DMA transfer of encoded data
+Server: Waiting for encoded data DMA transfer to complete
+Server: Encoded data DMA transfer complete
+Server: Signaling client that encoded data is ready
+Server: Encoded data ready signal sent
+Server: Waiting for client to acknowledge encoded data
+Server: Client acknowledged receipt of encoded data
+Server: Frame 98 processing complete
+Server: Received YUV frame with size 3110400 bytes
+Server: Sending YUV frame acknowledgment to client
+Server: YUV frame acknowledgment sent
+Server: Encoding frame 99
+Server: Frame 99 is not a keyframe
+Server: Starting motion estimation
+Server: Motion estimation complete
+Server: Starting motion compensation
+Server: Motion compensation complete
+Server: Starting DCT/quantization for Y plane
+Server: Y plane DCT/quantization complete
+Server: Starting DCT/quantization for U plane
+Server: U plane DCT/quantization complete
+Server: Starting DCT/quantization for V plane
+Server: V plane DCT/quantization complete
+Server: Starting dequantization/IDCT for reference frame
+Server: Dequantization/IDCT complete
+Server: Preparing encoded data for transfer
+Server: Encoded data size: 6658564 bytes
+Server: Starting DMA transfer of encoded data
+Server: Waiting for encoded data DMA transfer to complete
+Server: Encoded data DMA transfer complete
+Server: Signaling client that encoded data is ready
+Server: Encoded data ready signal sent
+Server: Waiting for client to acknowledge encoded data
+Server: Client acknowledged receipt of encoded data
+Server: Frame 99 processing complete
+Server: Received quit command after processing 100 frames
+Task pool destroyed
+Thread pool destroyed
+Server: Exiting
+
+real	0m17.520s
+user	0m43.014s
+sys	0m2.833s
+Tegra exit code: 0

@@ -1,0 +1,10 @@
+Limited to 100 frames.
+Client: Connecting to server segment...
+Client: Connected to server segment
+SISCI : SCIMapRemoteSegment - kcMmapShm failed - error=0x40000904
+SCIMapRemoteSegment failed - Error code 0x40000904
+PC exit code: 1
+
+real	0m0,199s
+user	0m0,009s
+sys	0m0,070s

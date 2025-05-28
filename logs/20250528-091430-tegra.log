@@ -1,0 +1,62 @@
+Server: Waiting for client connection...
+Server: Connected to client segment
+Server: Waiting for commands...
+Server: Received dimensions (width=1920, height=1080)
+Thread pool initialized with 8 threads
+Task pool is initialized with 136 tasks
+Server: Dimensions acknowledged
+Server: Waiting for frames...
+Server: Received YUV frame with size 3110400 bytes
+Server: Sending YUV frame acknowledgment to client
+Server: YUV frame acknowledgment sent
+Server: Encoding frame 0
+Server: Frame 0 is a keyframe
+Server: Starting DCT/quantization for Y plane
+Server: Y plane DCT/quantization complete
+Server: Starting DCT/quantization for U plane
+Server: U plane DCT/quantization complete
+Server: Starting DCT/quantization for V plane
+Server: V plane DCT/quantization complete
+Server: Starting dequantization/IDCT for reference frame
+Server: Dequantization/IDCT complete
+Server: Preparing encoded data for transfer
+Server: Encoded data size: 6658564 bytes
+Server: Starting DMA transfer of encoded data
+Server: Waiting for encoded data DMA transfer to complete
+Server: Encoded data DMA transfer complete
+Server: Signaling client that encoded data is ready
+Server: Encoded data ready signal sent
+Server: Waiting for client to acknowledge encoded data
+Server: Client acknowledged receipt of encoded data
+Server: Frame 0 processing complete
+Server: Received YUV frame with size 3110400 bytes
+Server: Sending YUV frame acknowledgment to client
+Server: YUV frame acknowledgment sent
+Server: Encoding frame 1
+Server: Frame 1 is not a keyframe
+Server: Starting motion estimation
+Server: Motion estimation complete
+Server: Starting motion compensation
+Server: Motion compensation complete
+Server: Starting DCT/quantization for Y plane
+Server: Y plane DCT/quantization complete
+Server: Starting DCT/quantization for U plane
+Server: U plane DCT/quantization complete
+Server: Starting DCT/quantization for V plane
+Server: V plane DCT/quantization complete
+Server: Starting dequantization/IDCT for reference frame
+Server: Dequantization/IDCT complete
+Server: Preparing encoded data for transfer
+Server: Encoded data size: 6658564 bytes
+Server: Starting DMA transfer of encoded data
+Server: Waiting for encoded data DMA transfer to complete
+Server: Encoded data DMA transfer complete
+Server: Signaling client that encoded data is ready
+Server: Encoded data ready signal sent
+Server: Waiting for client to acknowledge encoded data
+Terminated
+
+real	0m11.251s
+user	0m11.438s
+sys	0m0.148s
+Tegra exit code: 143

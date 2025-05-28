@@ -1,0 +1,12 @@
+Client: Connecting to server segment...
+Client: Connected to server segment
+Segment handle: 0x55dd43b90600
+Map handle: 0x55dd43b906b0
+SISCI : SCIMapRemoteSegment - kcMmapShm failed - error=0x40000904
+SCIMapRemoteSegment failed - Error code 0x40000904
+bash: line 1: 2213919 Segmentation fault      (core dumped) stdbuf -oL -eL ./c63client -r 20 /opt/Media/foreman.yuv -o output -w 352 -h 288
+
+real	0m0,307s
+user	0m0,009s
+sys	0m0,054s
+PC exit code: 139
