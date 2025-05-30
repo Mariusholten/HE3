@@ -355,6 +355,9 @@ void *receive_write_thread(void *arg) {
         SCIFlush(NULL, NO_FLAGS);
         g.server_send->packet.cmd = CMD_ENCODED_DATA_ACK;
         SCIFlush(NULL, NO_FLAGS);
+
+        pthread_cond_signal(&g.pipeline.slot_available);
+        pthread_cond_signal(&g.pipeline.frame_ready_to_send); // Signal read/send thread
         
         pthread_mutex_lock(&g.pipeline.mutex);
         result_frame->result_received = true;
@@ -452,8 +455,6 @@ void *receive_write_thread(void *arg) {
             g.pipeline.frames_written++;
             g.pipeline.next_write_frame++;
             
-            pthread_cond_signal(&g.pipeline.slot_available);
-            pthread_cond_signal(&g.pipeline.frame_ready_to_send); // Signal read/send thread
             pthread_mutex_unlock(&g.pipeline.mutex);
             
             // Continue processing more frames if available
