@@ -20,38 +20,45 @@
 #include <sisci_error.h>
 #include <sisci_api.h>
 
-// Frame buffer for sequential processing
+// Frame queue entry - just stores raw YUV data
 typedef struct {
-    yuv_t image;               // YUV data (CUDA managed memory)
-    char *encoded_data;        // Encoded result buffer
-    size_t encoded_size;       // Size of encoded data
+    uint8_t *yuv_data;         // Raw YUV data (host memory)
+    size_t data_size;          // Size of YUV data
     int frame_number;          // Frame sequence number
-    bool has_yuv_data;         // Whether YUV data is available
-    bool is_encoded;           // Whether frame is encoded
-    bool keyframe;             // Whether this is a keyframe
-} frame_buffer_t;
+    bool valid;                // Whether this entry is valid
+} frame_queue_entry_t;
 
-// Simple frame manager for sequential processing
+// Simple frame queue
 typedef struct {
-    frame_buffer_t frames[MAX_FRAMES];
+    frame_queue_entry_t entries[MAX_FRAMES];
+    int head, tail, count;
     
-    int next_frame_to_encode;  // Next frame number to encode (sequential)
     int frames_received;       // Total frames received
     int frames_encoded;        // Total frames encoded
     int frames_sent;           // Total frames sent
+    int next_frame_to_encode;  // Next frame number expected for encoding
+    
+    // Current frame being encoded/sent
+    yuv_t current_frame;       // CUDA managed memory for encoding
+    char *encoded_data;        // Current encoded result
+    size_t encoded_size;       // Size of current encoded data
+    int current_frame_number;  // Frame number currently being processed
+    bool current_keyframe;     // Whether current frame is keyframe
+    bool frame_ready_to_send;  // Whether encoded frame is ready to send
     
     bool quit_requested;
     
     pthread_mutex_t mutex;
-    pthread_cond_t frame_ready, encode_done;
-} frame_manager_t;
+    pthread_cond_t frame_available;  // Signal when frame added to queue
+    pthread_cond_t encode_done;      // Signal when encoding is complete
+} frame_queue_t;
 
 // Global state
 static struct {
     uint32_t width, height;
     uint32_t remote_node;
     struct c63_common *cm;
-    frame_manager_t frame_mgr;
+    frame_queue_t frame_queue;
     
     // SISCI resources
     volatile struct recv_segment *recv_seg;
@@ -63,194 +70,200 @@ static struct {
     sci_remote_segment_t remote_client_send, remote_client_recv;
 } g;
 
-// Initialize frame manager
-void frame_manager_init(frame_manager_t *mgr) {
-    memset(mgr, 0, sizeof(frame_manager_t));
+// Initialize frame queue
+void frame_queue_init(frame_queue_t *queue) {
+    memset(queue, 0, sizeof(frame_queue_t));
     
-    // Allocate encoded data buffers
+    // Initialize queue entries
     for (int i = 0; i < MAX_FRAMES; i++) {
-        mgr->frames[i].encoded_data = (char*)malloc(MESSAGE_SIZE);
-        mgr->frames[i].has_yuv_data = false;
-        mgr->frames[i].is_encoded = false;
-        mgr->frames[i].image.Y = NULL;
-        mgr->frames[i].image.U = NULL;
-        mgr->frames[i].image.V = NULL;
+        queue->entries[i].yuv_data = NULL;
+        queue->entries[i].valid = false;
     }
     
-    mgr->next_frame_to_encode = 0;
-    mgr->quit_requested = false;
+    // Allocate encoded data buffer
+    queue->encoded_data = (char*)malloc(MESSAGE_SIZE);
     
-    pthread_mutex_init(&mgr->mutex, NULL);
-    pthread_cond_init(&mgr->frame_ready, NULL);
-    pthread_cond_init(&mgr->encode_done, NULL);
+    queue->head = 0;
+    queue->tail = 0;
+    queue->count = 0;
+    queue->next_frame_to_encode = 0;
+    queue->frame_ready_to_send = false;
+    
+    pthread_mutex_init(&queue->mutex, NULL);
+    pthread_cond_init(&queue->frame_available, NULL);
+    pthread_cond_init(&queue->encode_done, NULL);
 }
 
-// Cleanup frame manager
-void frame_manager_destroy(frame_manager_t *mgr) {
-    pthread_mutex_lock(&mgr->mutex);
+// Cleanup frame queue
+void frame_queue_destroy(frame_queue_t *queue) {
+    pthread_mutex_lock(&queue->mutex);
     
+    // Free all queued frames
     for (int i = 0; i < MAX_FRAMES; i++) {
-        free(mgr->frames[i].encoded_data);
-        
-        // Clean up CUDA memory
-        if (mgr->frames[i].image.Y) cudaFree(mgr->frames[i].image.Y);
-        if (mgr->frames[i].image.U) cudaFree(mgr->frames[i].image.U);
-        if (mgr->frames[i].image.V) cudaFree(mgr->frames[i].image.V);
-    }
-    
-    pthread_mutex_unlock(&mgr->mutex);
-    
-    pthread_mutex_destroy(&mgr->mutex);
-    pthread_cond_destroy(&mgr->frame_ready);
-    pthread_cond_destroy(&mgr->encode_done);
-}
-
-// Add received frame
-bool frame_manager_add_frame(frame_manager_t *mgr, const void *yuv_data, size_t data_size) {
-    pthread_mutex_lock(&mgr->mutex);
-    
-    if (mgr->quit_requested) {
-        pthread_mutex_unlock(&mgr->mutex);
-        return false;
-    }
-    
-    // Find available slot
-    int slot_idx = -1;
-    for (int i = 0; i < MAX_FRAMES; i++) {
-        if (!mgr->frames[i].has_yuv_data && !mgr->frames[i].is_encoded) {
-            slot_idx = i;
-            break;
+        if (queue->entries[i].yuv_data) {
+            free(queue->entries[i].yuv_data);
         }
     }
     
-    if (slot_idx == -1) {
-        printf("Server: No available slots for frame\n");
-        pthread_mutex_unlock(&mgr->mutex);
+    // Free encoded data buffer
+    free(queue->encoded_data);
+    
+    // Free CUDA memory
+    if (queue->current_frame.Y) cudaFree(queue->current_frame.Y);
+    if (queue->current_frame.U) cudaFree(queue->current_frame.U);
+    if (queue->current_frame.V) cudaFree(queue->current_frame.V);
+    
+    pthread_mutex_unlock(&queue->mutex);
+    
+    pthread_mutex_destroy(&queue->mutex);
+    pthread_cond_destroy(&queue->frame_available);
+    pthread_cond_destroy(&queue->encode_done);
+}
+
+// Add frame to queue (called by receiver thread)
+bool frame_queue_add(frame_queue_t *queue, const void *yuv_data, size_t data_size) {
+    pthread_mutex_lock(&queue->mutex);
+    
+    if (queue->quit_requested) {
+        pthread_mutex_unlock(&queue->mutex);
         return false;
     }
     
-    frame_buffer_t *frame = &mgr->frames[slot_idx];
-    
-    // Allocate CUDA memory if needed
-    if (!frame->image.Y) {
-        cudaMallocManaged((void**)&frame->image.Y, g.cm->padw[Y_COMPONENT] * g.cm->padh[Y_COMPONENT]);
-        cudaMallocManaged((void**)&frame->image.U, g.cm->padw[U_COMPONENT] * g.cm->padh[U_COMPONENT]);
-        cudaMallocManaged((void**)&frame->image.V, g.cm->padw[V_COMPONENT] * g.cm->padh[V_COMPONENT]);
+    // Check if queue is full
+    if (queue->count >= MAX_FRAMES) {
+        printf("Server: Frame queue is full, dropping frame\n");
+        pthread_mutex_unlock(&queue->mutex);
+        return false;
     }
     
-    // Copy YUV data
-    size_t y_size = g.width * g.height;
-    size_t u_size = (g.width * g.height) / 4;
+    // Add frame to tail of queue
+    frame_queue_entry_t *entry = &queue->entries[queue->tail];
     
-    const char *src = (const char*)yuv_data;
-    memcpy(frame->image.Y, src, y_size);
-    memcpy(frame->image.U, src + y_size, u_size);
-    memcpy(frame->image.V, src + y_size + u_size, u_size);
+    // Allocate memory for YUV data (host memory)
+    entry->yuv_data = (uint8_t*)malloc(data_size);
+    memcpy(entry->yuv_data, yuv_data, data_size);
+    entry->data_size = data_size;
+    entry->frame_number = queue->frames_received++;
+    entry->valid = true;
     
-    frame->frame_number = mgr->frames_received++;
-    frame->has_yuv_data = true;
-    frame->is_encoded = false;
+    printf("Server: Frame %d added to queue (position %d, queue size: %d)\n", 
+           entry->frame_number, queue->tail, queue->count + 1);
     
-    printf("Server: Frame %d received in slot %d\n", frame->frame_number, slot_idx);
+    // Update queue pointers
+    queue->tail = (queue->tail + 1) % MAX_FRAMES;
+    queue->count++;
     
-    pthread_cond_signal(&mgr->frame_ready);
-    pthread_mutex_unlock(&mgr->mutex);
+    // Signal encoder thread
+    pthread_cond_signal(&queue->frame_available);
+    pthread_mutex_unlock(&queue->mutex);
     return true;
 }
 
-// Get next frame to encode (sequential)
-frame_buffer_t* frame_manager_get_encode_frame(frame_manager_t *mgr) {
-    pthread_mutex_lock(&mgr->mutex);
+// Get next frame for encoding (called by encoder thread)
+bool frame_queue_get_next_encode_frame(frame_queue_t *queue) {
+    pthread_mutex_lock(&queue->mutex);
     
-    frame_buffer_t *frame = NULL;
-    
-    while (!mgr->quit_requested) {
+    while (!queue->quit_requested) {
         // Look for the next frame in sequence
-        for (int i = 0; i < MAX_FRAMES; i++) {
-            if (mgr->frames[i].has_yuv_data && 
-                !mgr->frames[i].is_encoded &&
-                mgr->frames[i].frame_number == mgr->next_frame_to_encode) {
-                frame = &mgr->frames[i];
+        frame_queue_entry_t *next_frame = NULL;
+        int next_index = -1;
+        
+        for (int i = 0; i < queue->count; i++) {
+            int index = (queue->head + i) % MAX_FRAMES;
+            frame_queue_entry_t *entry = &queue->entries[index];
+            
+            if (entry->valid && entry->frame_number == queue->next_frame_to_encode) {
+                next_frame = entry;
+                next_index = index;
                 break;
             }
         }
         
-        if (frame) break;
-        
-        // Wait for the next frame to arrive
-        pthread_cond_wait(&mgr->frame_ready, &mgr->mutex);
-    }
-    
-    pthread_mutex_unlock(&mgr->mutex);
-    return frame;
-}
-
-// Mark frame as encoded
-void frame_manager_frame_encoded(frame_manager_t *mgr, frame_buffer_t *frame) {
-    pthread_mutex_lock(&mgr->mutex);
-    
-    frame->is_encoded = true;
-    mgr->frames_encoded++;
-    mgr->next_frame_to_encode++;
-    
-    printf("Server: Frame %d encoded\n", frame->frame_number);
-    
-    pthread_cond_signal(&mgr->encode_done);
-    pthread_mutex_unlock(&mgr->mutex);
-}
-
-// Get next encoded frame to send
-frame_buffer_t* frame_manager_get_send_frame(frame_manager_t *mgr) {
-    pthread_mutex_lock(&mgr->mutex);
-    
-    frame_buffer_t *frame = NULL;
-    
-    while (!mgr->quit_requested) {
-        // Find oldest encoded frame
-        int oldest_frame = INT_MAX;
-        int oldest_idx = -1;
-        
-        for (int i = 0; i < MAX_FRAMES; i++) {
-            if (mgr->frames[i].is_encoded && 
-                mgr->frames[i].frame_number < oldest_frame) {
-                oldest_frame = mgr->frames[i].frame_number;
-                oldest_idx = i;
+        if (next_frame) {
+            // Allocate CUDA memory if not already allocated
+            if (!queue->current_frame.Y) {
+                cudaMallocManaged((void**)&queue->current_frame.Y, g.cm->padw[Y_COMPONENT] * g.cm->padh[Y_COMPONENT]);
+                cudaMallocManaged((void**)&queue->current_frame.U, g.cm->padw[U_COMPONENT] * g.cm->padh[U_COMPONENT]);
+                cudaMallocManaged((void**)&queue->current_frame.V, g.cm->padw[V_COMPONENT] * g.cm->padh[V_COMPONENT]);
             }
+            
+            // Copy YUV data to CUDA buffer
+            size_t y_size = g.width * g.height;
+            size_t u_size = (g.width * g.height) / 4;
+            
+            const uint8_t *src = next_frame->yuv_data;
+            memcpy(queue->current_frame.Y, src, y_size);
+            memcpy(queue->current_frame.U, src + y_size, u_size);
+            memcpy(queue->current_frame.V, src + y_size + u_size, u_size);
+            
+            queue->current_frame_number = next_frame->frame_number;
+            
+            printf("Server: Frame %d ready for encoding\n", queue->current_frame_number);
+            
+            // Remove frame from queue
+            free(next_frame->yuv_data);
+            next_frame->yuv_data = NULL;
+            next_frame->valid = false;
+            
+            // If this was the head, advance head pointer
+            if (next_index == queue->head) {
+                queue->head = (queue->head + 1) % MAX_FRAMES;
+                queue->count--;
+            } else {
+                // Move the head frame to this position to fill the gap
+                frame_queue_entry_t *head_entry = &queue->entries[queue->head];
+                queue->entries[next_index] = *head_entry;
+                head_entry->valid = false;
+                head_entry->yuv_data = NULL;
+                queue->head = (queue->head + 1) % MAX_FRAMES;
+                queue->count--;
+            }
+            
+            pthread_mutex_unlock(&queue->mutex);
+            return true;
         }
         
-        if (oldest_idx != -1) {
-            frame = &mgr->frames[oldest_idx];
-            break;
-        }
-        
-        // Wait for encoded frame
-        pthread_cond_wait(&mgr->encode_done, &mgr->mutex);
+        // Wait for the next frame
+        pthread_cond_wait(&queue->frame_available, &queue->mutex);
     }
     
-    pthread_mutex_unlock(&mgr->mutex);
-    return frame;
+    pthread_mutex_unlock(&queue->mutex);
+    return false;
 }
 
-// Mark frame as sent and cleanup
-void frame_manager_frame_sent(frame_manager_t *mgr, frame_buffer_t *frame) {
-    pthread_mutex_lock(&mgr->mutex);
+// Mark current frame as encoded
+void frame_queue_mark_encoded(frame_queue_t *queue) {
+    pthread_mutex_lock(&queue->mutex);
     
-    frame->has_yuv_data = false;
-    frame->is_encoded = false;
-    mgr->frames_sent++;
+    queue->frames_encoded++;
+    queue->next_frame_to_encode++;
+    queue->frame_ready_to_send = true;
     
-    printf("Server: Frame %d sent\n", frame->frame_number);
+    printf("Server: Frame %d encoded and ready to send\n", queue->current_frame_number);
     
-    pthread_mutex_unlock(&mgr->mutex);
+    pthread_cond_signal(&queue->encode_done);
+    pthread_mutex_unlock(&queue->mutex);
+}
+
+// Mark current frame as sent
+void frame_queue_mark_sent(frame_queue_t *queue) {
+    pthread_mutex_lock(&queue->mutex);
+    
+    queue->frames_sent++;
+    queue->frame_ready_to_send = false;
+    
+    printf("Server: Frame %d sent\n", queue->current_frame_number);
+    
+    pthread_mutex_unlock(&queue->mutex);
 }
 
 // Request shutdown
-void frame_manager_request_quit(frame_manager_t *mgr) {
-    pthread_mutex_lock(&mgr->mutex);
-    mgr->quit_requested = true;
-    pthread_cond_broadcast(&mgr->frame_ready);
-    pthread_cond_broadcast(&mgr->encode_done);
-    pthread_mutex_unlock(&mgr->mutex);
+void frame_queue_request_quit(frame_queue_t *queue) {
+    pthread_mutex_lock(&queue->mutex);
+    queue->quit_requested = true;
+    pthread_cond_broadcast(&queue->frame_available);
+    pthread_cond_broadcast(&queue->encode_done);
+    pthread_mutex_unlock(&queue->mutex);
 }
 
 // Initialize encoder
@@ -281,23 +294,23 @@ struct c63_common *init_encoder(int width, int height) {
     return cm;
 }
 
-// Encode frame - sequential as required
-void encode_frame(struct c63_common *cm, frame_buffer_t *frame) {
-    printf("Server: Encoding frame %d\n", frame->frame_number);
+// Encode frame with queue
+void encode_frame_with_queue(struct c63_common *cm, frame_queue_t *queue) {
+    printf("Server: Encoding frame %d\n", queue->current_frame_number);
     
     // Update frame references
     destroy_frame(cm->refframe);
     cm->refframe = cm->curframe;
-    cm->curframe = create_frame(cm, &frame->image);
+    cm->curframe = create_frame(cm, &queue->current_frame);
     
     // Determine if keyframe
     if (cm->framenum == 0 || cm->frames_since_keyframe == cm->keyframe_interval) {
         cm->curframe->keyframe = 1;
         cm->frames_since_keyframe = 0;
-        frame->keyframe = true;
+        queue->current_keyframe = true;
     } else {
         cm->curframe->keyframe = 0;
-        frame->keyframe = false;
+        queue->current_keyframe = false;
     }
     
     // Motion estimation for non-keyframes
@@ -307,11 +320,11 @@ void encode_frame(struct c63_common *cm, frame_buffer_t *frame) {
     }
     
     // DCT and quantization
-    dct_quantize(frame->image.Y, cm->curframe->predicted->Y, cm->padw[Y_COMPONENT],
+    dct_quantize(queue->current_frame.Y, cm->curframe->predicted->Y, cm->padw[Y_COMPONENT],
                  cm->padh[Y_COMPONENT], cm->curframe->residuals->Ydct, cm->quanttbl[Y_COMPONENT]);
-    dct_quantize(frame->image.U, cm->curframe->predicted->U, cm->padw[U_COMPONENT],
+    dct_quantize(queue->current_frame.U, cm->curframe->predicted->U, cm->padw[U_COMPONENT],
                  cm->padh[U_COMPONENT], cm->curframe->residuals->Udct, cm->quanttbl[U_COMPONENT]);
-    dct_quantize(frame->image.V, cm->curframe->predicted->V, cm->padw[V_COMPONENT],
+    dct_quantize(queue->current_frame.V, cm->curframe->predicted->V, cm->padw[V_COMPONENT],
                  cm->padh[V_COMPONENT], cm->curframe->residuals->Vdct, cm->quanttbl[V_COMPONENT]);
     
     // Dequantization and IDCT for reconstruction
@@ -323,10 +336,10 @@ void encode_frame(struct c63_common *cm, frame_buffer_t *frame) {
                     cm->curframe->recons->V, cm->quanttbl[V_COMPONENT]);
     
     // Pack encoded data
-    char *ptr = frame->encoded_data;
+    char *ptr = queue->encoded_data;
     
-    // Keyframe flag for client
-    *((int*)ptr) = frame->keyframe ? 1 : 0;
+    // Keyframe flag
+    *((int*)ptr) = queue->current_keyframe ? 1 : 0;
     ptr += sizeof(int);
     
     // DCT coefficients
@@ -354,8 +367,8 @@ void encode_frame(struct c63_common *cm, frame_buffer_t *frame) {
     size_t mbv_size = (cm->mb_rows/2) * (cm->mb_cols/2) * sizeof(struct macroblock);
     memcpy(ptr, cm->curframe->mbs[V_COMPONENT], mbv_size);
     
-    frame->encoded_size = sizeof(int) + ydct_size + udct_size + vdct_size + 
-                         mby_size + mbu_size + mbv_size;
+    queue->encoded_size = sizeof(int) + ydct_size + udct_size + vdct_size + 
+                          mby_size + mbu_size + mbv_size;
     
     // Update frame counters
     cm->framenum++;
@@ -365,42 +378,36 @@ void encode_frame(struct c63_common *cm, frame_buffer_t *frame) {
     }
     
     printf("Server: Frame %d encoded (%zu bytes, %s)\n", 
-           frame->frame_number, frame->encoded_size, 
-           frame->keyframe ? "keyframe" : "non-keyframe");
+           queue->current_frame_number, queue->encoded_size, 
+           queue->current_keyframe ? "keyframe" : "non-keyframe");
 }
 
-// Receiver thread - handles YUV data from client
+// Receiver thread
 void *receiver_thread(void *arg) {
     printf("Server: Receiver thread started\n");
     
-    while (!g.frame_mgr.quit_requested) {
+    while (!g.frame_queue.quit_requested) {
         // Wait for YUV data command
-        while (g.recv_seg->packet.cmd != CMD_YUV_DATA && !g.frame_mgr.quit_requested) {
+        while (g.recv_seg->packet.cmd != CMD_YUV_DATA && !g.frame_queue.quit_requested) {
             usleep(1000);
         }
         
-        if (g.frame_mgr.quit_requested) break;
+        if (g.frame_queue.quit_requested) break;
         
         size_t data_size = g.recv_seg->packet.data_size;
         const void *yuv_data = (const void*)g.recv_seg->message_buffer;
         
         printf("Server: Receiving YUV data (%zu bytes)\n", data_size);
         
-        // Add frame to manager
-        if (frame_manager_add_frame(&g.frame_mgr, yuv_data, data_size)) {
-            // Send acknowledgment
-            g.recv_seg->packet.cmd = CMD_INVALID;
-            SCIFlush(NULL, NO_FLAGS);
-            g.client_recv->packet.cmd = CMD_YUV_DATA_ACK;
-            SCIFlush(NULL, NO_FLAGS);
-            
-            // Signal encoder thread that new frame is available
-            pthread_mutex_lock(&g.frame_mgr.mutex);
-            pthread_cond_signal(&g.frame_mgr.frame_ready);
-            pthread_mutex_unlock(&g.frame_mgr.mutex);
-        } else {
-            printf("Server: Failed to add frame\n");
-            g.recv_seg->packet.cmd = CMD_INVALID;
+        // Send ACK immediately
+        g.recv_seg->packet.cmd = CMD_INVALID;
+        SCIFlush(NULL, NO_FLAGS);
+        g.client_recv->packet.cmd = CMD_YUV_DATA_ACK;
+        SCIFlush(NULL, NO_FLAGS);
+        
+        // Add frame to queue
+        if (!frame_queue_add(&g.frame_queue, yuv_data, data_size)) {
+            printf("Server: Failed to add frame to queue\n");
         }
     }
     
@@ -408,44 +415,55 @@ void *receiver_thread(void *arg) {
     return NULL;
 }
 
-// Encoder thread - sequential encoding
+// Encoder thread
 void *encoder_thread(void *arg) {
     printf("Server: Encoder thread started\n");
     
     while (true) {
-        frame_buffer_t *frame = frame_manager_get_encode_frame(&g.frame_mgr);
-        if (!frame) break;
+        if (!frame_queue_get_next_encode_frame(&g.frame_queue)) break;
         
         // Encode the frame
-        encode_frame(g.cm, frame);
+        encode_frame_with_queue(g.cm, &g.frame_queue);
         
         // Mark as encoded
-        frame_manager_frame_encoded(&g.frame_mgr, frame);
+        frame_queue_mark_encoded(&g.frame_queue);
     }
     
     printf("Server: Encoder thread finished\n");
     return NULL;
 }
 
-// Sender thread - sends results back to client
+// Sender thread
 void *sender_thread(void *arg) {
     printf("Server: Sender thread started\n");
     
-    while (true) {
-        frame_buffer_t *frame = frame_manager_get_send_frame(&g.frame_mgr);
-        if (!frame) break;
+    while (!g.frame_queue.quit_requested) {
+        // Wait for encoded frame
+        pthread_mutex_lock(&g.frame_queue.mutex);
+        while (!g.frame_queue.frame_ready_to_send && !g.frame_queue.quit_requested) {
+            pthread_cond_wait(&g.frame_queue.encode_done, &g.frame_queue.mutex);
+        }
         
-        printf("Server: Sending frame %d (%zu bytes)\n", 
-               frame->frame_number, frame->encoded_size);
+        if (g.frame_queue.quit_requested) {
+            pthread_mutex_unlock(&g.frame_queue.mutex);
+            break;
+        }
+        
+        // Get current frame info
+        int frame_number = g.frame_queue.current_frame_number;
+        size_t encoded_size = g.frame_queue.encoded_size;
+        pthread_mutex_unlock(&g.frame_queue.mutex);
+        
+        printf("Server: Sending frame %d (%zu bytes)\n", frame_number, encoded_size);
         
         // Copy to send buffer
-        memcpy((void*)g.send_seg->message_buffer, frame->encoded_data, frame->encoded_size);
+        memcpy((void*)g.send_seg->message_buffer, g.frame_queue.encoded_data, encoded_size);
         
         // DMA transfer to client
         sci_error_t error;
         SCIStartDmaTransfer(g.dma_queue, g.send_segment, g.remote_client_recv,
                            offsetof(struct send_segment, message_buffer),
-                           frame->encoded_size,
+                           encoded_size,
                            offsetof(struct recv_segment, message_buffer),
                            NO_CALLBACK, NULL, NO_FLAGS, &error);
         
@@ -454,14 +472,14 @@ void *sender_thread(void *arg) {
         }
         
         if (error != SCI_ERR_OK) {
-            printf("Server: DMA transfer failed for frame %d\n", frame->frame_number);
-            frame_manager_frame_sent(&g.frame_mgr, frame);
+            printf("Server: DMA transfer failed for frame %d\n", frame_number);
+            frame_queue_mark_sent(&g.frame_queue);
             continue;
         }
         
         // Signal client
         SCIFlush(NULL, NO_FLAGS);
-        g.client_recv->packet.data_size = frame->encoded_size;
+        g.client_recv->packet.data_size = encoded_size;
         g.client_recv->packet.cmd = CMD_ENCODED_DATA;
         SCIFlush(NULL, NO_FLAGS);
         
@@ -469,24 +487,19 @@ void *sender_thread(void *arg) {
         time_t start = time(NULL);
         while (g.send_seg->packet.cmd != CMD_ENCODED_DATA_ACK) {
             if (time(NULL) - start > TIMEOUT_SECONDS) {
-                printf("Server: Timeout waiting for ACK for frame %d\n", frame->frame_number);
+                printf("Server: Timeout waiting for ACK for frame %d\n", frame_number);
                 break;
             }
             usleep(1000);
         }
         
         if (g.send_seg->packet.cmd == CMD_ENCODED_DATA_ACK) {
-            printf("Server: Frame %d acknowledged\n", frame->frame_number);
+            printf("Server: Frame %d acknowledged\n", frame_number);
             g.send_seg->packet.cmd = CMD_INVALID;
         }
         
-        // Mark frame as sent and free up slot for new frames
-        frame_manager_frame_sent(&g.frame_mgr, frame);
-        
-        // Signal receiver thread that slot is available for new frames
-        pthread_mutex_lock(&g.frame_mgr.mutex);
-        pthread_cond_signal(&g.frame_mgr.frame_ready);
-        pthread_mutex_unlock(&g.frame_mgr.mutex);
+        // Mark frame as sent
+        frame_queue_mark_sent(&g.frame_queue);
     }
     
     printf("Server: Sender thread finished\n");
@@ -514,9 +527,9 @@ int main_loop() {
     g.width = dim_data.width;
     g.height = dim_data.height;
     
-    // Initialize encoder and frame manager
+    // Initialize encoder and frame queue
     g.cm = init_encoder(g.width, g.height);
-    frame_manager_init(&g.frame_mgr);
+    frame_queue_init(&g.frame_queue);
     
     // Initialize thread pools
     thread_pool_init();
@@ -555,26 +568,26 @@ int main_loop() {
     }
     
     if (threads_started) {
-        frame_manager_request_quit(&g.frame_mgr);
+        frame_queue_request_quit(&g.frame_queue);
         pthread_join(receiver_tid, NULL);
         pthread_join(encoder_tid, NULL);
         pthread_join(sender_tid, NULL);
         
         printf("Server: Final statistics:\n");
-        printf("  Frames received: %d\n", g.frame_mgr.frames_received);
-        printf("  Frames encoded: %d\n", g.frame_mgr.frames_encoded);
-        printf("  Frames sent: %d\n", g.frame_mgr.frames_sent);
+        printf("  Frames received: %d\n", g.frame_queue.frames_received);
+        printf("  Frames encoded: %d\n", g.frame_queue.frames_encoded);
+        printf("  Frames sent: %d\n", g.frame_queue.frames_sent);
     }
     
     // Cleanup
     if (g.cm) {
-        frame_manager_destroy(&g.frame_mgr);
+        frame_queue_destroy(&g.frame_queue);
         free(g.cm);
         task_pool_destroy();
         thread_pool_destroy();
     }
     
-    return g.frame_mgr.frames_encoded;
+    return g.frame_queue.frames_encoded;
 }
 
 // Initialize SISCI

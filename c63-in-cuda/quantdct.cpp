@@ -29,7 +29,7 @@ task_pool_t *task_pool = NULL;
 
 // Function to get optimal number of threads based on CPU cores
 int get_optimal_thread_count() { 
-    int num_cores = sysconf(_SC_NPROCESSORS_ONLN) - 2; 
+    int num_cores = sysconf(_SC_NPROCESSORS_ONLN) - 3; 
     return (num_cores > 0) ? num_cores : 1; // Defaults to 1 core
 }
 

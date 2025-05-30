@@ -27,6 +27,7 @@ typedef struct {
     bool ready_to_send;        // Ready for sending to server
     bool result_received;      // Result received from server
     bool keyframe;             // Whether this is a keyframe
+    bool being_sent;           // NEW: Prevent access while sending
 } frame_buffer_t;
 
 // Pipeline state for 3-frame architecture
@@ -70,6 +71,8 @@ static struct {
     sci_remote_segment_t remote_server_recv, remote_server_send;
 } g;
 
+int frames_in_flight = 0;
+
 // Initialize pipeline
 void pipeline_init(pipeline_t *p) {
     memset(p, 0, sizeof(pipeline_t));
@@ -80,6 +83,7 @@ void pipeline_init(pipeline_t *p) {
         p->frames[i].ready_to_send = false;
         p->frames[i].result_received = false;
         p->frames[i].frame_number = -1;
+        p->frames[i].being_sent = false;  // NEW: Initialize being_sent flag
     }
     
     pthread_mutex_init(&p->mutex, NULL);
@@ -213,47 +217,63 @@ void *read_send_thread(void *arg) {
         frame->frame_number = g.pipeline.frames_read++;
         frame->ready_to_send = true;
         frame->result_received = false;
+        frame->being_sent = false;  // NEW: Reset being_sent flag
         
         printf("ReadSend: Read frame %d into slot %d\n", frame->frame_number, read_slot);
         pthread_cond_signal(&g.pipeline.frame_ready_to_send);
         pthread_mutex_unlock(&g.pipeline.mutex);
         
-        // Step 2: Send frames to server
+        // Step 2: Send frames to server (MODIFIED FOR 3 FRAMES IN FLIGHT)
         while (true) {
             pthread_mutex_lock(&g.pipeline.mutex);
+            
+            // Check frames in flight - if 3 or more, stop sending and go read more
+            int frames_in_flight = g.pipeline.frames_sent - g.pipeline.frames_received;
+            if (frames_in_flight >= 3) {
+                pthread_mutex_unlock(&g.pipeline.mutex);
+                break; // Go back to reading
+            }
             
             // Look for frame ready to send (in sequential order)
             frame_buffer_t *send_frame = NULL;
             for (int i = 0; i < MAX_FRAMES; i++) {
                 if (g.pipeline.frames[i].ready_to_send && 
                     !g.pipeline.frames[i].result_received &&
+                    !g.pipeline.frames[i].being_sent &&  // NEW: Check not being sent
                     g.pipeline.frames[i].frame_number == g.pipeline.next_send_frame) {
                     send_frame = &g.pipeline.frames[i];
+                    send_frame->being_sent = true;  // NEW: Mark as being sent
                     break;
                 }
             }
             
             if (!send_frame) {
-                // Check if we're done
+                // Check if done
                 if (g.pipeline.finished_reading && g.pipeline.frames_sent >= g.pipeline.frames_read) {
                     pthread_mutex_unlock(&g.pipeline.mutex);
                     printf("ReadSend: All frames sent\n");
                     return NULL;
                 }
-                
-                // Wait for frame to become ready to send
-                pthread_cond_wait(&g.pipeline.frame_ready_to_send, &g.pipeline.mutex);
+                // No frame ready, go back to reading
                 pthread_mutex_unlock(&g.pipeline.mutex);
-                break; // Go back to reading
+                break;
+            }
+            
+            // Get frame data safely while holding lock
+            yuv_t *send_image = send_frame->yuv_data;
+            int frame_number = send_frame->frame_number;
+            
+            // Validate frame data
+            if (!send_image || !send_image->Y || !send_image->U || !send_image->V) {
+                printf("ReadSend: Invalid frame data for frame %d\n", frame_number);
+                send_frame->being_sent = false;  // NEW: Clear flag on error
+                pthread_mutex_unlock(&g.pipeline.mutex);
+                continue;
             }
             
             pthread_mutex_unlock(&g.pipeline.mutex);
             
-            // Send frame to server
-            yuv_t *send_image = send_frame->yuv_data;
-            int frame_number = send_frame->frame_number;
-            
-            printf("ReadSend: Sending frame %d\n", frame_number);
+            printf("ReadSend: Sending frame %d (frames in flight: %d)\n", frame_number, frames_in_flight);
             
             // Pack YUV data
             size_t y_size = g.width * g.height;
@@ -268,6 +288,9 @@ void *read_send_thread(void *arg) {
             // Send YUV data via DMA
             if (!send_dma_data((void*)g.send_seg->message_buffer, total_size)) {
                 printf("ReadSend: DMA transfer failed for frame %d\n", frame_number);
+                pthread_mutex_lock(&g.pipeline.mutex);
+                send_frame->being_sent = false;  // NEW: Clear flag on error
+                pthread_mutex_unlock(&g.pipeline.mutex);
                 continue;
             }
             
@@ -280,6 +303,9 @@ void *read_send_thread(void *arg) {
             // Wait for YUV acknowledgment
             if (!wait_for_command(CMD_YUV_DATA_ACK, g.recv_seg, TIMEOUT_SECONDS)) {
                 printf("ReadSend: Timeout waiting for YUV ACK for frame %d\n", frame_number);
+                pthread_mutex_lock(&g.pipeline.mutex);
+                send_frame->being_sent = false;  // NEW: Clear flag on error
+                pthread_mutex_unlock(&g.pipeline.mutex);
                 continue;
             }
             g.recv_seg->packet.cmd = CMD_INVALID;
@@ -287,11 +313,12 @@ void *read_send_thread(void *arg) {
             pthread_mutex_lock(&g.pipeline.mutex);
             g.pipeline.frames_sent++;
             g.pipeline.next_send_frame++;
+            send_frame->being_sent = false;  // NEW: Clear being_sent flag
             pthread_mutex_unlock(&g.pipeline.mutex);
             
             printf("ReadSend: Frame %d sent successfully\n", frame_number);
             
-            // Continue sending more frames if available
+            // Continue sending more frames if capacity allows
         }
     }
     
@@ -395,6 +422,13 @@ void *receive_write_thread(void *arg) {
                 break;
             }
             
+            // NEW: Make sure frame is not being sent before accessing/freeing
+            while (frame_to_write->being_sent) {
+                pthread_mutex_unlock(&g.pipeline.mutex);
+                usleep(1000);  // Wait a bit
+                pthread_mutex_lock(&g.pipeline.mutex);
+            }
+            
             pthread_mutex_unlock(&g.pipeline.mutex);
             
             printf("ReceiveWrite: Writing frame %d\n", frame_to_write->frame_number);
@@ -440,8 +474,17 @@ void *receive_write_thread(void *arg) {
             
             printf("ReceiveWrite: Frame %d written successfully\n", frame_to_write->frame_number);
             
-            // Cleanup and free slot
+            // Cleanup and free slot - with additional safety checks
             pthread_mutex_lock(&g.pipeline.mutex);
+            
+            // NEW: Double-check that frame is not being sent
+            while (frame_to_write->being_sent) {
+                pthread_mutex_unlock(&g.pipeline.mutex);
+                usleep(1000);
+                pthread_mutex_lock(&g.pipeline.mutex);
+            }
+            
+            // Now safe to free
             if (frame_to_write->yuv_data) {
                 free(frame_to_write->yuv_data->Y);
                 free(frame_to_write->yuv_data->U);
@@ -452,9 +495,11 @@ void *receive_write_thread(void *arg) {
             frame_to_write->ready_to_send = false;
             frame_to_write->result_received = false;
             frame_to_write->frame_number = -1;
+            frame_to_write->being_sent = false;  // NEW: Reset this too
             g.pipeline.frames_written++;
             g.pipeline.next_write_frame++;
             
+            pthread_cond_signal(&g.pipeline.slot_available);  // Signal that slot is now available
             pthread_mutex_unlock(&g.pipeline.mutex);
             
             // Continue processing more frames if available
