@@ -14,30 +14,34 @@
 #define NO_FLAGS 0
 #define NO_CALLBACK NULL
 #define NO_ARG NULL
+#define MESSAGE_SIZE (8 * 1024 * 1024) 
 
 /* GET_SEGMENTID(2) gives you segmentid 2 at your groups offset */
 #define GET_SEGMENTID(id) ( GROUP << 16 | id )
-#define SEGMENT_CLIENT GET_SEGMENTID(1)
-#define SEGMENT_SERVER GET_SEGMENTID(2)
+#define SEGMENT_CLIENT_SEND GET_SEGMENTID(1)
+#define SEGMENT_CLIENT_RECV GET_SEGMENTID(2)
+#define SEGMENT_SERVER_RECV GET_SEGMENTID(3)
+#define SEGMENT_SERVER_SEND GET_SEGMENTID(4)
 
-// Message sizes
-#define MESSAGE_SIZE (8 * 1024 * 1024)  // 8MB buffer size
+#define MAX_FRAMES 3
+#define TIMEOUT_SECONDS 10
+
 
 // Command definitions for signaling
 enum cmd
 {
-    CMD_INVALID = 0,   // No command/initial state
-    CMD_HELLO,         // Client sending hello
-    CMD_HELLO_ACK,     // Server acknowledging hello
-    CMD_DIMENSIONS,    // Client sending dimensions
-    CMD_DIMENSIONS_ACK,// Server acknowledging dimensions
-    CMD_QUIT,          // Signal to terminate
-    CMD_DATA_READY,    // Signal that data is ready to be read
-    CMD_YUV_DATA,      // Client sending YUV frame data
-    CMD_YUV_DATA_ACK,  // Server acknowledging receipt of YUV data
-    CMD_ENCODED_DATA,  // Server sending encoded frame data
-    CMD_ENCODED_DATA_ACK// Client acknowledging receipt of encoded data
+    CMD_INVALID = 0,
+    CMD_DIMENSIONS,
+    CMD_DIMENSIONS_ACK,
+    CMD_QUIT,
+    CMD_YUV_DATA,
+    CMD_YUV_DATA_ACK,
+    CMD_ENCODED_DATA,
+    CMD_ENCODED_DATA_ACK,
+    CMD_FRAME_INFO,
+    CMD_FRAME_INFO_ACK
 };
+
 
 #define MAX_FILELENGTH 200
 #define DEFAULT_OUTPUT_FILE "a.mjpg"
@@ -156,26 +160,22 @@ struct packet
         struct {
             uint32_t cmd;           // Command type
             uint32_t data_size;     // Size of data in buffer
-            uint32_t y_size;        // Y size
-            uint32_t u_size;        // U size
-            uint32_t v_size;        // V size
         };
         uint8_t padding[64];        // Align to cache line
     } __attribute__((aligned(64)));
 };
 
 // Server segment structure
-struct server_segment
+struct recv_segment
 {
     struct packet packet __attribute__((aligned(64)));
-    char message_buffer[MESSAGE_SIZE] __attribute__((aligned(64))); // Buffer for messages
+    char message_buffer[MESSAGE_SIZE] __attribute__((aligned(64)));
 };
 
-// Client segment structure
-struct client_segment
+struct send_segment
 {
     struct packet packet __attribute__((aligned(64)));
-    char message_buffer[MESSAGE_SIZE] __attribute__((aligned(64))); // Buffer for messages
+    char message_buffer[MESSAGE_SIZE] __attribute__((aligned(64)));
 };
 
 #endif  /* C63_C63_H_ */
