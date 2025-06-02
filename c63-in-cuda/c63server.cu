@@ -161,8 +161,13 @@ bool frame_queue_add(frame_queue_t *queue, const void *yuv_data, size_t data_siz
     return true;
 }
 
-/* Function called by the encoder thread to get the next frame
-    - Locks mutex */
+/* Function called by the encoder thread to get the next frame:
+    - Locks mutex 
+    - Searches for the next frame to encode
+    - Copies YUV data and sets metadata
+    - Updates the queue structure 
+    - If no frame is found we call pthread_cond_wait
+    - Unlock mutex*/
 bool frame_queue_get_next_encode_frame(frame_queue_t *queue) {
     pthread_mutex_lock(&queue->mutex);
     
@@ -190,18 +195,18 @@ bool frame_queue_get_next_encode_frame(frame_queue_t *queue) {
             memcpy(queue->current_frame.U, src + y_size, u_size);
             memcpy(queue->current_frame.V, src + y_size + u_size, u_size);
             
-            queue->current_frame_number = next_frame->frame_number;
+            queue->current_frame_number = next_frame->frame_number; // Update metadata
             
             printf("Server: Frame %d ready for encoding\n", queue->current_frame_number);
             
-            next_frame->valid = false;
+            next_frame->valid = false; // Remove from queue by marking false
             
-            // If this was the head, advance head pointer
+            /* If this is the head we advance head pointer */
             if (next_index == queue->head) {
                 queue->head = (queue->head + 1) % MAX_FRAMES;
                 queue->count--;
             } else {
-                // Move the head frame to this position to fill the gap
+                /* Move the head frame to this position to fill the gap */
                 frame_queue_entry_t *head_entry = &queue->entries[queue->head];
                 queue->entries[next_index] = *head_entry;
                 head_entry->valid = false;
@@ -214,15 +219,14 @@ bool frame_queue_get_next_encode_frame(frame_queue_t *queue) {
             return true;
         }
         
-        // Wait for the next frame
-        pthread_cond_wait(&queue->frame_available, &queue->mutex);
+        pthread_cond_wait(&queue->frame_available, &queue->mutex); // We wait for the next frame
     }
     
     pthread_mutex_unlock(&queue->mutex);
     return false;
 }
 
-// Mark current frame as encoded
+/* Function called by encoder_thread to mark the frame as encoded */
 void frame_queue_mark_encoded(frame_queue_t *queue) {
     pthread_mutex_lock(&queue->mutex);
     
@@ -236,7 +240,7 @@ void frame_queue_mark_encoded(frame_queue_t *queue) {
     pthread_mutex_unlock(&queue->mutex);
 }
 
-// Mark current frame as sent
+/*Function called by sender_thread to mark the frame as sent*/
 void frame_queue_mark_sent(frame_queue_t *queue) {
     pthread_mutex_lock(&queue->mutex);
     
@@ -257,7 +261,7 @@ void frame_queue_request_quit(frame_queue_t *queue) {
     pthread_mutex_unlock(&queue->mutex);
 }
 
-// Initialize encoder
+/* Initialization function for cm */
 struct c63_common *init_encoder(int width, int height) {
     struct c63_common *cm = (struct c63_common*)calloc(1, sizeof(struct c63_common));
     
@@ -373,7 +377,12 @@ void encode_frame_with_queue(struct c63_common *cm, frame_queue_t *queue) {
            queue->current_keyframe ? "keyframe" : "non-keyframe");
 }
 
-// Receiver thread
+/* Receiver thread 
+    - Loops, Waits for command CMD_YUV_DATA indicating that we have received data from client
+    - Extract frame data
+    - Sends ack to client: Clear receiving command, flush, setting client ack, flush
+    - Calls frame_queue_add()
+    - Continues the loop */
 void *receiver_thread(void *arg) {
     printf("Server: Receiver thread started\n");
     
@@ -390,7 +399,6 @@ void *receiver_thread(void *arg) {
         
         printf("Server: Receiving YUV data (%zu bytes)\n", data_size);
         
-        // Send ACK immediately
         g.recv_seg->packet.cmd = CMD_INVALID;
         SCIFlush(NULL, NO_FLAGS);
         g.client_recv->packet.cmd = CMD_YUV_DATA_ACK;
@@ -406,7 +414,10 @@ void *receiver_thread(void *arg) {
     return NULL;
 }
 
-// Encoder thread
+/* Encoder thread
+    - Loops, receives the next frame from frame_queue_get_next_encode_frame() which blocks until a frame is available or shutdown is requested
+    - Calls  encode_frame_with_queue(), and frame_queue_mark_encoded()
+    - Exits when frame_queue_get_next_encode_frame() returns false*/
 void *encoder_thread(void *arg) {
     printf("Server: Encoder thread started\n");
     
@@ -424,7 +435,15 @@ void *encoder_thread(void *arg) {
     return NULL;
 }
 
-// Sender thread
+/* Sender thread
+    - Waits for encoded frames by Locking the mutex and checking frame_ready_to_send flag, using pthread_cond_wait() to sleep until encoder thread signals completion
+    -  Extracts metadata about frames
+    - Copies the encoded buffer
+    - Transfer with DMA
+    - Notifies the client with command CMD_ENCODED_DATA
+    - Waits for ack
+    - Calls frame_queue_mark_sent()
+    - Exits when g.frame_queue.quit_requested is true */
 void *sender_thread(void *arg) {
     printf("Server: Sender thread started\n");
     
@@ -440,17 +459,14 @@ void *sender_thread(void *arg) {
             break;
         }
         
-        // Get current frame info
         int frame_number = g.frame_queue.current_frame_number;
         size_t encoded_size = g.frame_queue.encoded_size;
         pthread_mutex_unlock(&g.frame_queue.mutex);
         
         printf("Server: Sending frame %d (%zu bytes)\n", frame_number, encoded_size);
         
-        // Copy to send buffer
         memcpy((void*)g.send_seg->message_buffer, g.frame_queue.encoded_data, encoded_size);
         
-        // DMA transfer to client
         sci_error_t error;
         SCIStartDmaTransfer(g.dma_queue, g.send_segment, g.remote_client_recv,
                            offsetof(struct send_segment, message_buffer),
@@ -468,7 +484,7 @@ void *sender_thread(void *arg) {
             continue;
         }
         
-        // Signal client
+        /* Signal client */
         SCIFlush(NULL, NO_FLAGS);
         g.client_recv->packet.data_size = encoded_size;
         g.client_recv->packet.cmd = CMD_ENCODED_DATA;
@@ -489,7 +505,6 @@ void *sender_thread(void *arg) {
             g.send_seg->packet.cmd = CMD_INVALID;
         }
         
-        // Mark frame as sent
         frame_queue_mark_sent(&g.frame_queue);
     }
     
@@ -497,8 +512,18 @@ void *sender_thread(void *arg) {
     return NULL;
 }
 
-// Main processing loop
-int main_loop() {
+/* Main loop
+    - Waits for dimmensions from client
+    - Initialize encoder and frame queue
+    - Allocate cuda memory 
+    - Initialize thread and task pool
+    - Launches the three threads
+    - Notifies client that dimmensions has been received
+    - Monitors for quit command from client
+    - Coordinates shutdown of all threads
+    - Cleans up resources used
+    */
+int main_loop() { 
     pthread_t receiver_tid, encoder_tid, sender_tid;
     bool threads_started = false;
     
@@ -537,17 +562,7 @@ int main_loop() {
     pthread_create(&encoder_tid, NULL, encoder_thread, NULL);
     pthread_create(&sender_tid, NULL, sender_thread, NULL);
     threads_started = true;
-    
-    // Send acknowledgment
-    sci_error_t error;
-    memcpy((void*)g.send_seg->message_buffer, &dim_data, sizeof(dim_data));
-    SCIStartDmaTransfer(g.dma_queue, g.send_segment, g.remote_client_recv,
-                       offsetof(struct send_segment, message_buffer),
-                       sizeof(dim_data),
-                       offsetof(struct recv_segment, message_buffer),
-                       NO_CALLBACK, NULL, NO_FLAGS, &error);
-    SCIWaitForDMAQueue(g.dma_queue, SCI_INFINITE_TIMEOUT, NO_FLAGS, &error);
-    
+
     SCIFlush(NULL, NO_FLAGS);
     g.client_recv->packet.cmd = CMD_DIMENSIONS_ACK;
     SCIFlush(NULL, NO_FLAGS);
@@ -561,7 +576,7 @@ int main_loop() {
             g.recv_seg->packet.cmd = CMD_INVALID;
             break;
         }
-        usleep(10000); // 10ms
+        usleep(10000);
     }
     
     if (threads_started) {
@@ -575,8 +590,8 @@ int main_loop() {
         printf("  Frames encoded: %d\n", g.frame_queue.frames_encoded);
         printf("  Frames sent: %d\n", g.frame_queue.frames_sent);
     }
-    
-    // Cleanup
+
+    /* Clean up */
     if (g.cm) {
         frame_queue_destroy(&g.frame_queue);
         free(g.cm);
@@ -587,7 +602,7 @@ int main_loop() {
     return g.frame_queue.frames_encoded;
 }
 
-// Initialize SISCI
+/* Initialize SISCI relevant */
 bool init_sisci() {
     sci_error_t error;
     unsigned int localAdapterNo = 0;
@@ -599,7 +614,7 @@ bool init_sisci() {
     SCIOpen(&sd, NO_FLAGS, &error);
     if (error != SCI_ERR_OK) return false;
     
-    // Create server segments
+    /* Create server segments */
     SCICreateSegment(sd, &g.recv_segment, SEGMENT_SERVER_RECV, sizeof(struct recv_segment),
                      NO_CALLBACK, NULL, NO_FLAGS, &error);
     if (error != SCI_ERR_OK) return false;
@@ -608,21 +623,19 @@ bool init_sisci() {
                      NO_CALLBACK, NULL, NO_FLAGS, &error);
     if (error != SCI_ERR_OK) return false;
     
-    // Prepare segments
+    /* Prepare segments */
     SCIPrepareSegment(g.recv_segment, localAdapterNo, NO_FLAGS, &error);
     SCIPrepareSegment(g.send_segment, localAdapterNo, NO_FLAGS, &error);
     if (error != SCI_ERR_OK) return false;
     
-    // Make segments available
+    /* Make segments available */
     SCISetSegmentAvailable(g.recv_segment, localAdapterNo, NO_FLAGS, &error);
     SCISetSegmentAvailable(g.send_segment, localAdapterNo, NO_FLAGS, &error);
     
-    // Create DMA queue
-    SCICreateDMAQueue(sd, &g.dma_queue, localAdapterNo, 1, NO_FLAGS, &error);
+    SCICreateDMAQueue(sd, &g.dma_queue, localAdapterNo, 1, NO_FLAGS, &error); // Create DMA queue
     if (error != SCI_ERR_OK) return false;
     
-    // Map local segments
-    sci_map_t recv_map, send_map;
+    sci_map_t recv_map, send_map; // Map local segments
     g.recv_seg = (volatile struct recv_segment *)SCIMapLocalSegment(
         g.recv_segment, &recv_map, 0, sizeof(struct recv_segment), NULL, NO_FLAGS, &error);
     if (error != SCI_ERR_OK) return false;
@@ -636,7 +649,7 @@ bool init_sisci() {
     
     printf("Server: Waiting for client connection...\n");
     
-    // Connect to client segments
+    /* Connect to client segments */
     do {
         SCIConnectSegment(sd, &g.remote_client_send, g.remote_node, SEGMENT_CLIENT_SEND,
                          localAdapterNo, NO_CALLBACK, NULL, SCI_INFINITE_TIMEOUT, NO_FLAGS, &error);
@@ -647,8 +660,7 @@ bool init_sisci() {
                          localAdapterNo, NO_CALLBACK, NULL, SCI_INFINITE_TIMEOUT, NO_FLAGS, &error);
     } while (error != SCI_ERR_OK);
     
-    // Map client segments
-    sci_map_t client_send_map, client_recv_map;
+    sci_map_t client_send_map, client_recv_map; // Map client segments
     g.client_send = (volatile struct send_segment *)SCIMapRemoteSegment(
         g.remote_client_send, &client_send_map, 0, sizeof(struct send_segment), NULL, NO_FLAGS, &error);
     if (error != SCI_ERR_OK) return false;
@@ -661,6 +673,7 @@ bool init_sisci() {
     return true;
 }
 
+/* Main function, calls main_loop()*/
 int main(int argc, char **argv) {
     int c;
     

@@ -33,8 +33,6 @@ typedef struct {
 /* Pipeline state for 3-frame architecture */
 typedef struct {
     frame_buffer_t frames[MAX_FRAMES];
-    
-    int next_read_frame;
     int next_send_frame;
     int next_write_frame;
     
@@ -47,8 +45,6 @@ typedef struct {
     bool quit_requested;
     
     pthread_mutex_t mutex;
-    pthread_cond_t frame_ready_to_send;
-    pthread_cond_t result_ready_to_write;
     pthread_cond_t slot_available;
 } pipeline_t;
 
@@ -87,8 +83,6 @@ void pipeline_init(pipeline_t *p) {
     }
     
     pthread_mutex_init(&p->mutex, NULL);
-    pthread_cond_init(&p->frame_ready_to_send, NULL);
-    pthread_cond_init(&p->result_ready_to_write, NULL);
     pthread_cond_init(&p->slot_available, NULL);
 }
 
@@ -105,8 +99,6 @@ void pipeline_destroy(pipeline_t *p) {
     }
     
     pthread_mutex_destroy(&p->mutex);
-    pthread_cond_destroy(&p->frame_ready_to_send);
-    pthread_cond_destroy(&p->result_ready_to_write);
     pthread_cond_destroy(&p->slot_available);
 }
 
@@ -144,7 +136,7 @@ bool wait_for_command(uint32_t expected_cmd, volatile struct recv_segment *seg, 
     return true;
 }
 
-/* Reusable function for transferring data to the server, from the client send to server receive */
+/* Reusable function for transferring data to the server, from the client send segment to server receive segment */
 bool send_dma_data(void *data, size_t size) {
     sci_error_t error;
     
@@ -181,8 +173,6 @@ void *read_send_thread(void *arg) {
         if (g.pipeline.quit_requested || 
             (g.limit_frames && g.pipeline.frames_read >= g.limit_frames)) {
             g.pipeline.finished_reading = true;
-            pthread_cond_broadcast(&g.pipeline.frame_ready_to_send);
-            pthread_cond_broadcast(&g.pipeline.result_ready_to_write);
             pthread_mutex_unlock(&g.pipeline.mutex);
             break;
         }
@@ -207,8 +197,6 @@ void *read_send_thread(void *arg) {
         if (!image) {
             pthread_mutex_lock(&g.pipeline.mutex);
             g.pipeline.finished_reading = true;
-            pthread_cond_broadcast(&g.pipeline.frame_ready_to_send);
-            pthread_cond_broadcast(&g.pipeline.result_ready_to_write);
             pthread_mutex_unlock(&g.pipeline.mutex);
             printf("ReadSend: End of file reached\n");
             break;
@@ -224,7 +212,6 @@ void *read_send_thread(void *arg) {
         frame->being_sent = false;
         
         printf("ReadSend: Read frame %d into slot %d\n", frame->frame_number, read_slot);
-        pthread_cond_signal(&g.pipeline.frame_ready_to_send);
         pthread_mutex_unlock(&g.pipeline.mutex);
 
         while (true) {
@@ -341,7 +328,7 @@ void *receive_write_thread(void *arg) {
                 break;
             }
             pthread_mutex_unlock(&g.pipeline.mutex);
-            // 10ms
+            /* 10ms */
             usleep(10000);
             continue;
         }
@@ -368,7 +355,7 @@ void *receive_write_thread(void *arg) {
         }
         
         if (result_frame->frame_number != g.pipeline.next_write_frame) {
-            printf("ReceiveWrite: WARNING - Expected frame %d but got %d\n", 
+            printf("ReceiveWrite: Warning! Expected frame %d but got %d\n", 
                    g.pipeline.next_write_frame, result_frame->frame_number);
             pthread_mutex_unlock(&g.pipeline.mutex);
             g.recv_seg->packet.cmd = CMD_INVALID;
@@ -525,7 +512,7 @@ struct c63_common *init_cm(int width, int height) {
     return cm;
 }
 
-// Initialize SISCI
+/* Initialize SISCI */
 bool init_sisci() {
     sci_error_t error;
     unsigned int localAdapterNo = 0;
@@ -537,7 +524,7 @@ bool init_sisci() {
     SCIOpen(&sd, NO_FLAGS, &error);
     if (error != SCI_ERR_OK) return false;
     
-    // Create segments
+    /* Create segments */
     SCICreateSegment(sd, &g.send_segment, SEGMENT_CLIENT_SEND, sizeof(struct send_segment),
                      NO_CALLBACK, NULL, NO_FLAGS, &error);
     if (error != SCI_ERR_OK) return false;
@@ -546,16 +533,16 @@ bool init_sisci() {
                      NO_CALLBACK, NULL, NO_FLAGS, &error);
     if (error != SCI_ERR_OK) return false;
     
-    // Prepare segments
+    /* Prepare segments */
     SCIPrepareSegment(g.send_segment, localAdapterNo, NO_FLAGS, &error);
     SCIPrepareSegment(g.recv_segment, localAdapterNo, NO_FLAGS, &error);
     if (error != SCI_ERR_OK) return false;
     
-    // Create DMA queue
+    /* Create DMA queue */
     SCICreateDMAQueue(sd, &g.dma_queue, localAdapterNo, 1, NO_FLAGS, &error);
     if (error != SCI_ERR_OK) return false;
     
-    // Map local segments
+    /* Map local segments */
     sci_map_t send_map, recv_map;
     g.send_seg = (volatile struct send_segment *)SCIMapLocalSegment(
         g.send_segment, &send_map, 0, sizeof(struct send_segment), NULL, NO_FLAGS, &error);
@@ -568,11 +555,11 @@ bool init_sisci() {
     g.send_seg->packet.cmd = CMD_INVALID;
     g.recv_seg->packet.cmd = CMD_INVALID;
     
-    // Make segments available
+    /* Make segments available */
     SCISetSegmentAvailable(g.send_segment, localAdapterNo, NO_FLAGS, &error);
     SCISetSegmentAvailable(g.recv_segment, localAdapterNo, NO_FLAGS, &error);
     
-    // Connect to server segments
+    /* Connect to server segments */
     do {
         SCIConnectSegment(sd, &g.remote_server_recv, g.remote_node, SEGMENT_SERVER_RECV, 
                          localAdapterNo, NO_CALLBACK, NULL, SCI_INFINITE_TIMEOUT, NO_FLAGS, &error);
@@ -583,7 +570,7 @@ bool init_sisci() {
                          localAdapterNo, NO_CALLBACK, NULL, SCI_INFINITE_TIMEOUT, NO_FLAGS, &error);
     } while (error != SCI_ERR_OK);
     
-    // Map server segments
+    /* Map server segments */
     sci_map_t server_recv_map, server_send_map;
     g.server_recv = (volatile struct recv_segment *)SCIMapRemoteSegment(
         g.remote_server_recv, &server_recv_map, 0, sizeof(struct recv_segment), NULL, NO_FLAGS, &error);
@@ -597,7 +584,7 @@ bool init_sisci() {
     return true;
 }
 
-// Print help
+/* Print help */
 static void print_help() {
     printf("Usage: ./c63client -r nodeid [options] input_file\n");
     printf("Options:\n");
@@ -632,7 +619,7 @@ int main(int argc, char **argv) {
     
     g.input_file = argv[optind];
     
-    // Open files
+    /* Open files */
     g.outfile = fopen(g.output_file, "wb");
     if (!g.outfile) {
         perror("Output file");
@@ -645,7 +632,7 @@ int main(int argc, char **argv) {
         exit(EXIT_FAILURE);
     }
     
-    // Initialize encoder and pipeline
+    /* Initialize encoder and pipeline */
     g.cm = init_cm(g.width, g.height);
     g.cm->e_ctx.fp = g.outfile;
     g.cm->curframe = create_frame(g.cm, NULL);
@@ -658,35 +645,35 @@ int main(int argc, char **argv) {
         exit(EXIT_FAILURE);
     }
     
-    // sends dimensions at the start once
+    /* sends dimensions at the start once */
     if (!send_dimensions()) {
         fprintf(stderr, "Failed to send dimensions\n");
         exit(EXIT_FAILURE);
     }
     
-    // Start the two threads
+    /* Start the two threads */
     pthread_t read_send_tid, receive_write_tid;
     
     pthread_create(&read_send_tid, NULL, read_send_thread, NULL);
     pthread_create(&receive_write_tid, NULL, receive_write_thread, NULL);
     
-    // Wait for both threads to complete
+    /* Wait for both threads to complete */
     pthread_join(read_send_tid, NULL);
     pthread_join(receive_write_tid, NULL);
     
-    // Send quit command to server
+    /* Send quit command to server */
     SCIFlush(NULL, NO_FLAGS);
     g.server_recv->packet.cmd = CMD_QUIT;
     SCIFlush(NULL, NO_FLAGS);
     
-    // print statistics
+    /* print statistics */
     printf("Client finished:\n");
     printf("  Frames read: %d\n", g.pipeline.frames_read);
     printf("  Frames sent: %d\n", g.pipeline.frames_sent);
     printf("  Frames received: %d\n", g.pipeline.frames_received);
     printf("  Frames written: %d\n", g.pipeline.frames_written);
     
-    // Cleanup
+    /* Cleanup */
     pipeline_destroy(&g.pipeline);
     if (g.cm) {
         destroy_frame(g.cm->refframe);
