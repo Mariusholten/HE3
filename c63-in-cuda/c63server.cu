@@ -20,47 +20,49 @@
 #include <sisci_error.h>
 #include <sisci_api.h>
 
-// Frame queue entry - just stores raw YUV data
+/* Struct to hold frame-data and helper values */
 typedef struct {
-    uint8_t *yuv_data;         // Raw YUV data (host memory)
-    size_t data_size;          // Size of YUV data
-    int frame_number;          // Frame sequence number
-    bool valid;                // Whether this entry is valid
+    uint8_t *yuv_data;
+    size_t data_size;
+    int frame_number;
+    bool valid; // Value to identify if the struct contains data to be encoded
 } frame_queue_entry_t;
 
-// Simple frame queue
+/* Frame queue to enable the 3-frame pipeline. Array to hold the frame-data. Helper values */
 typedef struct {
     frame_queue_entry_t entries[MAX_FRAMES];
-    int head, tail, count;
+    int head, tail, count; // Head is the index of the first to be proccessed, tail is the index of the next frame insertion
     
-    int frames_received;       // Total frames received
-    int frames_encoded;        // Total frames encoded
-    int frames_sent;           // Total frames sent
-    int next_frame_to_encode;  // Next frame number expected for encoding
+    /* Values for prints */
+    int frames_received;
+    int frames_encoded;
+    int frames_sent;
+
+    int next_frame_to_encode; // Helper value to keep track of which frame to encode next
     
-    // Current frame being encoded/sent
-    yuv_t current_frame;       // CUDA managed memory for encoding
-    char *encoded_data;        // Current encoded result
-    size_t encoded_size;       // Size of current encoded data
-    int current_frame_number;  // Frame number currently being processed
-    bool current_keyframe;     // Whether current frame is keyframe
-    bool frame_ready_to_send;  // Whether encoded frame is ready to send
+    /* The frame currently being encoded and values related to the frame */
+    yuv_t current_frame;
+    char *encoded_data; // Buffer holding the encoded data
+    size_t encoded_size;
+    int current_frame_number;
+    bool current_keyframe;
+    bool frame_ready_to_send;
     
-    bool quit_requested;
+    bool quit_requested; // Signal to shutdown
     
-    pthread_mutex_t mutex;
-    pthread_cond_t frame_available;  // Signal when frame added to queue
-    pthread_cond_t encode_done;      // Signal when encoding is complete
+    pthread_mutex_t mutex; // Mutual exclusion lock to prevent race conditions
+    pthread_cond_t frame_available; // Signal to the encoder thread
+    pthread_cond_t encode_done; // Signal to the sender thread
 } frame_queue_t;
 
-// Global state
+/* Struct containing all information relevant to c63server */
 static struct {
     uint32_t width, height;
     uint32_t remote_node;
     struct c63_common *cm;
     frame_queue_t frame_queue;
     
-    // SISCI resources
+    /* Resources related to SISCI */
     volatile struct recv_segment *recv_seg;
     volatile struct send_segment *send_seg;
     volatile struct send_segment *client_send;
@@ -70,19 +72,18 @@ static struct {
     sci_remote_segment_t remote_client_send, remote_client_recv;
 } g;
 
-// Initialize frame queue
-void frame_queue_init(frame_queue_t *queue) {
+/* Function to initialize the frame_queue_t and threading*/
+void frame_queue_init(frame_queue_t *queue, size_t frame_size) {
     memset(queue, 0, sizeof(frame_queue_t));
     
-    // Initialize queue entries
+    /* Initialize the entries */
     for (int i = 0; i < MAX_FRAMES; i++) {
-        queue->entries[i].yuv_data = NULL;
+        queue->entries[i].yuv_data = (uint8_t*)malloc(frame_size);        
         queue->entries[i].valid = false;
     }
     
-    // Allocate encoded data buffer
-    queue->encoded_data = (char*)malloc(MESSAGE_SIZE);
-    
+    queue->encoded_data = (char*)malloc(MESSAGE_SIZE); // Allocate buffer based on variable MESSAGE_SIZE
+
     queue->head = 0;
     queue->tail = 0;
     queue->count = 0;
@@ -94,53 +95,56 @@ void frame_queue_init(frame_queue_t *queue) {
     pthread_cond_init(&queue->encode_done, NULL);
 }
 
-// Cleanup frame queue
+/* Function to clean up the frame_queue_t */
 void frame_queue_destroy(frame_queue_t *queue) {
     pthread_mutex_lock(&queue->mutex);
     
-    // Free all queued frames
+    /* Free all the entries */
     for (int i = 0; i < MAX_FRAMES; i++) {
         if (queue->entries[i].yuv_data) {
             free(queue->entries[i].yuv_data);
         }
     }
     
-    // Free encoded data buffer
-    free(queue->encoded_data);
+    free(queue->encoded_data); // Free the buffer
     
-    // Free CUDA memory
+    /* Cudafree on yuv_t */
     if (queue->current_frame.Y) cudaFree(queue->current_frame.Y);
     if (queue->current_frame.U) cudaFree(queue->current_frame.U);
     if (queue->current_frame.V) cudaFree(queue->current_frame.V);
     
     pthread_mutex_unlock(&queue->mutex);
     
+    /* Clean up pthreads */
     pthread_mutex_destroy(&queue->mutex);
     pthread_cond_destroy(&queue->frame_available);
     pthread_cond_destroy(&queue->encode_done);
 }
 
-// Add frame to queue (called by receiver thread)
+/* Function called by receiver_thread to add frames to queue
+    - Locks mutex
+    - Checks whether to exit early
+    - Adds the frame to the tail
+    - Allocates memory and sets appropriate values
+    - Advance the pointer and increase counter
+    - Signals the encoder thread
+    */
 bool frame_queue_add(frame_queue_t *queue, const void *yuv_data, size_t data_size) {
     pthread_mutex_lock(&queue->mutex);
-    
+
     if (queue->quit_requested) {
         pthread_mutex_unlock(&queue->mutex);
         return false;
     }
     
-    // Check if queue is full
     if (queue->count >= MAX_FRAMES) {
         printf("Server: Frame queue is full, dropping frame\n");
         pthread_mutex_unlock(&queue->mutex);
         return false;
     }
     
-    // Add frame to tail of queue
     frame_queue_entry_t *entry = &queue->entries[queue->tail];
     
-    // Allocate memory for YUV data (host memory)
-    entry->yuv_data = (uint8_t*)malloc(data_size);
     memcpy(entry->yuv_data, yuv_data, data_size);
     entry->data_size = data_size;
     entry->frame_number = queue->frames_received++;
@@ -149,22 +153,20 @@ bool frame_queue_add(frame_queue_t *queue, const void *yuv_data, size_t data_siz
     printf("Server: Frame %d added to queue (position %d, queue size: %d)\n", 
            entry->frame_number, queue->tail, queue->count + 1);
     
-    // Update queue pointers
     queue->tail = (queue->tail + 1) % MAX_FRAMES;
     queue->count++;
     
-    // Signal encoder thread
     pthread_cond_signal(&queue->frame_available);
     pthread_mutex_unlock(&queue->mutex);
     return true;
 }
 
-// Get next frame for encoding (called by encoder thread)
+/* Function called by the encoder thread to get the next frame
+    - Locks mutex */
 bool frame_queue_get_next_encode_frame(frame_queue_t *queue) {
     pthread_mutex_lock(&queue->mutex);
     
     while (!queue->quit_requested) {
-        // Look for the next frame in sequence
         frame_queue_entry_t *next_frame = NULL;
         int next_index = -1;
         
@@ -179,15 +181,7 @@ bool frame_queue_get_next_encode_frame(frame_queue_t *queue) {
             }
         }
         
-        if (next_frame) {
-            // Allocate CUDA memory if not already allocated
-            if (!queue->current_frame.Y) {
-                cudaMallocManaged((void**)&queue->current_frame.Y, g.cm->padw[Y_COMPONENT] * g.cm->padh[Y_COMPONENT]);
-                cudaMallocManaged((void**)&queue->current_frame.U, g.cm->padw[U_COMPONENT] * g.cm->padh[U_COMPONENT]);
-                cudaMallocManaged((void**)&queue->current_frame.V, g.cm->padw[V_COMPONENT] * g.cm->padh[V_COMPONENT]);
-            }
-            
-            // Copy YUV data to CUDA buffer
+        if (next_frame) {            
             size_t y_size = g.width * g.height;
             size_t u_size = (g.width * g.height) / 4;
             
@@ -200,9 +194,6 @@ bool frame_queue_get_next_encode_frame(frame_queue_t *queue) {
             
             printf("Server: Frame %d ready for encoding\n", queue->current_frame_number);
             
-            // Remove frame from queue
-            free(next_frame->yuv_data);
-            next_frame->yuv_data = NULL;
             next_frame->valid = false;
             
             // If this was the head, advance head pointer
@@ -526,11 +517,17 @@ int main_loop() {
     
     g.width = dim_data.width;
     g.height = dim_data.height;
+
+    size_t max_frame_size = g.width * g.height * 3 / 2;
     
     // Initialize encoder and frame queue
     g.cm = init_encoder(g.width, g.height);
-    frame_queue_init(&g.frame_queue);
-    
+    frame_queue_init(&g.frame_queue, max_frame_size);
+
+    cudaMallocManaged((void**)&g.frame_queue.current_frame.Y, g.cm->padw[Y_COMPONENT] * g.cm->padh[Y_COMPONENT]);
+    cudaMallocManaged((void**)&g.frame_queue.current_frame.U, g.cm->padw[U_COMPONENT] * g.cm->padh[U_COMPONENT]);
+    cudaMallocManaged((void**)&g.frame_queue.current_frame.V, g.cm->padw[V_COMPONENT] * g.cm->padh[V_COMPONENT]);
+
     // Initialize thread pools
     thread_pool_init();
     task_pool_init(g.cm->padh[Y_COMPONENT]);

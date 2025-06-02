@@ -19,8 +19,8 @@ if [ ! -d $SRC_DIR/$SUBDIR ]; then
 fi
 
 PC_CMD="c63client"
-PC_ARGS="/opt/Media/foreman.yuv -f 300 -o foreman -w 352 -h 288"
-#PC_ARGS="/opt/Media/tractor.yuv -f 100 -o tractor -w 1920 -h 1080"
+#PC_ARGS="/opt/Media/foreman.yuv -f 300 -o foreman -w 352 -h 288"
+PC_ARGS="/opt/Media/tractor.yuv -f 60 -o tractor -w 1920 -h 1080"
 
 DATE=$(date -u +%Y%m%d-%H%M%S)
 RSYNC_ARGS="-rt --exclude=logs/ --exclude=.*"
@@ -76,16 +76,16 @@ done
 
 if [ -z "$PC" ]; then
     if [ "$TEGRA" == "tegra-1" ]; then
-        PC="in5050-2016-10"
+        PC="in5050-2014-11"
         TEGRA="tegra-1"
     elif [ "$TEGRA" == "tegra-2" ]; then
-        PC="in5050-2014-11"
+        PC="in5050-2016-10"
         TEGRA="tegra-2"
     elif [ "$TEGRA" == "tegra-3" ]; then
-        PC="in5050-2014-11"
+        PC="in5050-2016-10"
         TEGRA="tegra-3"
     elif [ "$TEGRA" == "tegra-4" ]; then
-        PC="in5050-2014-11"
+        PC="in5050-2016-10"
         TEGRA="tegra-4"
     else
         echo "unknown tegra $TEGRA"
