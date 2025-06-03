@@ -80,7 +80,26 @@ free_c63_enc( struct c63_common *cm )
     destroy_frame( cm->curframe );
     free( cm );
 }
+// Add these lines at the top after the existing includes in paste-2.txt
 
+// Simple timing functions for server-side benchmarking
+static inline void get_time(struct timespec *ts) { clock_gettime(CLOCK_MONOTONIC, ts); }
+static inline long time_diff_us(struct timespec *start, struct timespec *end) {
+    return (end->tv_sec - start->tv_sec) * 1000000L + (end->tv_nsec - start->tv_nsec) / 1000L;
+}
+
+// Helper function to format time with appropriate units
+void format_time(long us, char *buffer, size_t size) {
+    if (us < 1000) {
+        snprintf(buffer, size, "%ld μs", us);
+    } else if (us < 1000000) {
+        snprintf(buffer, size, "%.1f ms", us / 1000.0);
+    } else {
+        snprintf(buffer, size, "%.2f s", us / 1000000.0);
+    }
+}
+
+// REPLACE the entire encode_frame function with this version:
 void encode_frame(struct c63_common *cm, yuv_t *image, int frame_count,
                  volatile struct server_segment *local_seg,
                  volatile struct client_segment *remote_seg,
@@ -89,12 +108,14 @@ void encode_frame(struct c63_common *cm, yuv_t *image, int frame_count,
                  sci_remote_segment_t remote_segment) 
 {
     sci_error_t error;
+    struct timespec encode_start, encode_end, transfer_start, transfer_end;
     
-    // Now we have all YUV planes, encode the frame
+    // Start encoding timing
+    get_time(&encode_start);
+    
     printf("Server: Encoding frame %d\n", cm->framenum);
     
-    // Encode the frame
-    // First, advance frame pointers
+    // Advance frame pointers
     destroy_frame(cm->refframe);
     cm->refframe = cm->curframe;
     cm->curframe = create_frame(cm, image);
@@ -106,152 +127,123 @@ void encode_frame(struct c63_common *cm, yuv_t *image, int frame_count,
         printf("Server: Frame %d is a keyframe\n", cm->framenum);
     } else {
         cm->curframe->keyframe = 0;
-        printf("Server: Frame %d is not a keyframe\n", cm->framenum);
     }
     
     // Perform motion estimation if not keyframe
     if (!cm->curframe->keyframe) {
-        printf("Server: Starting motion estimation\n");
         c63_motion_estimate(cm);
-        printf("Server: Motion estimation complete\n");
-        
-        printf("Server: Starting motion compensation\n");
         c63_motion_compensate(cm);
-        printf("Server: Motion compensation complete\n");
     }
     
     // DCT and Quantization
-    printf("Server: Starting DCT/quantization for Y plane\n");
     dct_quantize(image->Y, cm->curframe->predicted->Y, cm->padw[Y_COMPONENT],
                cm->padh[Y_COMPONENT], cm->curframe->residuals->Ydct,
                cm->quanttbl[Y_COMPONENT]);
-    printf("Server: Y plane DCT/quantization complete\n");
     
-    printf("Server: Starting DCT/quantization for U plane\n");
     dct_quantize(image->U, cm->curframe->predicted->U, cm->padw[U_COMPONENT],
                cm->padh[U_COMPONENT], cm->curframe->residuals->Udct,
                cm->quanttbl[U_COMPONENT]);
-    printf("Server: U plane DCT/quantization complete\n");
     
-    printf("Server: Starting DCT/quantization for V plane\n");
     dct_quantize(image->V, cm->curframe->predicted->V, cm->padw[V_COMPONENT],
                cm->padh[V_COMPONENT], cm->curframe->residuals->Vdct,
                cm->quanttbl[V_COMPONENT]);
-    printf("Server: V plane DCT/quantization complete\n");
     
     // Reconstruct frame for inter-prediction
-    printf("Server: Starting dequantization/IDCT for reference frame\n");
     dequantize_idct(cm->curframe->residuals->Ydct, cm->curframe->predicted->Y, cm->ypw, cm->yph, cm->curframe->recons->Y, cm->quanttbl[Y_COMPONENT]);
     dequantize_idct(cm->curframe->residuals->Udct, cm->curframe->predicted->U, cm->upw, cm->uph, cm->curframe->recons->U, cm->quanttbl[U_COMPONENT]);
     dequantize_idct(cm->curframe->residuals->Vdct, cm->curframe->predicted->V, cm->vpw, cm->vph, cm->curframe->recons->V, cm->quanttbl[V_COMPONENT]);
-    printf("Server: Dequantization/IDCT complete\n");
     
-    // Now send all the encoded data back to the client in one transfer
-    printf("Server: Preparing encoded data for transfer\n");
+    // End encoding timing
+    get_time(&encode_end);
+    long encoding_time_us = time_diff_us(&encode_start, &encode_end);
     
-    // First, place keyframe flag
+    // Start transfer timing
+    get_time(&transfer_start);
+    
+    // Prepare encoded data for transfer
     *((int*)local_seg->message_buffer) = cm->curframe->keyframe;
-    
-    // Calculate offsets for each piece of data
     char* ptr = (char*)local_seg->message_buffer + sizeof(int);
     
     // Copy all data into the message buffer
-    // Ydct
     memcpy(ptr, cm->curframe->residuals->Ydct, cm->ypw * cm->yph * sizeof(int16_t));
     ptr += cm->ypw * cm->yph * sizeof(int16_t);
     
-    // Udct
     memcpy(ptr, cm->curframe->residuals->Udct, cm->upw * cm->uph * sizeof(int16_t));
     ptr += cm->upw * cm->uph * sizeof(int16_t);
     
-    // Vdct
     memcpy(ptr, cm->curframe->residuals->Vdct, cm->vpw * cm->vph * sizeof(int16_t));
     ptr += cm->vpw * cm->vph * sizeof(int16_t);
     
-    // Macroblocks - Y component
     memcpy(ptr, cm->curframe->mbs[Y_COMPONENT], cm->mb_rows * cm->mb_cols * sizeof(struct macroblock));
     ptr += cm->mb_rows * cm->mb_cols * sizeof(struct macroblock);
     
-    // Macroblocks - U component
     memcpy(ptr, cm->curframe->mbs[U_COMPONENT], (cm->mb_rows/2) * (cm->mb_cols/2) * sizeof(struct macroblock));
     ptr += (cm->mb_rows/2) * (cm->mb_cols/2) * sizeof(struct macroblock);
     
-    // Macroblocks - V component
     memcpy(ptr, cm->curframe->mbs[V_COMPONENT], (cm->mb_rows/2) * (cm->mb_cols/2) * sizeof(struct macroblock));
     
     // Calculate total size of encoded data
-    size_t total_size = sizeof(int) + // keyframe flag
-                       (cm->ypw * cm->yph * sizeof(int16_t)) + // Ydct
-                       (cm->upw * cm->uph * sizeof(int16_t)) + // Udct
-                       (cm->vpw * cm->vph * sizeof(int16_t)) + // Vdct
-                       (cm->mb_rows * cm->mb_cols * sizeof(struct macroblock)) + // Y macroblocks
-                       ((cm->mb_rows/2) * (cm->mb_cols/2) * sizeof(struct macroblock)) + // U macroblocks
-                       ((cm->mb_rows/2) * (cm->mb_cols/2) * sizeof(struct macroblock)); // V macroblocks
+    size_t total_size = sizeof(int) + 
+                       (cm->ypw * cm->yph * sizeof(int16_t)) + 
+                       (cm->upw * cm->uph * sizeof(int16_t)) + 
+                       (cm->vpw * cm->vph * sizeof(int16_t)) + 
+                       (cm->mb_rows * cm->mb_cols * sizeof(struct macroblock)) + 
+                       ((cm->mb_rows/2) * (cm->mb_cols/2) * sizeof(struct macroblock)) + 
+                       ((cm->mb_rows/2) * (cm->mb_cols/2) * sizeof(struct macroblock));
     
-    printf("Server: Encoded data size: %zu bytes\n", total_size);
-    
-    // Check if encoded data exceeds buffer size
     if (total_size > MESSAGE_SIZE) {
         fprintf(stderr, "Server: ERROR - Encoded data size (%zu) exceeds message buffer size (%d)\n", 
                total_size, MESSAGE_SIZE);
-        // Handle error condition
         return;
     }
     
     // Transfer encoded data to client
-    printf("Server: Starting DMA transfer of encoded data\n");
-    SCIStartDmaTransfer(dma_queue, 
-                       local_segment,
-                       remote_segment,
-                       offsetof(struct server_segment, message_buffer),
-                       total_size,
+    SCIStartDmaTransfer(dma_queue, local_segment, remote_segment,
+                       offsetof(struct server_segment, message_buffer), total_size,
                        offsetof(struct client_segment, message_buffer),
-                       NO_CALLBACK,
-                       NULL,
-                       NO_FLAGS,
-                       &error);
+                       NO_CALLBACK, NULL, NO_FLAGS, &error);
     
     if (error != SCI_ERR_OK) {
         fprintf(stderr, "Server: Error in encoded data DMA transfer: 0x%x\n", error);
         return;
     }
     
-    // Wait for transfer to complete
-    printf("Server: Waiting for encoded data DMA transfer to complete\n");
     SCIWaitForDMAQueue(dma_queue, SCI_INFINITE_TIMEOUT, NO_FLAGS, &error);
-    printf("Server: Encoded data DMA transfer complete\n");
+    get_time(&transfer_end);
+    long transfer_time_us = time_diff_us(&transfer_start, &transfer_end);
     
     // Signal client that encoded data is ready
-    printf("Server: Signaling client that encoded data is ready\n");
     SCIFlush(NULL, NO_FLAGS);
     remote_seg->packet.data_size = total_size;
     remote_seg->packet.cmd = CMD_ENCODED_DATA;
     SCIFlush(NULL, NO_FLAGS);
-    printf("Server: Encoded data ready signal sent\n");
+    
+    // Print server timing
+    char encode_str[16], transfer_str[16], total_str[16];
+    format_time(encoding_time_us, encode_str, sizeof(encode_str));
+    format_time(transfer_time_us, transfer_str, sizeof(transfer_str));
+    format_time(encoding_time_us + transfer_time_us, total_str, sizeof(total_str));
+    
+    printf("Server: Frame %d - Encoding: %s, Transfer: %s, Total: %s\n", 
+           cm->framenum, encode_str, transfer_str, total_str);
     
     // Wait for client to acknowledge receipt
-    printf("Server: Waiting for client to acknowledge encoded data\n");
     time_t start_time = time(NULL);
     bool timeout = false;
     
     while (local_seg->packet.cmd != CMD_ENCODED_DATA_ACK && !timeout) {
-        if (time(NULL) - start_time > 30) {  // 30 second timeout
+        if (time(NULL) - start_time > 30) {
             timeout = true;
             fprintf(stderr, "Server: Timeout waiting for encoded data acknowledgment\n");
         }
     }
     
     if (!timeout) {
-        printf("Server: Client acknowledged receipt of encoded data\n");
         local_seg->packet.cmd = CMD_INVALID;
-        
-        // Advance frame counters
-        printf("Server: Frame %d processing complete\n", cm->framenum);
         cm->framenum++;
         cm->frames_since_keyframe++;
     }
 }
-
 // Modified main loop to echo frame numbers
 int main_loop(sci_desc_t sd, 
     volatile struct server_segment *local_seg,

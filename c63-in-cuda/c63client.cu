@@ -16,6 +16,7 @@
 #include "c63_write.h"
 #include "common.h"
 #include "tables.h"
+#include <time.h>
 
 static char *output_file, *input_file;
 FILE *outfile;
@@ -124,6 +125,97 @@ free_c63_enc( struct c63_common *cm )
 }
 
 // Main loop for client - Handles transfers and acknowledgements and writing
+// Add these lines at the top after the existing includes in paste.txt
+
+// Timing structures and functions for benchmarking
+struct frame_timing {
+    struct timespec frame_start, yuv_start, yuv_end, encode_start, encode_end, result_start, result_end, frame_end;
+    long yuv_us, encode_us, result_us, total_us;
+};
+
+struct benchmark_stats {
+    long frames, total_yuv_us, total_encode_us, total_result_us, total_roundtrip_us;
+    long min_yuv_us, max_yuv_us, min_encode_us, max_encode_us, min_result_us, max_result_us, min_total_us, max_total_us;
+};
+
+static inline void get_time(struct timespec *ts) { clock_gettime(CLOCK_MONOTONIC, ts); }
+static inline long time_diff_us(struct timespec *start, struct timespec *end) {
+    return (end->tv_sec - start->tv_sec) * 1000000L + (end->tv_nsec - start->tv_nsec) / 1000L;
+}
+
+// Helper function to format time with appropriate units
+void format_time(long us, char *buffer, size_t size) {
+    if (us < 1000) {
+        snprintf(buffer, size, "%ld μs", us);
+    } else if (us < 1000000) {
+        snprintf(buffer, size, "%.1f ms", us / 1000.0);
+    } else {
+        snprintf(buffer, size, "%.2f s", us / 1000000.0);
+    }
+}
+
+void update_benchmark_stats(struct benchmark_stats *stats, struct frame_timing *timing) {
+    stats->frames++;
+    stats->total_yuv_us += timing->yuv_us;
+    stats->total_encode_us += timing->encode_us;
+    stats->total_result_us += timing->result_us;
+    stats->total_roundtrip_us += timing->total_us;
+    
+    if (stats->frames == 1) {
+        stats->min_yuv_us = stats->max_yuv_us = timing->yuv_us;
+        stats->min_encode_us = stats->max_encode_us = timing->encode_us;
+        stats->min_result_us = stats->max_result_us = timing->result_us;
+        stats->min_total_us = stats->max_total_us = timing->total_us;
+    } else {
+        if (timing->yuv_us < stats->min_yuv_us) stats->min_yuv_us = timing->yuv_us;
+        if (timing->yuv_us > stats->max_yuv_us) stats->max_yuv_us = timing->yuv_us;
+        if (timing->encode_us < stats->min_encode_us) stats->min_encode_us = timing->encode_us;
+        if (timing->encode_us > stats->max_encode_us) stats->max_encode_us = timing->encode_us;
+        if (timing->result_us < stats->min_result_us) stats->min_result_us = timing->result_us;
+        if (timing->result_us > stats->max_result_us) stats->max_result_us = timing->result_us;
+        if (timing->total_us < stats->min_total_us) stats->min_total_us = timing->total_us;
+        if (timing->total_us > stats->max_total_us) stats->max_total_us = timing->total_us;
+    }
+}
+
+void print_benchmark_results(struct benchmark_stats *stats, uint32_t width, uint32_t height) {
+    if (stats->frames == 0) return;
+    
+    char avg_yuv[32], min_yuv[32], max_yuv[32];
+    char avg_encode[32], min_encode[32], max_encode[32];
+    char avg_result[32], min_result[32], max_result[32];
+    char avg_total[32], min_total[32], max_total[32];
+    
+    format_time(stats->total_yuv_us / stats->frames, avg_yuv, sizeof(avg_yuv));
+    format_time(stats->min_yuv_us, min_yuv, sizeof(min_yuv));
+    format_time(stats->max_yuv_us, max_yuv, sizeof(max_yuv));
+    
+    format_time(stats->total_encode_us / stats->frames, avg_encode, sizeof(avg_encode));
+    format_time(stats->min_encode_us, min_encode, sizeof(min_encode));
+    format_time(stats->max_encode_us, max_encode, sizeof(max_encode));
+    
+    format_time(stats->total_result_us / stats->frames, avg_result, sizeof(avg_result));
+    format_time(stats->min_result_us, min_result, sizeof(min_result));
+    format_time(stats->max_result_us, max_result, sizeof(max_result));
+    
+    format_time(stats->total_roundtrip_us / stats->frames, avg_total, sizeof(avg_total));
+    format_time(stats->min_total_us, min_total, sizeof(min_total));
+    format_time(stats->max_total_us, max_total, sizeof(max_total));
+    
+    printf("\n═══ BENCHMARK RESULTS (%ld frames) ═══\n", stats->frames);
+    printf("YUV Transfer:    Avg:%8s  Min:%8s  Max:%8s\n", avg_yuv, min_yuv, max_yuv);
+    printf("Encoding:        Avg:%8s  Min:%8s  Max:%8s\n", avg_encode, min_encode, max_encode);
+    printf("Result Transfer: Avg:%8s  Min:%8s  Max:%8s\n", avg_result, min_result, max_result);
+    printf("Total Roundtrip: Avg:%8s  Min:%8s  Max:%8s\n", avg_total, min_total, max_total);
+    
+    double yuv_mbps = (width * height * 1.5 * 8.0) / (stats->total_yuv_us / stats->frames);
+    double fps = 1000000.0 / (stats->total_roundtrip_us / stats->frames);
+    printf("YUV Transfer Rate: %.1f Mbps\n", yuv_mbps);
+    printf("Processing Rate:   %.1f FPS\n", fps);
+    printf("═══════════════════════════════════════\n");
+}
+
+// REPLACE the entire main_client_loop function with this version:
 int main_client_loop(struct c63_common *cm, FILE *infile, int limit_numframes,
                     volatile struct client_segment *local_seg,
                     volatile struct server_segment *remote_seg,
@@ -134,49 +226,38 @@ int main_client_loop(struct c63_common *cm, FILE *infile, int limit_numframes,
     yuv_t *image;
     int numframes = 0;
     sci_error_t error;
+    struct benchmark_stats stats = {0};
+    struct frame_timing timing;
     
-    printf("Client: Starting video encoding\n");
+    printf("Client: Starting video encoding with benchmarking\n");
     
-    // This section sends width and height to server
+    // Dimensions exchange (unchanged)
     struct dimensions_data dim_data;
     dim_data.width = width;
     dim_data.height = height;
     
     memcpy((void*)local_seg->message_buffer, &dim_data, sizeof(struct dimensions_data));
     
-    SCIStartDmaTransfer(
-        dma_queue, 
-        local_segment,
-        remote_segment,
-        offsetof(struct client_segment, message_buffer),  // Source offset
-        sizeof(struct dimensions_data),                  // Size to transfer
-        offsetof(struct server_segment, message_buffer),  // Destination offset
-        NO_CALLBACK,
-        NULL,
-        NO_FLAGS,
-        &error
-    );
+    SCIStartDmaTransfer(dma_queue, local_segment, remote_segment,
+        offsetof(struct client_segment, message_buffer), sizeof(struct dimensions_data),
+        offsetof(struct server_segment, message_buffer), NO_CALLBACK, NULL, NO_FLAGS, &error);
                        
     if (error != SCI_ERR_OK) {
         fprintf(stderr, "Client: SCIStartDmaTransfer for dimensions failed - Error code 0x%x\n", error);
         return -1;
     }
     
-    // Waiting for the transfer to complete
     SCIWaitForDMAQueue(dma_queue, SCI_INFINITE_TIMEOUT, NO_FLAGS, &error);
-    
-    // Telling the server that the dimensions are ready
     SCIFlush(NULL, NO_FLAGS);
     remote_seg->packet.cmd = CMD_DIMENSIONS;
     SCIFlush(NULL, NO_FLAGS);
     
-    // Wait for server to acknowledge dimensions
     printf("Client: Waiting for server to acknowledge dimensions\n");
     time_t dim_start = time(NULL);
     bool dim_timeout = false;
     
     while (local_seg->packet.cmd != CMD_DIMENSIONS_ACK && !dim_timeout) {
-        if (time(NULL) - dim_start > 30) {  // 30 second timeout
+        if (time(NULL) - dim_start > 30) {
             dim_timeout = true;
             fprintf(stderr, "Client: Timeout waiting for dimensions acknowledgment\n");
         }
@@ -188,11 +269,12 @@ int main_client_loop(struct c63_common *cm, FILE *infile, int limit_numframes,
     }
     
     printf("Client: Dimensions acknowledged by server\n");
-    local_seg->packet.cmd = CMD_INVALID;  // Reset command
+    local_seg->packet.cmd = CMD_INVALID;
     
-    // This while transfers the frames to the server and waits for the results, then writes the frame
+    // Main processing loop with benchmarking
     while (1) {
-        // Read YUV frame
+        get_time(&timing.frame_start);
+        
         image = read_yuv(infile, cm);
         if (!image) {
             printf("Client: End of input file reached\n");
@@ -201,64 +283,37 @@ int main_client_loop(struct c63_common *cm, FILE *infile, int limit_numframes,
 
         printf("Processing frame %d, ", numframes);
 
-        // Define sizes of YUV components and total size
         size_t y_size = width * height;
         size_t u_size = (width * height) / 4;
         size_t v_size = (width * height) / 4;
         size_t total_yuv_size = y_size + u_size + v_size;
 
-        printf("Client: YUV plane sizes - Y: %zu bytes, U: %zu bytes, V: %zu bytes, Total: %zu bytes\n", y_size, u_size, v_size, total_yuv_size);
-
-        // Verify total buffer size is adequate
         if (total_yuv_size > MESSAGE_SIZE) {
             fprintf(stderr, "Client: ERROR - Total YUV frame size (%zu) exceeds message buffer size (%d)\n", total_yuv_size, MESSAGE_SIZE);
-            free(image->Y);
-            free(image->U);
-            free(image->V);
-            free(image);
+            free(image->Y); free(image->U); free(image->V); free(image);
             return -1;
         }
 
-        // Put YUV frames in buffer
-        printf("Client: Packing YUV planes into single buffer\n");
-
-        // Copy Y
+        // Pack YUV data
         memcpy((void*)local_seg->message_buffer, image->Y, y_size);
-
-        // Copy U
         memcpy((void*)(local_seg->message_buffer + y_size), image->U, u_size);
-
-        // Copy V
         memcpy((void*)(local_seg->message_buffer + y_size + u_size), image->V, v_size);
 
-        printf("Client: All YUV planes packed. Starting single DMA transfer (%zu bytes)\n", total_yuv_size);
-
-        // DMA transfer for the YUV frame
-        SCIStartDmaTransfer(dma_queue, 
-                        local_segment,
-                        remote_segment,
-                        offsetof(struct client_segment, message_buffer),
-                        total_yuv_size,
-                        offsetof(struct server_segment, message_buffer),
-                        NO_CALLBACK,
-                        NULL,
-                        NO_FLAGS,
-                        &error);
+        // Time YUV transfer
+        get_time(&timing.yuv_start);
+        SCIStartDmaTransfer(dma_queue, local_segment, remote_segment,
+                        offsetof(struct client_segment, message_buffer), total_yuv_size,
+                        offsetof(struct server_segment, message_buffer), NO_CALLBACK, NULL, NO_FLAGS, &error);
 
         if (error != SCI_ERR_OK) {
             fprintf(stderr, "Client: YUV frame DMA transfer failed - Error code 0x%x\n", error);
-            free(image->Y);
-            free(image->U);
-            free(image->V);
-            free(image);
+            free(image->Y); free(image->U); free(image->V); free(image);
             continue;
         }
 
-        // Wait for transfer to complete
         SCIWaitForDMAQueue(dma_queue, SCI_INFINITE_TIMEOUT, NO_FLAGS, &error);
-        printf("Client: YUV frame DMA transfer complete\n");
+        get_time(&timing.yuv_end);
 
-        // Signal server that complete YUV frame is ready
         SCIFlush(NULL, NO_FLAGS);
         remote_seg->packet.cmd = CMD_YUV_DATA;
         remote_seg->packet.data_size = total_yuv_size;
@@ -266,122 +321,103 @@ int main_client_loop(struct c63_common *cm, FILE *infile, int limit_numframes,
         remote_seg->packet.u_size = u_size;
         remote_seg->packet.v_size = v_size;
         SCIFlush(NULL, NO_FLAGS);
-        printf("Client: YUV frame ready signal sent\n");
 
         // Wait for frame acknowledgment
-        printf("Client: Waiting for YUV frame acknowledgment\n");
         time_t frame_start = time(NULL);
         bool frame_timeout = false;
-
         while (local_seg->packet.cmd != CMD_YUV_DATA_ACK && !frame_timeout) {
-            if (time(NULL) - frame_start > 30) {  // 30 second timeout
+            if (time(NULL) - frame_start > 30) {
                 frame_timeout = true;
                 fprintf(stderr, "Client: Timeout waiting for YUV frame acknowledgment\n");
             }
         }
 
         if (frame_timeout) {
-            fprintf(stderr, "Client: Failed to get YUV frame acknowledgment, skipping frame\n");
-            free(image->Y);
-            free(image->U);
-            free(image->V);
-            free(image);
+            free(image->Y); free(image->U); free(image->V); free(image);
             continue;
         }
 
-        printf("Client: YUV frame acknowledgment received from server\n");
-        local_seg->packet.cmd = CMD_INVALID;  // Reset command
+        local_seg->packet.cmd = CMD_INVALID;
+        free(image->Y); free(image->U); free(image->V); free(image);
 
-        // Free original image buffers
-        printf("Client: YUV frame transferred successfully, freeing original image buffers\n");
-        free(image->Y);
-        free(image->U);
-        free(image->V);
-        free(image);
+        // Mark encoding start (server is now processing)
+        get_time(&timing.encode_start);
 
-
-        // Wait for the encoded frame
-        printf("Client: Waiting for server to process and return encoded data\n");
+        // Wait for encoded data
         time_t encode_start = time(NULL);
         bool encode_timeout = false;
         
         while (local_seg->packet.cmd != CMD_ENCODED_DATA && !encode_timeout) {
-            if (time(NULL) - encode_start > 120) {  // 2 minute timeout - encoding can take time
+            if (time(NULL) - encode_start > 120) {
                 encode_timeout = true;
                 fprintf(stderr, "Client: Timeout waiting for encoded data\n");
             }
-            
-            // Print status every 10 seconds
-            if (!encode_timeout && (time(NULL) - encode_start) % 10 == 0 && time(NULL) > encode_start) {
-                printf("Client: Still waiting for encoded data... (%ld seconds)\n", 
-                       time(NULL) - encode_start);
-            }
-            
         }
         
-        if (encode_timeout) {
-            fprintf(stderr, "Client: Failed to receive encoded data, skipping frame\n");
-            continue;
-        }
-        
+        if (encode_timeout) continue;
 
-        // Process the encoded frame from the server
-        printf("Client: Received encoded data from server\n");
-        
-        // Get total data size
+        // Mark encoding end and result transfer start
+        get_time(&timing.encode_end);
+        get_time(&timing.result_start);
+
+        // Process encoded data (existing logic)
         size_t data_size = local_seg->packet.data_size;
-        printf("Client: Encoded data size: %zu bytes\n", data_size);
-        
-        // Get keyframe flag
         int keyframe = *((int*)local_seg->message_buffer);
         cm->curframe->keyframe = keyframe;
-        printf("Client: Frame is %s\n", keyframe ? "a keyframe" : "not a keyframe");
         
-        // Get a pointer to the encoded data (after the keyframe flag)
         char* encoded_data = (char*)local_seg->message_buffer + sizeof(int);
         
-        // Copy the encoded data to our curframe structure
-        // Ydct
         size_t ydct_size = cm->ypw * cm->yph * sizeof(int16_t);
         memcpy(cm->curframe->residuals->Ydct, encoded_data, ydct_size);
         encoded_data += ydct_size;
         
-        // Udct
         size_t udct_size = cm->upw * cm->uph * sizeof(int16_t);
         memcpy(cm->curframe->residuals->Udct, encoded_data, udct_size);
         encoded_data += udct_size;
         
-        // Vdct
         size_t vdct_size = cm->vpw * cm->vph * sizeof(int16_t);
         memcpy(cm->curframe->residuals->Vdct, encoded_data, vdct_size);
         encoded_data += vdct_size;
         
-        // Macroblocks - Y component
         size_t mby_size = cm->mb_rows * cm->mb_cols * sizeof(struct macroblock);
         memcpy(cm->curframe->mbs[Y_COMPONENT], encoded_data, mby_size);
         encoded_data += mby_size;
         
-        // Macroblocks - U component
         size_t mbu_size = (cm->mb_rows/2) * (cm->mb_cols/2) * sizeof(struct macroblock);
         memcpy(cm->curframe->mbs[U_COMPONENT], encoded_data, mbu_size);
         encoded_data += mbu_size;
         
-        // Macroblocks - V component
         size_t mbv_size = (cm->mb_rows/2) * (cm->mb_cols/2) * sizeof(struct macroblock);
         memcpy(cm->curframe->mbs[V_COMPONENT], encoded_data, mbv_size);
-        
-        // Acknowledge receipt of encoded data
-        printf("Client: Sending acknowledgment of encoded data receipt\n");
+
+        get_time(&timing.result_end);
+
+        // Acknowledge encoded data
         local_seg->packet.cmd = CMD_INVALID;
         SCIFlush(NULL, NO_FLAGS);
         remote_seg->packet.cmd = CMD_ENCODED_DATA_ACK;
         SCIFlush(NULL, NO_FLAGS);
         
-        // Write the encoded frame to disk
-        printf("Client: Writing encoded frame to output file\n");
         write_frame(cm);
+        get_time(&timing.frame_end);
         
-        printf("Done!\n");
+        // Calculate timings
+        timing.yuv_us = time_diff_us(&timing.yuv_start, &timing.yuv_end);
+        timing.encode_us = time_diff_us(&timing.encode_start, &timing.encode_end);
+        timing.result_us = time_diff_us(&timing.result_start, &timing.result_end);
+        timing.total_us = time_diff_us(&timing.frame_start, &timing.frame_end);
+        
+        update_benchmark_stats(&stats, &timing);
+        
+        char yuv_str[16], encode_str[16], result_str[16], total_str[16];
+        format_time(timing.yuv_us, yuv_str, sizeof(yuv_str));
+        format_time(timing.encode_us, encode_str, sizeof(encode_str));
+        format_time(timing.result_us, result_str, sizeof(result_str));
+        format_time(timing.total_us, total_str, sizeof(total_str));
+        
+        printf("YUV:%s, Encode:%s, Result:%s, Total:%s\n", 
+               yuv_str, encode_str, result_str, total_str);
+        
         cm->framenum++;
         cm->frames_since_keyframe++;
         if (cm->curframe->keyframe) {
@@ -396,8 +432,9 @@ int main_client_loop(struct c63_common *cm, FILE *infile, int limit_numframes,
         }
     }
     
-    // Signal server to quit
-    printf("Client: Sending quit command to server\n");
+    // Print final results
+    print_benchmark_results(&stats, width, height);
+    
     SCIFlush(NULL, NO_FLAGS);
     remote_seg->packet.cmd = CMD_QUIT;
     SCIFlush(NULL, NO_FLAGS);
@@ -405,7 +442,6 @@ int main_client_loop(struct c63_common *cm, FILE *infile, int limit_numframes,
     printf("Client: Finished processing %d frames\n", numframes);
     return numframes;
 }
-
 static void print_help()
 {
     printf("Usage: ./c63client -r nodeid [options] input_file\n");
